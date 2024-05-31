@@ -1,0 +1,42 @@
+# Uncomment the line if you want fastlane to automatically update itself
+update_fastlane
+
+default_platform(:ios)
+
+platform :ios do
+
+    lane :store_bundle do
+
+        # build app with App-Store provisioning profile
+        build_app(
+            workspace: "Runner.xcworkspace",
+            configuration: "Release",
+            scheme: "Runner",
+            clean: true,
+            export_method: "app-store",
+            export_options: {
+                provisioningProfiles: {
+                    "com.flutter.base" => "kam-store-profile",
+                    "method" => "app-store",
+                    "teamID" => "G8RJZDHQU7"
+                 }
+            }
+            #export_xcargs: "-allowProvisioningUpdates"
+        )
+
+        previous_successful_commit = ENV["GIT_PREVIOUS_SUCCESSFUL_COM.MIT"]
+        if previous_successful_commit.nil? || previous_successful_commit.empty?
+            releaseNotes = changelog_from_git_commits()
+        else
+            releaseNotes = changelog_from_git_commits(
+            between: [previous_successful_commit, "HEAD"]
+        )
+        end
+
+        # upload to Testflight
+        upload_to_testflight(skip_waiting_for_build_processing: true,  changelog: releaseNotes, apple_id: "1627171776")
+        clear_derived_data
+
+    end
+
+end
