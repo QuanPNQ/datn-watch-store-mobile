@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_mob/configs/colors.dart';
 import 'package:flutter_mob/configs/constants.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_mob/models/models.dart';
+import 'package:flutter_mob/ui/components/button/button_normal.dart';
 import 'package:flutter_mob/ui/components/text/text_normal.dart';
 
 class OnBoardingScreen extends StatefulWidget {
@@ -12,6 +12,10 @@ class OnBoardingScreen extends StatefulWidget {
 }
 
 class _OnBoardingScreenState extends State<OnBoardingScreen> {
+  List<WalkThrough> listWalkThrough = Constants.listWalkThroughDefault;
+  final PageController pageController = PageController(initialPage: 0);
+  int currentIndex = 0;
+
   @override
   void initState() {
     super.initState();
@@ -21,22 +25,90 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      body: SafeArea(
-        bottom: false,
-        child: Center(
-          child: GestureDetector(
-            onTap: () {
-              Navigator.pushNamed(context, Constants.signupScreen);
+      body: Stack(
+        children: [
+          PageView(
+            controller: pageController,
+            physics: NeverScrollableScrollPhysics(),
+            onPageChanged: (value) {
+              setState(() {
+                currentIndex = value;
+              });
             },
-            child: TextNormal(
-              lineHeight: 1.3.h,
-              size: 14.sp,
-              title: 'OnBoardingScreen',
-              colors: AppColors.mediumWhite,
-            ),
+            children: listWalkThrough.map((e) {
+              return Image.asset(
+                e.imagePath,
+                width: MediaQuery.of(context).size.width,
+                height: MediaQuery.of(context).size.height,
+                fit: BoxFit.fill,
+              );
+            }).toList(),
           ),
-        ),
+          SafeArea(
+            child: Padding(
+              padding: EdgeInsets.symmetric(horizontal: 20),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      Container(
+                          height: 44,
+                          alignment: Alignment.center,
+                          child: currentIndex != (listWalkThrough.length - 1)
+                              ? GestureDetector(
+                                  onTap: handleClickSkip,
+                                  child: TextNormal(title: StringName.skip))
+                              : null)
+                    ],
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  TextNormal(
+                    title: listWalkThrough[currentIndex].title,
+                    size: 24,
+                    lineHeight: 1.3,
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  TextNormal(
+                    title: listWalkThrough[currentIndex].content,
+                    size: 14,
+                    lineHeight: 1.3,
+                  ),
+                  const Spacer(),
+                  ButtonNormal(
+                    text: currentIndex != (listWalkThrough.length - 1)
+                        ? StringName.next
+                        : StringName.getStarted,
+                    onPressed: handleClickButton,
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                ],
+              ),
+            ),
+          )
+        ],
       ),
     );
+  }
+
+  handleClickButton() {
+    if (currentIndex != (listWalkThrough.length - 1)) {
+      pageController.animateToPage(currentIndex + 1,
+          duration: Duration(milliseconds: 500), curve: Curves.ease);
+      return;
+    }
+
+    Navigator.pushReplacementNamed(context, Constants.loginScreen);
+  }
+
+  handleClickSkip() {
+    Navigator.pushReplacementNamed(context, Constants.loginScreen);
   }
 }

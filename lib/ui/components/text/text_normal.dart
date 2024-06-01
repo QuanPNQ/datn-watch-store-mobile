@@ -10,6 +10,7 @@ class TextNormal extends StatelessWidget {
   final double? lineHeight;
   final FontWeight? fontWeight;
   final FontStyle? fontStyle;
+  final String fontName;
 
   const TextNormal(
       {Key? key,
@@ -17,6 +18,7 @@ class TextNormal extends StatelessWidget {
       this.size,
       this.colors,
       this.fontStyle,
+      this.fontName = AppThemes.sourceSans,
       this.lineHeight = 1,
       this.fontWeight})
       : super(key: key);
@@ -32,9 +34,9 @@ class TextNormal extends StatelessWidget {
           color: colors ?? AppColors.kPrimaryColor,
           fontWeight: fontWeight ?? FontWeight.w400,
           fontStyle: fontStyle ?? FontStyle.normal,
-          fontFamily: AppThemes.sourceSans,
+          fontFamily: fontName,
           height: lineHeight,
-          fontSize: size ?? 16.sp,
+          fontSize: size ?? 16,
           letterSpacing: 0.5.w),
     );
   }
