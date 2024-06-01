@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mob/configs/colors.dart';
+import 'package:flutter_mob/configs/themes.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class AppBarTitle extends StatelessWidget {
@@ -15,7 +16,7 @@ class AppBarTitle extends StatelessWidget {
     return Text(
       appTitle,
       style: TextStyle(
-          fontFamily: 'SpaceGrotesk',
+          fontFamily: AppThemes.sourceSans,
           fontWeight: FontWeight.bold,
           fontSize: 16.sp,
           letterSpacing: 0.5.w,

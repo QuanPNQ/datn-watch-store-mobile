@@ -36,4 +36,5 @@ class Constants {
 /* define String Names */
 class StringName {
   static String logout = 'Log out';
+  static String watchShop = 'WATCH SHOP';
 }

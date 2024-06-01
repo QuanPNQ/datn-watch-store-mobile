@@ -1,7 +1,6 @@
 import 'dart:ui';
 
 class AppColors {
-
   static const Color primaryColor = Color(0xFF111827);
   static const Color kPrimaryColor = Color(0xFFFFFFFF);
   static const Color vPrimaryColor = Color(0xFF7781FF);
@@ -42,19 +41,20 @@ class AppColors {
   static Color mediumWhite = const Color(0xFFFFFFFF).withOpacity(0.6);
   static Color whiteHightEmphasis = const Color(0xFFFFFFFF).withOpacity(0.87);
   static Color lightWhite = const Color(0xFFFFFFFF).withOpacity(0.1);
-  static Color mediumWhiteHightEmphasis = const Color(0xFFFFFFFF).withOpacity(0.6);
+  static Color mediumWhiteHightEmphasis =
+      const Color(0xFFFFFFFF).withOpacity(0.6);
   static const Color chartPink = Color(0xFFEC495C);
   static const Color chartGreen = Color(0xFF65D35A);
   static const Color chartYellow = Color(0xFFFCD633);
   static Color whiteDisable = const Color(0xFFFFFFFF).withOpacity(0.38);
   static const Color natureGrey = Color(0xFFEEEEEE);
 
-
   static const Color blue400 = Color(0xFF567EBF);
   static const Color blue200 = Color(0xFF4E42F5);
   static const Color blue50 = Color(0xFF9089F7);
   static const Color systemBlue = Color(0xFF007AFF);
   static const Color blue100 = Color(0xFF6F66F6);
+  static const Color blue300 = Color(0xFF233B67);
 
   static const Color highlightGreen = Color(0xFF59C481);
   static const Color highlightYellow = Color(0xFFFFA800);

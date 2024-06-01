@@ -1,7 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_mob/configs/colors.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_mob/configs/constants.dart';
 import 'package:flutter_mob/configs/images.dart';
 import 'package:flutter_mob/ui/components/text/text_normal.dart';
@@ -17,7 +16,7 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     Future.delayed(
-        const Duration(milliseconds: 2000),
+        const Duration(milliseconds: 3000),
         () => Navigator.pushReplacementNamed(
             context, Constants.onBoardingScreen));
     super.initState();
@@ -32,17 +31,28 @@ class _SplashScreenState extends State<SplashScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      body: SafeArea(
-        bottom: false,
-        child: Column(
-          children: <Widget>[
-            TextNormal(
-                title: 'Splash Screen',
-                size: 16.sp,
-                colors: AppColors.purple,
-                lineHeight: 1)
-          ],
-        ),
+      body: Stack(
+        alignment: Alignment.center,
+        children: [
+          Image.asset(
+            AppImages.imgBackgroundSplash,
+            width: MediaQuery.of(context).size.width,
+            height: MediaQuery.of(context).size.height,
+            fit: BoxFit.fill,
+          ),
+          Container(
+            color: AppColors.blue300.withOpacity(0.66),
+          ),
+          Padding(
+            padding: EdgeInsets.only(top: 24),
+            child: TextNormal(
+              title: StringName.watchShop,
+              size: 24,
+              fontWeight: FontWeight.w900,
+              fontStyle: FontStyle.italic,
+            ),
+          )
+        ],
       ),
     );
   }

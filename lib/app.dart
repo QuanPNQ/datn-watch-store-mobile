@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_mob/configs/constants.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_mob/router/app_router.dart';
 import 'package:flutter_mob/ui/splash/splash_screen.dart';
@@ -34,7 +35,7 @@ class _AppState extends State<App> with WidgetsBindingObserver {
           overlayOpacity: 0.7,
           child: MaterialApp(
             debugShowCheckedModeBanner: false,
-            title: 'Kam',
+            title: StringName.watchShop,
             theme: ThemeData(
               appBarTheme: const AppBarTheme(
                   systemOverlayStyle: SystemUiOverlayStyle.light),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mob/configs/colors.dart';
+import 'package:flutter_mob/configs/themes.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class VerifyCodeInputField extends StatefulWidget {
@@ -23,7 +24,7 @@ class _VerifyCodeInputState extends State<VerifyCodeInputField> {
         autofocus: false,
         cursorColor: AppColors.gray700,
         style: TextStyle(
-            fontFamily: 'SpaceGrotesk',
+            fontFamily: AppThemes.sourceSans,
             color: AppColors.whiteHightEmphasis,
             fontSize: 16.sp,
             fontWeight: FontWeight.normal,
@@ -34,7 +35,7 @@ class _VerifyCodeInputState extends State<VerifyCodeInputField> {
               fontSize: 14.sp,
               color: AppColors.pink,
               height: 1.h,
-              fontFamily: 'SpaceGrotesk',
+              fontFamily: AppThemes.sourceSans,
               fontWeight: FontWeight.normal,
               letterSpacing: 0.5.w),
           filled: true,

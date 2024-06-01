@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_mob/configs/themes.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:flutter_mob/configs/colors.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -56,7 +57,7 @@ class _PasswordFiledState extends State<PasswordFiled> {
         onSaved: widget.onSaved,
         cursorColor: AppColors.heroRed,
         style: TextStyle(
-            fontFamily: 'SpaceGrotesk',
+            fontFamily: AppThemes.sourceSans,
             color: AppColors.whiteHightEmphasis,
             fontSize: 16.sp,
             fontWeight: _passwordVisible ? FontWeight.bold : FontWeight.w400,
@@ -69,7 +70,7 @@ class _PasswordFiledState extends State<PasswordFiled> {
               fontSize: 14.sp,
               color: AppColors.pink,
               height: 1.h,
-              fontFamily: 'SpaceGrotesk',
+              fontFamily: AppThemes.sourceSans,
               fontWeight: FontWeight.normal,
               letterSpacing: 0.5.w),
           contentPadding: EdgeInsets.only(left: 16.w, top: 16.h, bottom: 16.w),

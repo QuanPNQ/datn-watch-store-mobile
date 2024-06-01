@@ -6,11 +6,14 @@ class AppThemes {
   final BuildContext context;
   AppThemes(this.context);
 
+  //font name
+  static const String sourceSans = "SourceSans";
+
   //region styles
   TextStyle lightText = TextStyle(
     fontWeight: FontWeight.w300,
     fontStyle: FontStyle.normal,
-    fontFamily: 'SpaceGrotesk',
+    fontFamily: sourceSans,
     color: Colors.white.withOpacity(0.87),
     letterSpacing: 0.5.w,
     fontSize: 24.sp,
@@ -20,7 +23,7 @@ class AppThemes {
   TextStyle normalText = TextStyle(
     fontWeight: FontWeight.w400,
     fontStyle: FontStyle.normal,
-    fontFamily: 'SpaceGrotesk',
+    fontFamily: sourceSans,
     color: Colors.white.withOpacity(0.87),
     letterSpacing: 0.5.w,
     fontSize: 13.sp,
@@ -30,7 +33,7 @@ class AppThemes {
     color: Colors.white.withOpacity(0.87),
     fontWeight: FontWeight.w700,
     fontStyle: FontStyle.normal,
-    fontFamily: 'SpaceGrotesk',
+    fontFamily: sourceSans,
     fontSize: 20.sp,
     letterSpacing: 0.5.w,
   );
