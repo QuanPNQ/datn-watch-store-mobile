@@ -4,10 +4,14 @@ import 'colors.dart';
 
 class AppThemes {
   final BuildContext context;
+
   AppThemes(this.context);
 
   //font name
   static const String sourceSans = "SourceSans";
+  static const String dmSerifDisplay = "DMSerifDisplay";
+  static const String italianno = "Italianno";
+  static const String jaldi = "Jaldi";
 
   //region styles
   TextStyle lightText = TextStyle(
@@ -43,5 +47,5 @@ class AppThemes {
     width: 1.w,
     color: AppColors.hPrimaryColor,
   ));
-  //endregion
+//endregion
 }
