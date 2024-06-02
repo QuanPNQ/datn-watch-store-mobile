@@ -143,7 +143,7 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 
   handleLogin() {
-    Navigator.pushNamed(context, Constants.signupScreen);
+    Navigator.pushReplacementNamed(context, Constants.dashBoardScreen);
   }
 
   handleRegister() {
