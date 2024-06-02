@@ -11,6 +11,7 @@ class TextNormal extends StatelessWidget {
   final FontWeight? fontWeight;
   final FontStyle? fontStyle;
   final String fontName;
+  final int? maxLine;
 
   const TextNormal(
       {Key? key,
@@ -18,6 +19,7 @@ class TextNormal extends StatelessWidget {
       this.size,
       this.colors,
       this.fontStyle,
+      this.maxLine,
       this.fontName = AppThemes.sourceSans,
       this.lineHeight = 1,
       this.fontWeight})
@@ -29,7 +31,7 @@ class TextNormal extends StatelessWidget {
       title,
       overflow: TextOverflow.ellipsis,
       softWrap: false,
-      maxLines: 99,
+      maxLines: maxLine ?? 99,
       style: TextStyle(
           color: colors ?? AppColors.kPrimaryColor,
           fontWeight: fontWeight ?? FontWeight.w400,

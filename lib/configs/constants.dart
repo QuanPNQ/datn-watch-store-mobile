@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_mob/configs/images.dart';
+import 'package:flutter_mob/models/brand/brand.dart';
 import 'package:flutter_mob/models/models.dart';
+import 'package:flutter_mob/models/watch/watch.dart';
 import 'package:flutter_mob/storage/sharedpreferences/shared_preferences_manager.dart';
 import 'package:meta/meta.dart';
 
@@ -32,6 +34,138 @@ class Constants {
         content:
             "Bảo hành dài hạn, chăm sóc tận tình. Chúng\ntôi luôn đồng hành cùng bạn sau khi mua hàng",
         imagePath: AppImages.imgWalkThrough3)
+  ];
+
+  static const List<String> listTabClassifyWatch = [
+    "Bán chạy",
+    "Phổ biến",
+    "Mới",
+    "Bộ sưu tập"
+  ];
+
+  static List<Watch> listMockDataWatch = [
+    Watch(
+      id: '1',
+      brandId: '1',
+      name: 'Luch CH 15',
+      description:
+          'Đồng hồ Luch 15, một trong những thương hiệu nổi đình nổi đám và cũng là một trong những cái tên phổ biến, có sức ảnh hưởng trong giới sản xuất đồng hồ đeo tay. Với những sản phẩm chất lượng,Luch 15 ngày càng khẳng định được vị thế cũng như chỗ đứng của mình.',
+      size: 24,
+      createdDate: DateTime(2024, 1, 14),
+      photoUrls: [
+        "https://firebasestorage.googleapis.com/v0/b/apolis-301dc.appspot.com/o/design-dc011e6b-a663-4665-a203-82df9febaf43%201.png?alt=media&token=f590cfef-19bb-4893-b541-fcc63861eb53"
+      ],
+      price: 3000,
+      quantity: 50,
+    ),
+    Watch(
+      id: '1',
+      brandId: '1',
+      name: 'Luch CH 15',
+      description:
+          'Đồng hồ Luch 15, một trong những thương hiệu nổi đình nổi đám và cũng là một trong những cái tên phổ biến, có sức ảnh hưởng trong giới sản xuất đồng hồ đeo tay. Với những sản phẩm chất lượng,Luch 15 ngày càng khẳng định được vị thế cũng như chỗ đứng của mình.',
+      size: 24,
+      createdDate: DateTime(2024, 1, 14),
+      photoUrls: [
+        "https://firebasestorage.googleapis.com/v0/b/apolis-301dc.appspot.com/o/design-dc011e6b-a663-4665-a203-82df9febaf43%201.png?alt=media&token=f590cfef-19bb-4893-b541-fcc63861eb53"
+      ],
+      price: 3000,
+      quantity: 50,
+    ),
+    Watch(
+      id: '1',
+      brandId: '1',
+      name: 'Luch CH 15',
+      description:
+          'Đồng hồ Luch 15, một trong những thương hiệu nổi đình nổi đám và cũng là một trong những cái tên phổ biến, có sức ảnh hưởng trong giới sản xuất đồng hồ đeo tay. Với những sản phẩm chất lượng,Luch 15 ngày càng khẳng định được vị thế cũng như chỗ đứng của mình.',
+      size: 24,
+      createdDate: DateTime(2024, 1, 14),
+      photoUrls: [
+        "https://firebasestorage.googleapis.com/v0/b/apolis-301dc.appspot.com/o/design-dc011e6b-a663-4665-a203-82df9febaf43%201.png?alt=media&token=f590cfef-19bb-4893-b541-fcc63861eb53"
+      ],
+      price: 3000,
+      quantity: 50,
+    ),
+    Watch(
+      id: '1',
+      brandId: '1',
+      name: 'Luch CH 15',
+      description:
+          'Đồng hồ Luch 15, một trong những thương hiệu nổi đình nổi đám và cũng là một trong những cái tên phổ biến, có sức ảnh hưởng trong giới sản xuất đồng hồ đeo tay. Với những sản phẩm chất lượng,Luch 15 ngày càng khẳng định được vị thế cũng như chỗ đứng của mình.',
+      size: 24,
+      createdDate: DateTime(2024, 1, 14),
+      photoUrls: [
+        "https://firebasestorage.googleapis.com/v0/b/apolis-301dc.appspot.com/o/design-dc011e6b-a663-4665-a203-82df9febaf43%201.png?alt=media&token=f590cfef-19bb-4893-b541-fcc63861eb53"
+      ],
+      price: 3000,
+      quantity: 50,
+    )
+  ];
+
+  static List<Watch> listMockTopDeels = [
+    Watch(
+      id: '1',
+      brandId: '1',
+      name: 'Unisex Casio Vintage',
+      description:
+          'Đồng hồ Luch 15, một trong những thương hiệu nổi đình nổi đám và cũng là một trong những cái tên phổ biến, có sức ảnh hưởng trong giới sản xuất đồng hồ đeo tay. Với những sản phẩm chất lượng,Luch 15 ngày càng khẳng định được vị thế cũng như chỗ đứng của mình.',
+      size: 24,
+      createdDate: DateTime(2024, 1, 14),
+      photoUrls: [
+        "https://firebasestorage.googleapis.com/v0/b/apolis-301dc.appspot.com/o/thumb_1542595515%201.png?alt=media&token=2fb13746-c7c0-472e-9a83-b313796430e7"
+      ],
+      price: 8690,
+      quantity: 50,
+    ),
+    Watch(
+      id: '1',
+      brandId: '1',
+      name: 'Unisex Casio Vintage',
+      description:
+          'Đồng hồ Luch 15, một trong những thương hiệu nổi đình nổi đám và cũng là một trong những cái tên phổ biến, có sức ảnh hưởng trong giới sản xuất đồng hồ đeo tay. Với những sản phẩm chất lượng,Luch 15 ngày càng khẳng định được vị thế cũng như chỗ đứng của mình.',
+      size: 24,
+      createdDate: DateTime(2024, 1, 14),
+      photoUrls: [
+        "https://firebasestorage.googleapis.com/v0/b/apolis-301dc.appspot.com/o/thumb_1542595515%201.png?alt=media&token=2fb13746-c7c0-472e-9a83-b313796430e7"
+      ],
+      price: 8690,
+      quantity: 50,
+    ),
+    Watch(
+      id: '1',
+      brandId: '1',
+      name: 'Unisex Casio Vintage',
+      description:
+          'Đồng hồ Luch 15, một trong những thương hiệu nổi đình nổi đám và cũng là một trong những cái tên phổ biến, có sức ảnh hưởng trong giới sản xuất đồng hồ đeo tay. Với những sản phẩm chất lượng,Luch 15 ngày càng khẳng định được vị thế cũng như chỗ đứng của mình.',
+      size: 24,
+      createdDate: DateTime(2024, 1, 14),
+      photoUrls: [
+        "https://firebasestorage.googleapis.com/v0/b/apolis-301dc.appspot.com/o/thumb_1542595515%201.png?alt=media&token=2fb13746-c7c0-472e-9a83-b313796430e7"
+      ],
+      price: 8690,
+      quantity: 50,
+    ),
+  ];
+
+  static List<Brand> listMockBrands = [
+    Brand(
+        id: "1",
+        name: "Rolex",
+        description: "",
+        logo:
+            "https://firebasestorage.googleapis.com/v0/b/apolis-301dc.appspot.com/o/Group%20224.svg?alt=media&token=0bc0b736-5f37-409a-9532-85218f67d2f8"),
+    Brand(
+        id: "2",
+        name: "Patek philippe",
+        description: "",
+        logo:
+            "https://firebasestorage.googleapis.com/v0/b/apolis-301dc.appspot.com/o/Union.svg?alt=media&token=e80e3d89-7024-468a-b2cf-23940eeea085"),
+    Brand(
+        id: "3",
+        name: "Audemars",
+        description: "",
+        logo:
+            "https://firebasestorage.googleapis.com/v0/b/apolis-301dc.appspot.com/o/Union%20(1).svg?alt=media&token=131828f5-a386-4170-987f-c73694e810a0")
   ];
 
   static const Map<String, String> authRequestHeaders = {
@@ -75,4 +209,10 @@ class StringName {
   static String hadAccount = 'Bạn đã có tài khoản?';
   static String fillYourEmail = 'Nhập email của bạn';
   static String fillYourPhone = 'Nhập số điện thoại của bạn';
+  static String hello = 'Xin chào!';
+  static String pickWatchThatYouWant = 'Hãy chọn chiếc đồng hồ mà bạn muốn';
+  static String outstandingWatch = 'Sản phẩm nổi bật';
+  static String all = 'Tất cả';
+  static String searchBrand = 'Tìm kiếm thương hiệu';
+  static String topDeels = 'Giao dịch hàng đầu';
 }
