@@ -69,4 +69,10 @@ class StringName {
   static String fillYourPassword = 'Nhập mật khẩu của bạn';
   static String forgotPassword = 'Quên mật khẩu?';
   static String notHaveAccount = 'Bạn chưa có tài khoản?';
+  static String signUp = 'Đăng ký';
+  static String email = 'Email';
+  static String phone = 'Phone';
+  static String hadAccount = 'Bạn đã có tài khoản?';
+  static String fillYourEmail = 'Nhập email của bạn';
+  static String fillYourPhone = 'Nhập số điện thoại của bạn';
 }
