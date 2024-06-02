@@ -11,7 +11,8 @@ class Constants {
   static const String onBoardingScreen = '/on-boarding';
   static const String loginScreen = '/login';
   static const String signupScreen = '/signup';
-  static const String dashBoardScreen = '/dash_board-screen';
+  static const String dashBoardScreen = '/dashboard-screen';
+  static const String forgotPasswordScreen = '/forgot-password-screen';
 
   static const String baseUrl = 'https://portal.kamcpap.com/api/';
 
@@ -60,4 +61,12 @@ class StringName {
   static String skip = 'Bỏ qua';
   static String next = 'Tiếp';
   static String getStarted = 'Bắt đầu';
+  static String login = 'Đăng Nhập';
+  static String login1 = 'Đăng nhập';
+  static String account = 'Tài khoản';
+  static String fillYourAccount = 'Nhập tài khoản của bạn';
+  static String password = 'Mật khẩu';
+  static String fillYourPassword = 'Nhập mật khẩu của bạn';
+  static String forgotPassword = 'Quên mật khẩu?';
+  static String notHaveAccount = 'Bạn chưa có tài khoản?';
 }

@@ -90,6 +90,18 @@ flutter:
           weight: 400
         - asset: assets/fonts/source-sans/SourceSans3-Light.ttf
           weight: 300
+    - family: DMSerifDisplay
+      fonts:
+        - asset: assets/fonts/DM-Serif-Display/DMSerifDisplay-Regular.ttf
+          weight: 400
+    - family: Italianno
+      fonts:
+        - asset: assets/fonts/Italianno/Italianno-Regular.ttf
+          weight: 400
+    - family: Jaldi
+      fonts:
+        - asset: assets/fonts/Jaldi/Jaldi-Regular.ttf
+          weight: 400
 
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
