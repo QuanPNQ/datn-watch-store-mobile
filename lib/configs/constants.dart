@@ -22,15 +22,15 @@ class Constants {
             "Uy tín chất lượng tạo nên thương hiệu của\nchúng tôi rất vui được đồng hành cùng các bạn",
         imagePath: AppImages.imgWalkThrough1),
     WalkThrough(
-        title: "Cửa hàng đồng hồ nam cao cấp",
+        title: "Đồng hồ cổ điển",
         content:
-            "Uy tín chất lượng tạo nên thương hiệu của\nchúng tôi rất vui được đồng hành cùng các bạn",
-        imagePath: AppImages.imgWalkThrough1),
+            "Phong cách lịch lãm, vượt thời gian. Hãy để\nnhững chiếc đồng hồ cổ điển tôn vinh sự quý phái của bạn",
+        imagePath: AppImages.imgWalkThrough2),
     WalkThrough(
-        title: "Cửa hàng đồng hồ nam cao cấp",
+        title: "Dịch vụ hậu mãi",
         content:
-            "Uy tín chất lượng tạo nên thương hiệu của\nchúng tôi rất vui được đồng hành cùng các bạn",
-        imagePath: AppImages.imgWalkThrough1)
+            "Bảo hành dài hạn, chăm sóc tận tình. Chúng\ntôi luôn đồng hành cùng bạn sau khi mua hàng",
+        imagePath: AppImages.imgWalkThrough3)
   ];
 
   static const Map<String, String> authRequestHeaders = {
@@ -57,7 +57,7 @@ class Constants {
 class StringName {
   static String logout = 'Log out';
   static String watchShop = 'WATCH SHOP';
-  static String skip = 'Skip';
+  static String skip = 'Bỏ qua';
   static String next = 'Tiếp';
   static String getStarted = 'Bắt đầu';
 }

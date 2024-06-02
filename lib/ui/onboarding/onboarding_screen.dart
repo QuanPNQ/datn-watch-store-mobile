@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mob/configs/constants.dart';
+import 'package:flutter_mob/configs/images.dart';
 import 'package:flutter_mob/models/models.dart';
 import 'package:flutter_mob/ui/components/button/button_normal.dart';
 import 'package:flutter_mob/ui/components/text/text_normal.dart';
@@ -36,11 +37,21 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
               });
             },
             children: listWalkThrough.map((e) {
-              return Image.asset(
-                e.imagePath,
-                width: MediaQuery.of(context).size.width,
-                height: MediaQuery.of(context).size.height,
-                fit: BoxFit.fill,
+              return Stack(
+                children: [
+                  Image.asset(
+                    e.imagePath,
+                    width: MediaQuery.of(context).size.width,
+                    height: MediaQuery.of(context).size.height,
+                    fit: BoxFit.contain,
+                  ),
+                  Image.asset(
+                    AppImages.imgBlurBackground,
+                    width: MediaQuery.of(context).size.width,
+                    height: MediaQuery.of(context).size.height,
+                    fit: BoxFit.fill,
+                  ),
+                ],
               );
             }).toList(),
           ),

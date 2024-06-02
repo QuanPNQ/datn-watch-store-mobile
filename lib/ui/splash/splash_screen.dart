@@ -40,8 +40,11 @@ class _SplashScreenState extends State<SplashScreen> {
             height: MediaQuery.of(context).size.height,
             fit: BoxFit.fill,
           ),
-          Container(
-            color: AppColors.blue300.withOpacity(0.66),
+          Image.asset(
+            AppImages.imgBlurBackground,
+            width: MediaQuery.of(context).size.width,
+            height: MediaQuery.of(context).size.height,
+            fit: BoxFit.fill,
           ),
           Padding(
             padding: EdgeInsets.only(top: 24),
