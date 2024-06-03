@@ -3,6 +3,7 @@ import 'package:flutter_mob/configs/colors.dart';
 import 'package:flutter_mob/configs/images.dart';
 import 'package:flutter_mob/models/tab/tab_dashboard.dart';
 import 'package:flutter_mob/ui/dash_board/home/home_screen.dart';
+import 'package:flutter_mob/ui/dash_board/search/search_screen.dart';
 import 'package:flutter_svg/svg.dart';
 
 class DashBoardScreen extends StatefulWidget {
@@ -17,7 +18,7 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
   final List<TabDashboard> lisTab = [
     TabDashboard(
         icon: AppImages.iconHome, view: HomeScreen(), isSelected: true),
-    TabDashboard(icon: AppImages.iconSearch, view: HomeScreen()),
+    TabDashboard(icon: AppImages.iconSearch, view: SearchScreen()),
     TabDashboard(icon: AppImages.iconShoppingBag, view: HomeScreen()),
     TabDashboard(icon: AppImages.iconUser, view: HomeScreen()),
   ];
