@@ -215,4 +215,7 @@ class StringName {
   static String all = 'Tất cả';
   static String searchBrand = 'Tìm kiếm thương hiệu';
   static String topDeels = 'Giao dịch hàng đầu';
+  static String search = 'Tìm kiếm';
+  static String searchResult = 'Kết quả tìm kiếm';
+  static String searchNotFound = 'Không thấy kết quả';
 }
