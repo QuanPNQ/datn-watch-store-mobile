@@ -51,10 +51,10 @@ class _OutstandingWatchState extends State<OutstandingWatch> {
           children: listWatch
               .map((e) => CardWatch(
                     watchData: e,
-                    onClick: handleClickDetailWatch(e),
                     isShowAddButton: false,
                     widthCard: (MediaQuery.of(context).size.width - 60) / 2,
                     heightCard: 260,
+                    onClick: onCLickDetailWatch,
                   ))
               .toList(),
         )
@@ -62,5 +62,7 @@ class _OutstandingWatchState extends State<OutstandingWatch> {
     );
   }
 
-  handleClickDetailWatch(Watch watch) {}
+  onCLickDetailWatch(Watch watch) {
+    Navigator.pushNamed(context, Constants.watchDetailScreen);
+  }
 }

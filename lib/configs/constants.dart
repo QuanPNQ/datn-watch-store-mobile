@@ -15,6 +15,7 @@ class Constants {
   static const String signupScreen = '/signup';
   static const String dashBoardScreen = '/dashboard-screen';
   static const String forgotPasswordScreen = '/forgot-password-screen';
+  static const String watchDetailScreen = '/watch-detail-screen';
 
   static const String baseUrl = 'https://portal.kamcpap.com/api/';
 
@@ -102,6 +103,21 @@ class Constants {
     )
   ];
 
+  static Watch mockDataWatch = Watch(
+    id: '1',
+    brandId: '1',
+    name: 'Luch CH 15',
+    description:
+        'Đồng hồ Luch 15, một trong những thương hiệu nổi đình nổi đám và cũng là một trong những cái tên phổ biến, có sức ảnh hưởng trong giới sản xuất đồng hồ đeo tay. Với những sản phẩm chất lượng,Luch 15 ngày càng khẳng định được vị thế cũng như chỗ đứng của mình.',
+    size: 24,
+    createdDate: DateTime(2024, 1, 14),
+    photoUrls: [
+      "https://firebasestorage.googleapis.com/v0/b/apolis-301dc.appspot.com/o/design-dc011e6b-a663-4665-a203-82df9febaf43%201.png?alt=media&token=f590cfef-19bb-4893-b541-fcc63861eb53"
+    ],
+    price: 3000,
+    quantity: 50,
+  );
+
   static List<Watch> listMockTopDeels = [
     Watch(
       id: '1',
@@ -168,6 +184,27 @@ class Constants {
             "https://firebasestorage.googleapis.com/v0/b/apolis-301dc.appspot.com/o/Union%20(1).svg?alt=media&token=131828f5-a386-4170-987f-c73694e810a0")
   ];
 
+  static List<Comment> listMockDataComment = [
+    Comment(
+      user: User(
+        id: "1",
+        name: "Văn Sang",
+        avatarUrl:
+            "https://images.unsplash.com/photo-1633332755192-727a05c4013d?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8YXZhdGFyfGVufDB8fDB8fHww",
+      ),
+      content: "Đồng hồ đẳng cấp xứng đáng để sở hữu",
+    ),
+    Comment(
+      user: User(
+        id: "2",
+        name: "Phương Ngọc Quân",
+        avatarUrl:
+            "https://plus.unsplash.com/premium_photo-1690579805307-7ec030c75543?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTd8fG1hbiUyMGF2YXRhcnxlbnwwfHwwfHx8MA%3D%3D",
+      ),
+      content: "Đồng hồ thực sự đẳng cấp xứng đáng để sở hữu đóng gói cẩn thận",
+    ),
+  ];
+
   static const Map<String, String> authRequestHeaders = {
     'Content-type': 'application/json',
     'Accept': '*/*',
@@ -218,4 +255,7 @@ class StringName {
   static String search = 'Tìm kiếm';
   static String searchResult = 'Kết quả tìm kiếm';
   static String searchNotFound = 'Không thấy kết quả';
+  static String addToCart = 'Thêm vào giỏ hàng';
+  static String comment = 'Bình luận:';
+  static String noComment = 'Chưa có bình luận';
 }

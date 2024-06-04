@@ -69,8 +69,8 @@ class _ClassifyWatchState extends State<ClassifyWatch> {
               itemBuilder: (context, index) {
                 return CardWatch(
                   watchData: listWatch[index],
-                  onAdd: conClickAddWatch,
-                  onClick: conClickViewDetailWatch,
+                  onAdd: onClickAddWatch,
+                  onClick: onCLickDetailWatch,
                 );
               },
             ),
@@ -87,7 +87,9 @@ class _ClassifyWatchState extends State<ClassifyWatch> {
     setState(() {});
   }
 
-  conClickViewDetailWatch() {}
+  onClickAddWatch() {}
 
-  conClickAddWatch() {}
+  onCLickDetailWatch(Watch watch) {
+    Navigator.pushNamed(context, Constants.watchDetailScreen);
+  }
 }

@@ -92,7 +92,6 @@ class _SearchScreenState extends State<SearchScreen> {
                                 children: listWatch
                                     .map((e) => CardWatch(
                                           watchData: e,
-                                          onClick: handleClickDetailWatch(e),
                                           isShowAddButton: false,
                                           widthCard: (MediaQuery.of(context)
                                                       .size
@@ -100,6 +99,7 @@ class _SearchScreenState extends State<SearchScreen> {
                                                   60) /
                                               2,
                                           heightCard: 260,
+                                          onClick: onCLickDetailWatch,
                                         ))
                                     .toList(),
                               ),
@@ -135,5 +135,7 @@ class _SearchScreenState extends State<SearchScreen> {
     );
   }
 
-  handleClickDetailWatch(Watch watch) {}
+  onCLickDetailWatch(Watch watch) {
+    Navigator.pushNamed(context, Constants.watchDetailScreen);
+  }
 }

@@ -102,6 +102,18 @@ flutter:
       fonts:
         - asset: assets/fonts/Jaldi/Jaldi-Regular.ttf
           weight: 400
+    - family: SpecialElite
+      fonts:
+        - asset: assets/fonts/Special-Elite/SpecialElite-Regular.ttf
+          weight: 400
+    - family: SpicyRice
+      fonts:
+        - asset: assets/fonts/Spicy-Rice/SpicyRice-Regular.ttf
+          weight: 400
+    - family: Spectral
+      fonts:
+        - asset: assets/fonts/Spectral/Spectral-Regular.ttf
+          weight: 400
 
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in

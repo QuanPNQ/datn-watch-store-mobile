@@ -9,7 +9,7 @@ import 'package:flutter_svg/svg.dart';
 
 class CardWatch extends StatelessWidget {
   final Watch watchData;
-  final Function()? onClick;
+  final Function(Watch) onClick;
   final Function()? onAdd;
   final bool isShowAddButton;
   final double widthCard;
@@ -18,19 +18,21 @@ class CardWatch extends StatelessWidget {
   const CardWatch(
       {super.key,
       required this.watchData,
-      this.onClick,
       this.onAdd,
+      required this.onClick,
       this.widthCard = 187,
       this.heightCard = 386,
       this.isShowAddButton = true});
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: heightCard,
-      width: widthCard,
-      child: GestureDetector(
-        onTap: onClick,
+    return GestureDetector(
+      onTap: () {
+        onClick(watchData);
+      },
+      child: Container(
+        height: heightCard,
+        width: widthCard,
         child: Stack(
           alignment: Alignment.bottomCenter,
           children: [
