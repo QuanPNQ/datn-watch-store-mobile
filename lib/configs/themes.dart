@@ -12,6 +12,9 @@ class AppThemes {
   static const String dmSerifDisplay = "DMSerifDisplay";
   static const String italianno = "Italianno";
   static const String jaldi = "Jaldi";
+  static const String specialElite = "SpecialElite";
+  static const String spicyRice = "SpicyRice";
+  static const String spectral = "Spectral";
 
   //region styles
   TextStyle lightText = TextStyle(
