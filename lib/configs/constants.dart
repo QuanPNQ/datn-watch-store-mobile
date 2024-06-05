@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_mob/configs/images.dart';
 import 'package:flutter_mob/models/brand/brand.dart';
+import 'package:flutter_mob/models/cart/cart_item.dart';
 import 'package:flutter_mob/models/models.dart';
 import 'package:flutter_mob/models/watch/watch.dart';
 import 'package:flutter_mob/storage/sharedpreferences/shared_preferences_manager.dart';
@@ -205,6 +206,12 @@ class Constants {
     ),
   ];
 
+  static List<CartItem> listMockCarts = [
+    CartItem(id: "1", watch: mockDataWatch, quantity: 1),
+    CartItem(id: "2", watch: mockDataWatch, quantity: 1),
+    CartItem(id: "3", watch: mockDataWatch, quantity: 1),
+  ];
+
   static const Map<String, String> authRequestHeaders = {
     'Content-type': 'application/json',
     'Accept': '*/*',
@@ -258,4 +265,12 @@ class StringName {
   static String addToCart = 'Thêm vào giỏ hàng';
   static String comment = 'Bình luận:';
   static String noComment = 'Chưa có bình luận';
+  static String cart = 'Giỏ hàng';
+  static String subtotal = 'Tổng tiền';
+  static String transport = 'Vận chuyển';
+  static String voucher = 'Mã khuyến mãi';
+  static String free = 'Free';
+  static String total = 'Thành tiền';
+  static String payment = 'Thanh toán';
+  static String notAddProducts = 'Chưa thêm sản phẩm';
 }

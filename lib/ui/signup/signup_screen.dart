@@ -56,77 +56,79 @@ class _SignupScreenState extends State<SignupScreen> {
             Container(
               height: MediaQuery.of(context).size.height,
               width: MediaQuery.of(context).size.width,
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.only(left: 8.0),
-                      child: TextNormal(
-                        title: StringName.signUp,
-                        size: 36,
-                        fontName: AppThemes.italianno,
-                        colors: AppColors.bPrimaryColor,
-                      ),
-                    ),
-                    SizedBox(
-                      height: 42,
-                    ),
-                    InputField(
-                        labelText: StringName.email,
-                        hintText: StringName.fillYourEmail,
-                        controller: editingEmailController),
-                    SizedBox(
-                      height: 12,
-                    ),
-                    InputField(
-                        labelText: StringName.phone,
-                        hintText: StringName.fillYourPhone,
-                        controller: editingPhoneController),
-                    SizedBox(
-                      height: 12,
-                    ),
-                    InputField(
-                        labelText: StringName.account,
-                        hintText: StringName.fillYourAccount,
-                        controller: editingUsernameController),
-                    SizedBox(
-                      height: 12,
-                    ),
-                    InputField(
-                        labelText: StringName.password,
-                        hintText: StringName.fillYourPassword,
-                        controller: editingPasswordController),
-                    SizedBox(
-                      height: 70,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        GestureDetector(
-                          onTap: handleHadAccount,
-                          child: TextNormal(
-                            title: StringName.hadAccount,
-                            fontName: AppThemes.jaldi,
-                            colors: AppColors.bPrimaryColor,
-                            lineHeight: 2,
-                          ),
+              child: SafeArea(
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 20),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(left: 8.0),
+                        child: TextNormal(
+                          title: StringName.signUp,
+                          size: 36,
+                          fontName: AppThemes.italianno,
+                          colors: AppColors.bPrimaryColor,
                         ),
-                      ],
-                    ),
-                    SizedBox(
-                      height: 12,
-                    ),
-                    ButtonNormal(
-                      text: StringName.signUp,
-                      onPressed: handleRegister,
-                    ),
-                    SizedBox(
-                      height: 10,
-                    ),
-                  ],
+                      ),
+                      SizedBox(
+                        height: 42,
+                      ),
+                      InputField(
+                          labelText: StringName.email,
+                          hintText: StringName.fillYourEmail,
+                          controller: editingEmailController),
+                      SizedBox(
+                        height: 12,
+                      ),
+                      InputField(
+                          labelText: StringName.phone,
+                          hintText: StringName.fillYourPhone,
+                          controller: editingPhoneController),
+                      SizedBox(
+                        height: 12,
+                      ),
+                      InputField(
+                          labelText: StringName.account,
+                          hintText: StringName.fillYourAccount,
+                          controller: editingUsernameController),
+                      SizedBox(
+                        height: 12,
+                      ),
+                      InputField(
+                          labelText: StringName.password,
+                          hintText: StringName.fillYourPassword,
+                          controller: editingPasswordController),
+                      SizedBox(
+                        height: 70,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          GestureDetector(
+                            onTap: handleHadAccount,
+                            child: TextNormal(
+                              title: StringName.hadAccount,
+                              fontName: AppThemes.jaldi,
+                              colors: AppColors.bPrimaryColor,
+                              lineHeight: 2,
+                            ),
+                          ),
+                        ],
+                      ),
+                      SizedBox(
+                        height: 12,
+                      ),
+                      ButtonNormal(
+                        text: StringName.signUp,
+                        onPressed: handleRegister,
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                    ],
+                  ),
                 ),
               ),
             )

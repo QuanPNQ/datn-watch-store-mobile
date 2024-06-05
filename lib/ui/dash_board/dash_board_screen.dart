@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mob/configs/colors.dart';
 import 'package:flutter_mob/configs/images.dart';
 import 'package:flutter_mob/models/tab/tab_dashboard.dart';
+import 'package:flutter_mob/ui/dash_board/cart/cart_screen.dart';
 import 'package:flutter_mob/ui/dash_board/home/home_screen.dart';
 import 'package:flutter_mob/ui/dash_board/search/search_screen.dart';
 import 'package:flutter_svg/svg.dart';
@@ -19,7 +20,7 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
     TabDashboard(
         icon: AppImages.iconHome, view: HomeScreen(), isSelected: true),
     TabDashboard(icon: AppImages.iconSearch, view: SearchScreen()),
-    TabDashboard(icon: AppImages.iconShoppingBag, view: HomeScreen()),
+    TabDashboard(icon: AppImages.iconShoppingBag, view: CardScreen()),
     TabDashboard(icon: AppImages.iconUser, view: HomeScreen()),
   ];
 
@@ -46,42 +47,45 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
             controller: pageController,
             children: lisTab.map((e) => e.view).toList(),
           ),
-          Container(
-            height: 58,
-            alignment: Alignment.bottomCenter,
-            margin: EdgeInsets.only(bottom: 10, left: 20, right: 20),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(20),
-              color: AppColors.yellow1,
-            ),
-            child: Row(
-              children: lisTab.map((e) {
-                return Expanded(
-                    child: GestureDetector(
-                  onTap: () => onClickTab(e),
-                  child: Stack(
-                    alignment: Alignment.topCenter,
-                    children: [
-                      Container(
-                        alignment: Alignment.center,
-                        color: Colors.transparent,
-                        child: SvgPicture.asset(e.icon,
-                            color: e.isSelected
-                                ? AppColors.blue300
-                                : AppColors.black2),
-                      ),
-                      if (e.isSelected)
+          SafeArea(
+            child: Container(
+              height: 58,
+              alignment: Alignment.bottomCenter,
+              margin: EdgeInsets.only(bottom: 10, left: 20, right: 20),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(20),
+                color: AppColors.yellow1,
+              ),
+              child: Row(
+                children: lisTab.map((e) {
+                  return Expanded(
+                      child: GestureDetector(
+                    onTap: () => onClickTab(e),
+                    child: Stack(
+                      alignment: Alignment.topCenter,
+                      children: [
                         Container(
-                          height: 5,
-                          width: 5,
-                          margin: EdgeInsets.only(top: 43),
-                          decoration: BoxDecoration(
-                              color: AppColors.blue300, shape: BoxShape.circle),
-                        )
-                    ],
-                  ),
-                ));
-              }).toList(),
+                          alignment: Alignment.center,
+                          color: Colors.transparent,
+                          child: SvgPicture.asset(e.icon,
+                              color: e.isSelected
+                                  ? AppColors.blue300
+                                  : AppColors.black2),
+                        ),
+                        if (e.isSelected)
+                          Container(
+                            height: 5,
+                            width: 5,
+                            margin: EdgeInsets.only(top: 43),
+                            decoration: BoxDecoration(
+                                color: AppColors.blue300,
+                                shape: BoxShape.circle),
+                          )
+                      ],
+                    ),
+                  ));
+                }).toList(),
+              ),
             ),
           )
         ],

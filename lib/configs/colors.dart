@@ -44,8 +44,10 @@ class AppColors {
   static Color lineGray = const Color(0xFF3C3C43).withOpacity(0.36);
   static const Color gray500 = Color(0xFF9E9E9E);
 
-  static const Color pink = Color(0xFFFF4068);
   static const Color green = Color(0xFF59C481);
+  static const Color green1 = Color(0xFF00623E);
+
+  static const Color pink = Color(0xFFFF4068);
   static const Color yellow = Color(0xFFFFA800);
   static const Color purple = Color(0xFF7B37FB);
   static Color mediumWhite = const Color(0xFFFFFFFF).withOpacity(0.6);

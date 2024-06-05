@@ -59,80 +59,82 @@ class _LoginScreenState extends State<LoginScreen> {
             Container(
               height: MediaQuery.of(context).size.height,
               width: MediaQuery.of(context).size.width,
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.only(left: 8.0),
-                      child: TextNormal(
-                        title: StringName.login,
-                        size: 36,
-                        fontName: AppThemes.italianno,
-                        colors: AppColors.bPrimaryColor,
+              child: SafeArea(
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 20),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(left: 8.0),
+                        child: TextNormal(
+                          title: StringName.login,
+                          size: 36,
+                          fontName: AppThemes.italianno,
+                          colors: AppColors.bPrimaryColor,
+                        ),
                       ),
-                    ),
-                    SizedBox(
-                      height: 42,
-                    ),
-                    InputField(
-                        labelText: StringName.account,
-                        hintText: StringName.fillYourAccount,
-                        controller: editingUsernameController),
-                    SizedBox(
-                      height: 12,
-                    ),
-                    InputField(
-                        labelText: StringName.password,
-                        hintText: StringName.fillYourPassword,
-                        controller: editingPasswordController),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: [
-                        GestureDetector(
-                          onTap: handleForgotPassword,
-                          child: TextNormal(
-                            title: StringName.forgotPassword,
-                            fontName: AppThemes.jaldi,
-                            colors: AppColors.bPrimaryColor,
-                            lineHeight: 2,
+                      SizedBox(
+                        height: 42,
+                      ),
+                      InputField(
+                          labelText: StringName.account,
+                          hintText: StringName.fillYourAccount,
+                          controller: editingUsernameController),
+                      SizedBox(
+                        height: 12,
+                      ),
+                      InputField(
+                          labelText: StringName.password,
+                          hintText: StringName.fillYourPassword,
+                          controller: editingPasswordController),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          GestureDetector(
+                            onTap: handleForgotPassword,
+                            child: TextNormal(
+                              title: StringName.forgotPassword,
+                              fontName: AppThemes.jaldi,
+                              colors: AppColors.bPrimaryColor,
+                              lineHeight: 2,
+                            ),
                           ),
-                        ),
-                        SizedBox(
-                          width: 4,
-                        )
-                      ],
-                    ),
-                    SizedBox(
-                      height: 122,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        GestureDetector(
-                          onTap: handleRegister,
-                          child: TextNormal(
-                            title: StringName.notHaveAccount,
-                            fontName: AppThemes.jaldi,
-                            colors: AppColors.bPrimaryColor,
-                            lineHeight: 2,
+                          SizedBox(
+                            width: 4,
+                          )
+                        ],
+                      ),
+                      SizedBox(
+                        height: 122,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          GestureDetector(
+                            onTap: handleRegister,
+                            child: TextNormal(
+                              title: StringName.notHaveAccount,
+                              fontName: AppThemes.jaldi,
+                              colors: AppColors.bPrimaryColor,
+                              lineHeight: 2,
+                            ),
                           ),
-                        ),
-                      ],
-                    ),
-                    SizedBox(
-                      height: 12,
-                    ),
-                    ButtonNormal(
-                      text: StringName.login1,
-                      onPressed: handleLogin,
-                    ),
-                    SizedBox(
-                      height: 10,
-                    ),
-                  ],
+                        ],
+                      ),
+                      SizedBox(
+                        height: 12,
+                      ),
+                      ButtonNormal(
+                        text: StringName.login1,
+                        onPressed: handleLogin,
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                    ],
+                  ),
                 ),
               ),
             )
