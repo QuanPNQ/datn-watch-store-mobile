@@ -5,8 +5,11 @@ import 'package:flutter_mob/ui/components/text/text_normal.dart';
 
 class AppBarTitle extends StatelessWidget {
   final String appTitle;
+  final bool isShowBackButton;
 
-  const AppBarTitle({Key? key, required this.appTitle}) : super(key: key);
+  const AppBarTitle(
+      {Key? key, required this.appTitle, this.isShowBackButton = true})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -26,10 +29,12 @@ class AppBarTitle extends StatelessWidget {
                 child: SizedBox(
                     width: 32,
                     height: 32,
-                    child: Icon(
-                      Icons.arrow_back_ios_new,
-                      size: 24,
-                    ))),
+                    child: isShowBackButton
+                        ? Icon(
+                            Icons.arrow_back_ios_new,
+                            size: 24,
+                          )
+                        : null)),
           ],
         )
       ],

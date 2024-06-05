@@ -15,6 +15,7 @@ class AppThemes {
   static const String specialElite = "SpecialElite";
   static const String spicyRice = "SpicyRice";
   static const String spectral = "Spectral";
+  static const String spirax = "Spirax";
 
   //region styles
   TextStyle lightText = TextStyle(
