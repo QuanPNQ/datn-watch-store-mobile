@@ -17,6 +17,7 @@ class Constants {
   static const String dashBoardScreen = '/dashboard-screen';
   static const String forgotPasswordScreen = '/forgot-password-screen';
   static const String watchDetailScreen = '/watch-detail-screen';
+  static const String detailOrderScreen = '/detail-order-screen';
 
   static const String baseUrl = 'https://portal.kamcpap.com/api/';
 
@@ -212,6 +213,27 @@ class Constants {
     CartItem(id: "3", watch: mockDataWatch, quantity: 1),
   ];
 
+  static List<OrderItem> listMockOrderItems = [
+    OrderItem(id: "1", watch: mockDataWatch, quantity: 1),
+    OrderItem(id: "2", watch: mockDataWatch, quantity: 1),
+    OrderItem(id: "3", watch: mockDataWatch, quantity: 1),
+  ];
+
+  static Order mockDataOrder = Order(
+      id: "1",
+      codeOrder: "WS001",
+      listWatch: listMockOrderItems,
+      status: OrderStatusType.PENDING,
+      orderDate: DateTime.now());
+
+  static ShippingAddress mockDataShippingAddress = ShippingAddress(
+      id: '1',
+      title: 'Địa chỉ nhà',
+      receiver: 'Hoàng Văn Sang',
+      address: 'Số 30, ngõ 93, Vũ Hữu, Thanh Xuân, Bắc Thanh Xuân, Hà Nội',
+      isDefault: true,
+      phoneNumber: '(+84)968786843');
+
   static const Map<String, String> authRequestHeaders = {
     'Content-type': 'application/json',
     'Accept': '*/*',
@@ -273,4 +295,24 @@ class StringName {
   static String total = 'Thành tiền';
   static String payment = 'Thanh toán';
   static String notAddProducts = 'Chưa thêm sản phẩm';
+  static String orderInformation = 'Thông tin đơn hàng';
+  static String deliveryAddress = 'Địa chỉ nhận hàng';
+  static String paymentMethod = 'Phương thức thanh toán';
+  static String paymentOnDelivery = 'Thanh toán khi nhận hàng';
+  static String codeOrders = 'Mã đơn hàng';
+  static String orderDate = 'Thời gian đặt hàng';
+  static String estimatedDeliveryTime = 'Thời gian giao hàng dự kiến';
+  static String confirmOrder = 'Xác nhận đơn hàng';
 }
+
+/* define String Names */
+class DateFormat {
+  static String dateHour = 'dd-MM-yyyy HH:mm';
+  static String date = 'dd-MM-yyyy';
+}
+
+enum DiscountType { PERCENT, PERMANENT }
+
+enum PaymentMethodType { CASH, VN_PAY }
+
+enum OrderStatusType { PENDING, PROCESSING, SHIPPED, DELIVERED, CANCELLED }
