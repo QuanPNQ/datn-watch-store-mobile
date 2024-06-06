@@ -19,17 +19,12 @@ class CardScreen extends StatefulWidget {
 
 class _CardScreenState extends State<CardScreen> {
   List<CartItem> listCart = Constants.listMockCarts;
-  double discountPercent = 0.03;
 
-  double get subtotal => listCart.fold(
+  double get total => listCart.fold(
         0.0,
         (previousValue, item) =>
             previousValue + (item.watch.price * item.quantity),
       );
-
-  double get discount => (discountPercent * subtotal).toInt().toDouble();
-
-  double get total => subtotal - discount;
 
   @override
   Widget build(BuildContext context) {
@@ -70,77 +65,6 @@ class _CardScreenState extends State<CardScreen> {
                                       height: 15,
                                     ),
                                     Padding(
-                                      padding:
-                                          EdgeInsets.symmetric(horizontal: 8),
-                                      child: Column(
-                                        children: [
-                                          Row(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.spaceBetween,
-                                            children: [
-                                              TextNormal(
-                                                title: StringName.subtotal,
-                                                colors: AppColors.bPrimaryColor,
-                                                fontName:
-                                                    AppThemes.specialElite,
-                                              ),
-                                              TextNormal(
-                                                title:
-                                                    "${Utility.formatNumberDoubleToInt(subtotal)}\$",
-                                                colors: AppColors.bPrimaryColor,
-                                                fontName: AppThemes.spirax,
-                                              ),
-                                            ],
-                                          ),
-                                          SizedBox(
-                                            height: 15,
-                                          ),
-                                          Row(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.spaceBetween,
-                                            children: [
-                                              TextNormal(
-                                                title: StringName.voucher,
-                                                colors: AppColors.bPrimaryColor,
-                                                fontName:
-                                                    AppThemes.specialElite,
-                                              ),
-                                              TextNormal(
-                                                title:
-                                                    "${Utility.formatNumberDoubleToInt(discount)}\$",
-                                                colors: AppColors.bPrimaryColor,
-                                                fontName: AppThemes.spirax,
-                                              ),
-                                            ],
-                                          ),
-                                          SizedBox(
-                                            height: 15,
-                                          ),
-                                          Row(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.spaceBetween,
-                                            children: [
-                                              TextNormal(
-                                                title: StringName.transport,
-                                                colors: AppColors.bPrimaryColor,
-                                                fontName:
-                                                    AppThemes.specialElite,
-                                              ),
-                                              TextNormal(
-                                                title: StringName.free,
-                                                colors: AppColors.green1,
-                                                fontName:
-                                                    AppThemes.specialElite,
-                                              ),
-                                            ],
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                    SizedBox(
-                                      height: 44,
-                                    ),
-                                    Padding(
                                       padding: const EdgeInsets.symmetric(
                                           horizontal: 5),
                                       child: Divider(
@@ -150,7 +74,7 @@ class _CardScreenState extends State<CardScreen> {
                                       ),
                                     ),
                                     SizedBox(
-                                      height: 47,
+                                      height: 15,
                                     ),
                                     Padding(
                                       padding:
@@ -181,7 +105,9 @@ class _CardScreenState extends State<CardScreen> {
                                             height: 37,
                                           ),
                                           ButtonNormal(
-                                              text: StringName.payment),
+                                            text: StringName.payment,
+                                            onPressed: handlePayment,
+                                          ),
                                           SizedBox(
                                             height: 80,
                                           ),
@@ -228,5 +154,9 @@ class _CardScreenState extends State<CardScreen> {
       listCart[index].quantity = quantity;
       setState(() {});
     }
+  }
+
+  handlePayment() {
+    Navigator.pushNamed(context, Constants.detailOrderScreen);
   }
 }

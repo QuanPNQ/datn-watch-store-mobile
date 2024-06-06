@@ -5,8 +5,8 @@ import 'package:timezone/timezone.dart' as tz;
 class DateTimeHelper {
   static String FORMAT_TIME_ZONE = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'";
 
-  static String formatDate(DateTime dateTime) {
-    DateFormat dateFormat = DateFormat("yMMMd");
+  static String formatDate(DateTime dateTime, {String format = "yMMMd"}) {
+    DateFormat dateFormat = DateFormat(format);
     return dateFormat.format(dateTime);
   }
 
