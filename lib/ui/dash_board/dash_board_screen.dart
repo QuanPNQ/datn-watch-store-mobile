@@ -4,6 +4,7 @@ import 'package:flutter_mob/configs/images.dart';
 import 'package:flutter_mob/models/tab/tab_dashboard.dart';
 import 'package:flutter_mob/ui/dash_board/cart/cart_screen.dart';
 import 'package:flutter_mob/ui/dash_board/home/home_screen.dart';
+import 'package:flutter_mob/ui/dash_board/personal_screen/personal_screen.dart';
 import 'package:flutter_mob/ui/dash_board/search/search_screen.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -21,7 +22,7 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
         icon: AppImages.iconHome, view: HomeScreen(), isSelected: true),
     TabDashboard(icon: AppImages.iconSearch, view: SearchScreen()),
     TabDashboard(icon: AppImages.iconShoppingBag, view: CardScreen()),
-    TabDashboard(icon: AppImages.iconUser, view: HomeScreen()),
+    TabDashboard(icon: AppImages.iconUser, view: PersonalScreen()),
   ];
 
   @override

@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_mob/configs/images.dart';
+import 'package:flutter_mob/models/account/user.dart';
 import 'package:flutter_mob/models/brand/brand.dart';
 import 'package:flutter_mob/models/cart/cart_item.dart';
 import 'package:flutter_mob/models/models.dart';
@@ -234,6 +235,15 @@ class Constants {
       isDefault: true,
       phoneNumber: '(+84)968786843');
 
+  static Account mockDataAccount = Account(
+      id: "1",
+      userName: "quanNQ",
+      email: "quan.pn29@gmail.com",
+      phoneNumber: "0911237889",
+      name: "Phương Ngọc Quân",
+      avatarUrl:
+          "https://plus.unsplash.com/premium_photo-1690579805307-7ec030c75543?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTd8fG1hbiUyMGF2YXRhcnxlbnwwfHwwfHx8MA%3D%3D");
+
   static const Map<String, String> authRequestHeaders = {
     'Content-type': 'application/json',
     'Accept': '*/*',
@@ -256,7 +266,7 @@ class Constants {
 
 /* define String Names */
 class StringName {
-  static String logout = 'Log out';
+  static String logout = 'Đăng xuất';
   static String watchShop = 'WATCH SHOP';
   static String skip = 'Bỏ qua';
   static String next = 'Tiếp';
@@ -303,6 +313,10 @@ class StringName {
   static String orderDate = 'Thời gian đặt hàng';
   static String estimatedDeliveryTime = 'Thời gian giao hàng dự kiến';
   static String confirmOrder = 'Xác nhận đơn hàng';
+  static String accountInfo = 'Thông tin tài khoản';
+  static String notification = 'Thông báo';
+  static String order = 'Đơn hàng';
+  static String supportCenter = 'Trung tâm trợ giúp';
 }
 
 /* define String Names */

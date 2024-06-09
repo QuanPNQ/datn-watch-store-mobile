@@ -21,5 +21,6 @@ class AppImages {
   static const String imgBackgroundLogin =
       'assets/images/img_background_login.png';
   static const String imgSubtractWatch = 'assets/images/img_subtract_watch.svg';
+  static const String imgAvatarUserDefault = 'assets/images/img_avatar_user_default.jpg';
 //background
 }
