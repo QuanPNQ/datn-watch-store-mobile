@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mob/configs/constants.dart';
 import 'package:flutter_mob/ui/dash_board/dash_board_screen.dart';
 import 'package:flutter_mob/ui/dash_board/detail_order/detail_order_screen.dart';
+import 'package:flutter_mob/ui/dash_board/personal_screen/change_password_screen/change_password_screen.dart';
 import 'package:flutter_mob/ui/dash_board/personal_screen/profile_screen/profile_screen.dart';
 import 'package:flutter_mob/ui/dash_board/watch_detail/watch_detail_screen.dart';
 import 'package:flutter_mob/ui/forgot_password/forgot_password_screen.dart';
@@ -31,6 +32,8 @@ Route<dynamic> onGenerateRoute(RouteSettings settings) {
       return generateRouter(widget: const DetailOrderScreen());
     case Constants.profileScreen:
       return generateRouter(widget: const ProfileScreen());
+    case Constants.changePasswordScreen:
+      return generateRouter(widget: const ChangePasswordScreen());
     default:
       throw ('This route name does not exit');
   }

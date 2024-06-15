@@ -13,6 +13,7 @@ class InputField extends StatefulWidget {
   final FormFieldValidator<String>? validator;
   final FormFieldSetter<String>? onSaved;
   final bool isReadOnly;
+  final bool isObscureText;
 
   const InputField(
       {Key? key,
@@ -23,7 +24,8 @@ class InputField extends StatefulWidget {
       required this.controller,
       this.validator,
       this.onSaved,
-      this.isReadOnly = false})
+      this.isReadOnly = false,
+      this.isObscureText = false})
       : super(key: key);
 
   @override
@@ -49,6 +51,7 @@ class _InputFieldState extends State<InputField> {
         SizedBox(
           height: 45,
           child: TextFormField(
+            obscureText: widget.isObscureText,
             textDirection: TextDirection.ltr,
             keyboardType: TextInputType.text,
             controller: widget.controller,

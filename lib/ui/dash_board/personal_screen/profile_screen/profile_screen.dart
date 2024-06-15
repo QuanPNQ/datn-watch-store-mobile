@@ -27,7 +27,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
   void initState() {
     editingUsernameController.text = account.userName;
     editingEmailController.text = account.email;
-    editingPasswordController.text = '......................';
+    editingPasswordController.text = '12345678';
     super.initState();
   }
 
@@ -108,6 +108,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             height: 10,
                           ),
                           InputField(
+                              isObscureText: true,
                               labelText: StringName.password,
                               hintText: StringName.fillYourPassword,
                               controller: editingPasswordController,
@@ -119,6 +120,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             mainAxisAlignment: MainAxisAlignment.end,
                             children: [
                               GestureDetector(
+                                onTap: handleChangePassword,
                                 child: TextNormal(
                                   title: StringName.changePassword,
                                   colors: AppColors.bPrimaryColor,
@@ -150,5 +152,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
         ),
       ),
     );
+  }
+
+  handleChangePassword() {
+    Navigator.pushNamed(context, Constants.changePasswordScreen);
   }
 }
