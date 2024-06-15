@@ -12,18 +12,20 @@ class TextNormal extends StatelessWidget {
   final FontStyle? fontStyle;
   final String fontName;
   final int? maxLine;
+  final bool isUnderline;
 
-  const TextNormal(
-      {Key? key,
-      required this.title,
-      this.size,
-      this.colors,
-      this.fontStyle,
-      this.maxLine,
-      this.fontName = AppThemes.sourceSans,
-      this.lineHeight = 1,
-      this.fontWeight})
-      : super(key: key);
+  const TextNormal({
+    Key? key,
+    required this.title,
+    this.size,
+    this.colors,
+    this.fontStyle,
+    this.maxLine,
+    this.fontName = AppThemes.sourceSans,
+    this.lineHeight = 1,
+    this.fontWeight,
+    this.isUnderline = false,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -33,13 +35,15 @@ class TextNormal extends StatelessWidget {
       softWrap: false,
       maxLines: maxLine ?? 99,
       style: TextStyle(
-          color: colors ?? AppColors.kPrimaryColor,
-          fontWeight: fontWeight ?? FontWeight.w400,
-          fontStyle: fontStyle ?? FontStyle.normal,
-          fontFamily: fontName,
-          height: lineHeight,
-          fontSize: size ?? 16,
-          letterSpacing: 0.5.w),
+        color: colors ?? AppColors.kPrimaryColor,
+        fontWeight: fontWeight ?? FontWeight.w400,
+        fontStyle: fontStyle ?? FontStyle.normal,
+        fontFamily: fontName,
+        height: lineHeight,
+        fontSize: size ?? 16,
+        letterSpacing: 0.5.w,
+        decoration: isUnderline ? TextDecoration.underline : null,
+      ),
     );
   }
 }

@@ -5,10 +5,16 @@ import 'package:flutter_mob/ui/components/text/text_normal.dart';
 
 class AppBarTitle extends StatelessWidget {
   final String appTitle;
+  final String fontName;
+  final double? fontSize;
   final bool isShowBackButton;
 
   const AppBarTitle(
-      {Key? key, required this.appTitle, this.isShowBackButton = true})
+      {Key? key,
+      required this.appTitle,
+      this.fontName = AppThemes.specialElite,
+      this.fontSize,
+      this.isShowBackButton = true})
       : super(key: key);
 
   @override
@@ -19,7 +25,8 @@ class AppBarTitle extends StatelessWidget {
         TextNormal(
           title: appTitle,
           colors: AppColors.bPrimaryColor,
-          fontName: AppThemes.specialElite,
+          fontName: fontName,
+          size: fontSize,
         ),
         Row(
           mainAxisAlignment: MainAxisAlignment.start,

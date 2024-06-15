@@ -12,6 +12,7 @@ class InputField extends StatefulWidget {
   final TextEditingController controller;
   final FormFieldValidator<String>? validator;
   final FormFieldSetter<String>? onSaved;
+  final bool isReadOnly;
 
   const InputField(
       {Key? key,
@@ -21,7 +22,8 @@ class InputField extends StatefulWidget {
       this.labelColor = AppColors.bPrimaryColor,
       required this.controller,
       this.validator,
-      this.onSaved})
+      this.onSaved,
+      this.isReadOnly = false})
       : super(key: key);
 
   @override
@@ -55,6 +57,7 @@ class _InputFieldState extends State<InputField> {
             onSaved: widget.onSaved,
             cursorColor: AppColors.bPrimaryColor,
             textAlignVertical: TextAlignVertical.center,
+            readOnly: widget.isReadOnly,
             onChanged: (value) {
               setState(() {});
             },

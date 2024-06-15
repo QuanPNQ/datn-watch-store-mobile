@@ -19,6 +19,7 @@ class Constants {
   static const String forgotPasswordScreen = '/forgot-password-screen';
   static const String watchDetailScreen = '/watch-detail-screen';
   static const String detailOrderScreen = '/detail-order-screen';
+  static const String profileScreen = '/profile-screen';
 
   static const String baseUrl = 'https://portal.kamcpap.com/api/';
 
@@ -317,6 +318,10 @@ class StringName {
   static String notification = 'Thông báo';
   static String order = 'Đơn hàng';
   static String supportCenter = 'Trung tâm trợ giúp';
+  static String personalInformation = 'Thông tin cá nhân';
+  static String changePassword= 'Đổi mật khẩu';
+  static String update= 'Cập nhật';
+
 }
 
 /* define String Names */

@@ -19,7 +19,7 @@ class _PersonalScreenState extends State<PersonalScreen> {
     TabPersonal(
         icon: Icon(Icons.person, size: 36),
         title: StringName.accountInfo,
-        route: "route"),
+        route: Constants.profileScreen),
     TabPersonal(
         icon: Icon(Icons.notifications, size: 36),
         title: StringName.notification,
@@ -84,25 +84,31 @@ class _PersonalScreenState extends State<PersonalScreen> {
             height: 30,
           ),
           ...listTab
-              .map((e) => Container(
-                    color: Colors.transparent,
-                    padding: EdgeInsets.symmetric(horizontal: 24, vertical: 14),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        e.icon,
-                        SizedBox(
-                          width: 12,
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(top: 8.0),
-                          child: TextNormal(
-                            title: e.title,
-                            size: 20,
-                            colors: AppColors.bPrimaryColor,
+              .map((e) => GestureDetector(
+                    onTap: () {
+                      Navigator.pushNamed(context, e.route);
+                    },
+                    child: Container(
+                      color: Colors.transparent,
+                      padding:
+                          EdgeInsets.symmetric(horizontal: 24, vertical: 14),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          e.icon,
+                          SizedBox(
+                            width: 12,
                           ),
-                        )
-                      ],
+                          Padding(
+                            padding: const EdgeInsets.only(top: 8.0),
+                            child: TextNormal(
+                              title: e.title,
+                              size: 20,
+                              colors: AppColors.bPrimaryColor,
+                            ),
+                          )
+                        ],
+                      ),
                     ),
                   ))
               .toList(),
