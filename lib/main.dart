@@ -8,7 +8,9 @@ import 'package:flutter_mob/app.dart';
 import 'package:flutter_mob/blocs/authentication/auth_bloc.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_mob/repositories/authentication/auth_repository.dart';
+import 'package:flutter_mob/utils/time_ago_helper.dart';
 import 'storage/sharedpreferences/shared_preferences_manager.dart';
+import 'package:timeago/timeago.dart' as timeago;
 
 const AndroidNotificationChannel channel = AndroidNotificationChannel(
     'high_importance_channel', // id
@@ -97,6 +99,7 @@ Future<void> main() async {
   await SharedPrefManager().init();
   await Firebase.initializeApp();
   await fCMSetup();
+  timeago.setLocaleMessages('vi', TimeAgoHelper());
 
   runZonedGuarded(() {
     runApp(MultiBlocProvider(providers: [

@@ -23,7 +23,7 @@ class _PersonalScreenState extends State<PersonalScreen> {
     TabPersonal(
         icon: Icon(Icons.notifications, size: 36),
         title: StringName.notification,
-        route: "route"),
+        route: Constants.notifyScreen),
     TabPersonal(
         icon: Icon(Icons.production_quantity_limits, size: 36),
         title: StringName.order,

@@ -6,7 +6,7 @@ import 'package:flutter_mob/models/cart/cart_item.dart';
 import 'package:flutter_mob/models/models.dart';
 import 'package:flutter_mob/models/watch/watch.dart';
 import 'package:flutter_mob/storage/sharedpreferences/shared_preferences_manager.dart';
-import 'package:meta/meta.dart';
+import 'package:flutter_mob/models/notify/notification.dart' as model;
 
 @immutable
 class Constants {
@@ -21,6 +21,7 @@ class Constants {
   static const String detailOrderScreen = '/detail-order-screen';
   static const String profileScreen = '/profile-screen';
   static const String changePasswordScreen = '/change-password-screen';
+  static const String notifyScreen = '/notify-screen';
 
   static const String baseUrl = 'https://portal.kamcpap.com/api/';
 
@@ -246,6 +247,34 @@ class Constants {
       avatarUrl:
           "https://plus.unsplash.com/premium_photo-1690579805307-7ec030c75543?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTd8fG1hbiUyMGF2YXRhcnxlbnwwfHwwfHx8MA%3D%3D");
 
+  static List<model.Notification> mockListNotification = [
+    model.Notification(
+      id: "1",
+      title: "Hot sale",
+      message:
+          "Đồng hồ nam Orient giảm giá sâu cho các quý ông vào dịp hè này.",
+      createdAt: DateTime.now(),
+      isRead: false,
+      type: NotificationType.EVENT.name,
+    ),
+    model.Notification(
+      id: "2",
+      title: "Tin tức",
+      message: "Seiko vừa cho ra mắt sản phảm mới.",
+      createdAt: DateTime.now(),
+      isRead: false,
+      type: NotificationType.EVENT.name,
+    ),
+    model.Notification(
+      id: "3",
+      title: "Khuyến mãi",
+      message: "Giảm giá lên đếm 30% dành cho các đồng hồ cơ từ 5 triệu đồng.",
+      createdAt: DateTime.now(),
+      isRead: false,
+      type: NotificationType.EVENT.name,
+    ),
+  ];
+
   static const Map<String, String> authRequestHeaders = {
     'Content-type': 'application/json',
     'Accept': '*/*',
@@ -339,3 +368,5 @@ enum DiscountType { PERCENT, PERMANENT }
 enum PaymentMethodType { CASH, VN_PAY }
 
 enum OrderStatusType { PENDING, PROCESSING, SHIPPED, DELIVERED, CANCELLED }
+
+enum NotificationType { PROMOTION, EVENT, UPDATE }
