@@ -22,6 +22,7 @@ class Constants {
   static const String profileScreen = '/profile-screen';
   static const String changePasswordScreen = '/change-password-screen';
   static const String notifyScreen = '/notify-screen';
+  static const String orderScreen = '/order-screen';
 
   static const String baseUrl = 'https://portal.kamcpap.com/api/';
 
@@ -48,6 +49,13 @@ class Constants {
     "Phổ biến",
     "Mới",
     "Bộ sưu tập"
+  ];
+
+  static const List<String> listTabOrders = [
+    "Chờ xác nhận",
+    "Chờ giao hàng",
+    "Đã giao",
+    "Đã huỷ",
   ];
 
   static List<Watch> listMockDataWatch = [
@@ -275,6 +283,19 @@ class Constants {
     ),
   ];
 
+  static String getStatusOrder(OrderStatusType status) {
+    switch (status) {
+      case OrderStatusType.PENDING:
+        return "Chờ xác nhận";
+      case OrderStatusType.PROCESSING:
+        return "Chờ giao hàng";
+      case OrderStatusType.DELIVERED:
+        return "Đã giao";
+      case OrderStatusType.CANCELLED:
+        return "Đã huỷ";
+    }
+  }
+
   static const Map<String, String> authRequestHeaders = {
     'Content-type': 'application/json',
     'Accept': '*/*',
@@ -355,6 +376,10 @@ class StringName {
   static String inputNewPassword = 'Nhập mật khẩu mới';
   static String inputConfirmNewPassword = 'Xác nhận lại mật khẩu';
   static String change = 'Thay đổi';
+  static String listOrder = 'Đơn hàng';
+  static String viewDetail = 'Xem chi tiết';
+  static String totalPayment = 'Tổng Thanh Toán:';
+  static String codeOrder = 'Mã đơn hàng';
 }
 
 /* define String Names */
@@ -367,6 +392,6 @@ enum DiscountType { PERCENT, PERMANENT }
 
 enum PaymentMethodType { CASH, VN_PAY }
 
-enum OrderStatusType { PENDING, PROCESSING, SHIPPED, DELIVERED, CANCELLED }
+enum OrderStatusType { PENDING, PROCESSING, DELIVERED, CANCELLED }
 
 enum NotificationType { PROMOTION, EVENT, UPDATE }

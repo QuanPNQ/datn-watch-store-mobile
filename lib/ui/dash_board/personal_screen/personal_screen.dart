@@ -27,7 +27,7 @@ class _PersonalScreenState extends State<PersonalScreen> {
     TabPersonal(
         icon: Icon(Icons.production_quantity_limits, size: 36),
         title: StringName.order,
-        route: "route"),
+        route: Constants.orderScreen),
     TabPersonal(
         icon: Icon(Icons.question_mark, size: 36),
         title: StringName.supportCenter,
@@ -137,12 +137,16 @@ class _PersonalScreenState extends State<PersonalScreen> {
                 SizedBox(
                   width: 12,
                 ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 8.0),
-                  child: TextNormal(
-                    title: StringName.logout,
-                    size: 20,
-                    colors: AppColors.logoRed,
+                GestureDetector(
+                  onTap: handleLogout,
+                  child: Container(
+                    color: Colors.transparent,
+                    padding: const EdgeInsets.only(top: 8.0),
+                    child: TextNormal(
+                      title: StringName.logout,
+                      size: 20,
+                      colors: AppColors.logoRed,
+                    ),
                   ),
                 )
               ],
@@ -151,5 +155,10 @@ class _PersonalScreenState extends State<PersonalScreen> {
         ],
       ),
     );
+  }
+
+  handleLogout() {
+    Navigator.pushNamedAndRemoveUntil(
+        context, Constants.loginScreen, (route) => false);
   }
 }
