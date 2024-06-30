@@ -31,7 +31,7 @@ class _AppState extends State<App> with WidgetsBindingObserver {
       },
       child: ScreenUtilInit(
         builder: (ctx, _) => GlobalLoaderOverlay(
-          overlayColor: Colors.black,
+          overlayColor: Colors.black26,
           overlayOpacity: 0.7,
           child: MaterialApp(
             debugShowCheckedModeBanner: false,

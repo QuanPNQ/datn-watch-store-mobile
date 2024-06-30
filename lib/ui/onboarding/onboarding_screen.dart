@@ -3,6 +3,7 @@ import 'package:flutter_mob/configs/constants.dart';
 import 'package:flutter_mob/configs/images.dart';
 import 'package:flutter_mob/configs/themes.dart';
 import 'package:flutter_mob/models/models.dart';
+import 'package:flutter_mob/storage/sharedpreferences/shared_preferences_manager.dart';
 import 'package:flutter_mob/ui/components/button/button_normal.dart';
 import 'package:flutter_mob/ui/components/text/text_normal.dart';
 
@@ -17,6 +18,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
   List<WalkThrough> listWalkThrough = Constants.listWalkThroughDefault;
   final PageController pageController = PageController(initialPage: 0);
   int currentIndex = 0;
+  SharedPrefManager sharedPrefManager = SharedPrefManager();
 
   @override
   void initState() {
@@ -118,10 +120,12 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
       return;
     }
 
+    sharedPrefManager.putBool(SharedPrefManager.isCompleteWalkThrough, true);
     Navigator.pushReplacementNamed(context, Constants.loginScreen);
   }
 
   handleClickSkip() {
+    sharedPrefManager.putBool(SharedPrefManager.isCompleteWalkThrough, true);
     Navigator.pushReplacementNamed(context, Constants.loginScreen);
   }
 }

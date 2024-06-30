@@ -1,37 +1,39 @@
+import 'dart:convert';
 import 'dart:io';
-import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_mob/blocs/authentication/auth_event.dart';
-import 'package:flutter_mob/blocs/authentication/auth_state.dart';
 import 'package:flutter_mob/repositories/authentication/auth_repository.dart';
+import 'auth_event.dart';
+import 'auth_state.dart';
 
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
   final AuthRepository authRepository;
 
   AuthBloc({required this.authRepository}) : super(AuthInitialState()) {
-    on<LoginKamEvent>((event, emit) async {
+    on<AppLoadedEvent>((event, emit) async {
       emit(AuthLoadingState());
-      try {
-        var response = await authRepository.login(
-            email: event.email, password: event.password);
-        if (response.statusCode == HttpStatus.ok) {
-          emit(AuthLoginSuccessState());
-        } else {
-          emit(AuthErrorState(message: response.message));
-        }
-      } catch (err) {
-        debugPrint("[AUTH BLOC] ERROR RES => ${err.toString()}");
-        emit(AuthErrorState(message: err.toString()));
+      final userInfo = await authRepository.getUser();
+      debugPrint("[AuthBloc] AppLoadedEvent userInfo: $userInfo");
+      if (userInfo != null) {
+        emit(AuthAuthenticatedState(account: userInfo));
+      } else {
+        emit(AuthNotAuthenticatedState());
       }
     });
 
     on<LoggedOutEvent>((event, emit) async {
-      emit(AuthLoadingState());
       try {
-        emit(AuthLogoutSuccessState());
-      } catch (err) {
-        debugPrint("[AUTH BLOC] ERROR RES => ${err.toString()}");
-        emit(AuthErrorState(message: err.toString()));
+        emit(AuthNotAuthenticatedState());
+        final response = await authRepository.logout();
+        if (response.statusCode == HttpStatus.ok) {
+          emit(LogoutSuccessState());
+        } else {
+          emit(LogoutErrolState(message: jsonDecode(response.body)['message']));
+        }
+        await authRepository.deleteUser();
+        await authRepository.deleteToken();
+      } catch (e) {
+        debugPrint("[AuthBloc] LoggedOutEvent Error: $e");
       }
     });
   }

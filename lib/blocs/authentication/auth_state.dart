@@ -1,4 +1,5 @@
 import 'package:equatable/equatable.dart';
+import 'package:flutter_mob/models/account/user.dart';
 
 abstract class AuthState extends Equatable {
   const AuthState();
@@ -11,12 +12,18 @@ class AuthInitialState extends AuthState {}
 
 class AuthLoadingState extends AuthState {}
 
-class AuthLoginSuccessState extends AuthState {}
+class AuthNotAuthenticatedState extends AuthState {}
 
-class AuthLogoutSuccessState extends AuthState {}
+class AuthAuthenticatedState extends AuthState {
+  final Account account;
 
-class AuthErrorState extends AuthState {
+  const AuthAuthenticatedState({required this.account});
+}
+
+class LogoutSuccessState extends AuthState {}
+
+class LogoutErrolState extends AuthState {
   final String message;
 
-  const AuthErrorState({required this.message});
+  const LogoutErrolState({required this.message});
 }

@@ -7,6 +7,8 @@ class SharedPrefManager {
   static const String tokenKey = 'token';
   static const String email = 'email';
   static const String password = 'password';
+  static const String isCompleteWalkThrough = 'isCompleteWalkThrough';
+  static const String userInfoKey = 'userInfoKey';
 
   Future<void> init() async {
     _sharedPreferences = await SharedPreferences.getInstance();

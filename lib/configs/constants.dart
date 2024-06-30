@@ -24,7 +24,8 @@ class Constants {
   static const String notifyScreen = '/notify-screen';
   static const String orderScreen = '/order-screen';
 
-  static const String baseUrl = 'https://portal.kamcpap.com/api/';
+  static const String baseUrl =
+      'https://watch-store-f8131ab05f69.herokuapp.com/api/';
 
   static const List<WalkThrough> listWalkThroughDefault = [
     WalkThrough(
@@ -318,74 +319,87 @@ class Constants {
 
 /* define String Names */
 class StringName {
-  static String logout = 'Đăng xuất';
-  static String watchShop = 'WATCH SHOP';
-  static String skip = 'Bỏ qua';
-  static String next = 'Tiếp';
-  static String getStarted = 'Bắt đầu';
-  static String login = 'Đăng Nhập';
-  static String login1 = 'Đăng nhập';
-  static String account = 'Tài khoản';
-  static String fillYourAccount = 'Nhập tài khoản của bạn';
-  static String password = 'Mật khẩu';
-  static String fillYourPassword = 'Nhập mật khẩu của bạn';
-  static String forgotPassword = 'Quên mật khẩu?';
-  static String notHaveAccount = 'Bạn chưa có tài khoản?';
-  static String signUp = 'Đăng ký';
-  static String email = 'Email';
-  static String phone = 'Phone';
-  static String hadAccount = 'Bạn đã có tài khoản?';
-  static String fillYourEmail = 'Nhập email của bạn';
-  static String fillYourPhone = 'Nhập số điện thoại của bạn';
-  static String hello = 'Xin chào!';
-  static String pickWatchThatYouWant = 'Hãy chọn chiếc đồng hồ mà bạn muốn';
-  static String outstandingWatch = 'Sản phẩm nổi bật';
-  static String all = 'Tất cả';
-  static String searchBrand = 'Tìm kiếm thương hiệu';
-  static String topDeels = 'Giao dịch hàng đầu';
-  static String search = 'Tìm kiếm';
-  static String searchResult = 'Kết quả tìm kiếm';
-  static String searchNotFound = 'Không thấy kết quả';
-  static String addToCart = 'Thêm vào giỏ hàng';
-  static String comment = 'Bình luận:';
-  static String noComment = 'Chưa có bình luận';
-  static String cart = 'Giỏ hàng';
-  static String subtotal = 'Tổng tiền';
-  static String transport = 'Vận chuyển';
-  static String voucher = 'Mã khuyến mãi';
-  static String free = 'Free';
-  static String total = 'Thành tiền';
-  static String payment = 'Thanh toán';
-  static String notAddProducts = 'Chưa thêm sản phẩm';
-  static String orderInformation = 'Thông tin đơn hàng';
-  static String deliveryAddress = 'Địa chỉ nhận hàng';
-  static String paymentMethod = 'Phương thức thanh toán';
-  static String paymentOnDelivery = 'Thanh toán khi nhận hàng';
-  static String codeOrders = 'Mã đơn hàng';
-  static String orderDate = 'Thời gian đặt hàng';
-  static String estimatedDeliveryTime = 'Thời gian giao hàng dự kiến';
-  static String confirmOrder = 'Xác nhận đơn hàng';
-  static String accountInfo = 'Thông tin tài khoản';
-  static String notification = 'Thông báo';
-  static String order = 'Đơn hàng';
-  static String supportCenter = 'Trung tâm trợ giúp';
-  static String personalInformation = 'Thông tin cá nhân';
-  static String changePassword = 'Đổi mật khẩu';
-  static String update = 'Cập nhật';
-  static String inputOldPassword = 'Nhập mật khẩu cũ';
-  static String inputNewPassword = 'Nhập mật khẩu mới';
-  static String inputConfirmNewPassword = 'Xác nhận lại mật khẩu';
-  static String change = 'Thay đổi';
-  static String listOrder = 'Đơn hàng';
-  static String viewDetail = 'Xem chi tiết';
-  static String totalPayment = 'Tổng Thanh Toán:';
-  static String codeOrder = 'Mã đơn hàng';
+  static const String logout = 'Đăng xuất';
+  static const String watchShop = 'WATCH SHOP';
+  static const String skip = 'Bỏ qua';
+  static const String next = 'Tiếp';
+  static const String getStarted = 'Bắt đầu';
+  static const String login = 'Đăng Nhập';
+  static const String login1 = 'Đăng nhập';
+  static const String account = 'Tài khoản';
+  static const String fillYourAccount = 'Nhập tài khoản của bạn';
+  static const String password = 'Mật khẩu';
+  static const String fillYourPassword = 'Nhập mật khẩu của bạn';
+  static const String forgotPassword = 'Quên mật khẩu?';
+  static const String notHaveAccount = 'Bạn chưa có tài khoản?';
+  static const String signUp = 'Đăng ký';
+  static const String email = 'Email';
+  static const String phone = 'Phone';
+  static const String hadAccount = 'Bạn đã có tài khoản?';
+  static const String fillYourEmail = 'Nhập email của bạn';
+  static const String fillYourPhone = 'Nhập số điện thoại của bạn';
+  static const String hello = 'Xin chào!';
+  static const String pickWatchThatYouWant =
+      'Hãy chọn chiếc đồng hồ mà bạn muốn';
+  static const String outstandingWatch = 'Sản phẩm nổi bật';
+  static const String all = 'Tất cả';
+  static const String searchBrand = 'Tìm kiếm thương hiệu';
+  static const String topDeels = 'Giao dịch hàng đầu';
+  static const String search = 'Tìm kiếm';
+  static const String searchResult = 'Kết quả tìm kiếm';
+  static const String searchNotFound = 'Không thấy kết quả';
+  static const String addToCart = 'Thêm vào giỏ hàng';
+  static const String comment = 'Bình luận:';
+  static const String noComment = 'Chưa có bình luận';
+  static const String cart = 'Giỏ hàng';
+  static const String subtotal = 'Tổng tiền';
+  static const String transport = 'Vận chuyển';
+  static const String voucher = 'Mã khuyến mãi';
+  static const String free = 'Free';
+  static const String total = 'Thành tiền';
+  static const String payment = 'Thanh toán';
+  static const String notAddProducts = 'Chưa thêm sản phẩm';
+  static const String orderInformation = 'Thông tin đơn hàng';
+  static const String deliveryAddress = 'Địa chỉ nhận hàng';
+  static const String paymentMethod = 'Phương thức thanh toán';
+  static const String paymentOnDelivery = 'Thanh toán khi nhận hàng';
+  static const String codeOrders = 'Mã đơn hàng';
+  static const String orderDate = 'Thời gian đặt hàng';
+  static const String estimatedDeliveryTime = 'Thời gian giao hàng dự kiến';
+  static const String confirmOrder = 'Xác nhận đơn hàng';
+  static const String accountInfo = 'Thông tin tài khoản';
+  static const String notification = 'Thông báo';
+  static const String order = 'Đơn hàng';
+  static const String supportCenter = 'Trung tâm trợ giúp';
+  static const String personalInformation = 'Thông tin cá nhân';
+  static const String changePassword = 'Đổi mật khẩu';
+  static const String update = 'Cập nhật';
+  static const String inputOldPassword = 'Nhập mật khẩu cũ';
+  static const String inputNewPassword = 'Nhập mật khẩu mới';
+  static const String inputConfirmNewPassword = 'Xác nhận lại mật khẩu';
+  static const String change = 'Thay đổi';
+  static const String listOrder = 'Đơn hàng';
+  static const String viewDetail = 'Xem chi tiết';
+  static const String totalPayment = 'Tổng Thanh Toán:';
+  static const String codeOrder = 'Mã đơn hàng';
+  static const String confirm = 'Xác nhận';
+  static const String cancel = 'Huỷ';
+  static const String loginError = 'Lỗi đăng nhập';
+  static const String signupError = 'Lỗi đăng ký';
+  static const String notAllowEmpty = 'Không được để trống!';
+  static const String emailNotValid = 'Email không hợp lệ!';
+  static const String signupSuccess = 'Đăng ký thành công';
+  static const String loginNow = 'Bạn có muốn đăng nhập ngay?';
 }
 
 /* define String Names */
 class DateFormat {
-  static String dateHour = 'dd-MM-yyyy HH:mm';
-  static String date = 'dd-MM-yyyy';
+  static const String dateHour = 'dd-MM-yyyy HH:mm';
+  static const String date = 'dd-MM-yyyy';
+}
+
+class Regex {
+  static const email = r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$';
 }
 
 enum DiscountType { PERCENT, PERMANENT }

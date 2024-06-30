@@ -7,11 +7,10 @@ abstract class AuthEvent extends Equatable {
   List<Object> get props => [];
 }
 
-class LoggedOutEvent extends AuthEvent {}
+class AppLoadedEvent extends AuthEvent {}
 
-class LoginKamEvent extends AuthEvent {
-  final String email;
-  final String password;
+class LoggedOutEvent extends AuthEvent {
+  final bool isUnauthorized;
 
-  const LoginKamEvent({required this.email, required this.password});
+  const LoggedOutEvent({this.isUnauthorized = false});
 }

@@ -1,14 +1,17 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_mob/ui/components/dialog/dialog_time_out.dart';
+import 'package:flutter_mob/ui/components/dialog/dialog_notify.dart';
 
 class DialogHelper {
-  static Future<void> showDialogConnectTimeOut(
-      BuildContext context, String content, Function goBack, Function waiting,
-      {String okButton = 'Allow'}) async {
+  static Future<void> showDialogNotify(
+      {required BuildContext context,
+      required String title,
+      required String content,
+      String? okButton,
+      Function()? continueFunction}) async {
     await showDialog(
-      barrierDismissible: false,
+      barrierDismissible: true,
       barrierColor: Colors.black26,
       context: context,
       builder: (context) {
@@ -17,11 +20,11 @@ class DialogHelper {
             height: 150.h,
             child: BackdropFilter(
               filter: ImageFilter.blur(sigmaX: 2, sigmaY: 2),
-              child: DialogTimeOut(
-                title: content,
-                goBack: goBack,
-                waiting: waiting,
+              child: DialogNotify(
+                title: title,
+                content: content,
                 okButton: okButton,
+                continueFunction: continueFunction,
               ),
             ));
       },

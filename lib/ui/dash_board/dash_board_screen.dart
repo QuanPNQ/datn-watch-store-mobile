@@ -6,6 +6,7 @@ import 'package:flutter_mob/ui/dash_board/cart/cart_screen.dart';
 import 'package:flutter_mob/ui/dash_board/home/home_screen.dart';
 import 'package:flutter_mob/ui/dash_board/personal_screen/personal_screen.dart';
 import 'package:flutter_mob/ui/dash_board/search/search_screen.dart';
+import 'package:flutter_mob/utils/Loading_helper.dart';
 import 'package:flutter_svg/svg.dart';
 
 class DashBoardScreen extends StatefulWidget {
@@ -27,6 +28,7 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
 
   @override
   void initState() {
+    LoadingHelper.hideLoading(context);
     super.initState();
   }
 

@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_mob/blocs/authentication/auth_bloc.dart';
+import 'package:flutter_mob/blocs/authentication/auth_event.dart';
 import 'package:flutter_mob/configs/colors.dart';
 import 'package:flutter_mob/configs/constants.dart';
 import 'package:flutter_mob/configs/images.dart';
@@ -160,5 +163,6 @@ class _PersonalScreenState extends State<PersonalScreen> {
   handleLogout() {
     Navigator.pushNamedAndRemoveUntil(
         context, Constants.loginScreen, (route) => false);
+    BlocProvider.of<AuthBloc>(context).add(LoggedOutEvent());
   }
 }

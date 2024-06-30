@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_mob/configs/colors.dart';
 import 'package:flutter_mob/configs/themes.dart';
 import 'package:flutter_mob/ui/components/text/text_normal.dart';
@@ -14,6 +15,8 @@ class InputField extends StatefulWidget {
   final FormFieldSetter<String>? onSaved;
   final bool isReadOnly;
   final bool isObscureText;
+  final TextInputType? inputType;
+  final List<TextInputFormatter>? inputFormatters;
 
   const InputField(
       {Key? key,
@@ -25,7 +28,9 @@ class InputField extends StatefulWidget {
       this.validator,
       this.onSaved,
       this.isReadOnly = false,
-      this.isObscureText = false})
+      this.isObscureText = false,
+      this.inputType,
+      this.inputFormatters})
       : super(key: key);
 
   @override
@@ -48,71 +53,56 @@ class _InputFieldState extends State<InputField> {
               size: widget.labelSize,
             ),
           ),
-        SizedBox(
-          height: 45,
-          child: TextFormField(
-            obscureText: widget.isObscureText,
-            textDirection: TextDirection.ltr,
-            keyboardType: TextInputType.text,
-            controller: widget.controller,
-            autofocus: false,
-            validator: widget.validator,
-            onSaved: widget.onSaved,
-            cursorColor: AppColors.bPrimaryColor,
-            textAlignVertical: TextAlignVertical.center,
-            readOnly: widget.isReadOnly,
-            onChanged: (value) {
-              setState(() {});
-            },
-            style: TextStyle(
+        TextFormField(
+          obscureText: widget.isObscureText,
+          textDirection: TextDirection.ltr,
+          keyboardType: widget.inputType ?? TextInputType.text,
+          controller: widget.controller,
+          autofocus: false,
+          validator: widget.validator,
+          onSaved: widget.onSaved,
+          cursorColor: AppColors.bPrimaryColor,
+          textAlignVertical: TextAlignVertical.center,
+          readOnly: widget.isReadOnly,
+          inputFormatters: widget.inputFormatters,
+          onChanged: (value) {
+            setState(() {});
+          },
+          style: TextStyle(
+              fontFamily: AppThemes.jaldi,
+              color: AppColors.bPrimaryColor,
+              fontSize: 20,
+              fontWeight: FontWeight.w400,
+              height: 1,
+              letterSpacing: 0.5),
+          decoration: InputDecoration(
+            contentPadding: EdgeInsets.only(left: 12, right: 12),
+            hintTextDirection: TextDirection.ltr,
+            errorStyle: TextStyle(
+                fontSize: 14,
+                color: AppColors.pink,
                 fontFamily: AppThemes.jaldi,
-                color: AppColors.bPrimaryColor,
-                fontSize: 20,
-                fontWeight: FontWeight.w400,
-                height: 1,
-                letterSpacing: 0.5),
-            decoration: InputDecoration(
-              hintTextDirection: TextDirection.ltr,
-              errorStyle: TextStyle(
-                  fontSize: 14,
-                  color: AppColors.pink,
-                  fontFamily: AppThemes.jaldi,
-                  fontWeight: FontWeight.normal,
-                  letterSpacing: 0.5.r),
-              filled: true,
-              fillColor: AppColors.grey1.withOpacity(0.74),
-              hintText: widget.hintText,
-              hintStyle: TextStyle(
-                  color: AppColors.bPrimaryColor.withOpacity(0.3),
-                  fontSize: 14,
-                  fontFamily: AppThemes.jaldi,
-                  height: 1),
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(
-                  10,
-                ),
-                borderSide: BorderSide.none,
-              ),
-              focusedBorder: OutlineInputBorder(
-                  borderSide: BorderSide.none,
-                  borderRadius: BorderRadius.circular(
-                    10,
-                  )),
-              errorBorder: OutlineInputBorder(
-                  borderSide: BorderSide(color: AppColors.pink),
-                  borderRadius: BorderRadius.circular(
-                    10,
-                  )),
-              // enabledBorder: OutlineInputBorder(
-              //   borderRadius: BorderRadius.circular(10),
-              //   borderSide: BorderSide(
-              //     color: widget.controller.text == ""
-              //         ? AppColors.lPrimaryColor
-              //         : AppColors.oPrimaryColor,
-              //     width: 0.5.w,
-              //   ),
-              // ),
+                fontWeight: FontWeight.normal,
+                letterSpacing: 0.5.r,
+                height: 1),
+            filled: true,
+            fillColor: AppColors.grey1.withOpacity(0.74),
+            hintText: widget.hintText,
+            hintStyle: TextStyle(
+                color: AppColors.bPrimaryColor.withOpacity(0.3),
+                fontSize: 14,
+                fontFamily: AppThemes.jaldi,
+                height: 1),
+            border: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(10),
+              borderSide: BorderSide.none,
             ),
+            focusedBorder: OutlineInputBorder(
+                borderSide: BorderSide.none,
+                borderRadius: BorderRadius.circular(10)),
+            errorBorder: OutlineInputBorder(
+                borderSide: BorderSide.none,
+                borderRadius: BorderRadius.circular(10)),
           ),
         ),
       ],

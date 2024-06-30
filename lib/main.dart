@@ -7,6 +7,9 @@ import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutter_mob/app.dart';
 import 'package:flutter_mob/blocs/authentication/auth_bloc.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_mob/blocs/authentication/auth_event.dart';
+import 'package:flutter_mob/blocs/login/login_bloc.dart';
+import 'package:flutter_mob/blocs/signup/signup_bloc.dart';
 import 'package:flutter_mob/repositories/authentication/auth_repository.dart';
 import 'package:flutter_mob/utils/time_ago_helper.dart';
 import 'storage/sharedpreferences/shared_preferences_manager.dart';
@@ -104,7 +107,12 @@ Future<void> main() async {
   runZonedGuarded(() {
     runApp(MultiBlocProvider(providers: [
       BlocProvider(
-          create: (context) => AuthBloc(authRepository: AuthRepository())),
+          create: (context) => AuthBloc(authRepository: AuthRepository())
+            ..add(AppLoadedEvent())),
+      BlocProvider(
+          create: (context) => LoginBloc(authRepository: AuthRepository())),
+      BlocProvider(
+          create: (context) => SignupBloc(authRepository: AuthRepository())),
     ], child: const App()));
   }, (error, stackTrace) {});
 }
