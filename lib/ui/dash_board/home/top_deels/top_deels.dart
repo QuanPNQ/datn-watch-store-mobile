@@ -87,7 +87,9 @@ class _TopDeelsState extends State<TopDeels> {
                   ? listWatch
                       .map((e) => CardTopDeel(
                             watchData: e,
-                            onClick: handleClickTopDeel(e),
+                            onClick: () {
+                              handleClickTopDeel(e);
+                            },
                           ))
                       .toList()
                   : listMockWatch.map((e) => CardFakeTopDeel()).toList(),
@@ -98,5 +100,7 @@ class _TopDeelsState extends State<TopDeels> {
     );
   }
 
-  handleClickTopDeel(Watch watch) {}
+  handleClickTopDeel(Watch watch) {
+    Navigator.pushNamed(context, Constants.watchDetailScreen);
+  }
 }

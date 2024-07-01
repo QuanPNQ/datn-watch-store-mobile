@@ -14,64 +14,68 @@ class CardTopDeel extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Container(
-          height: 139,
-          width: MediaQuery.of(context).size.width - 40,
-          decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(20),
-              color: AppColors.blue300),
-          child: Row(
-            children: [
-              Expanded(
-                child: Padding(
-                  padding: const EdgeInsets.only(top: 20, bottom: 22, left: 20),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Expanded(
-                          child: TextNormal(
-                        title: watchData.name,
-                        fontName: AppThemes.dmSerifDisplay,
-                        size: 22,
-                        lineHeight: 1,
-                        maxLine: 2,
-                        colors: AppColors.kPrimaryColor,
-                      )),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      TextNormal(
-                        title:
-                            "${Utility.formatNumberDoubleToInt(watchData.price)}\$",
-                        fontName: AppThemes.dmSerifDisplay,
-                        size: 20,
-                        lineHeight: 1.2,
-                        colors: AppColors.kPrimaryColor,
-                      ),
-                    ],
+    return GestureDetector(
+      onTap: onClick,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Container(
+            height: 139,
+            width: MediaQuery.of(context).size.width - 40,
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(20),
+                color: AppColors.blue300),
+            child: Row(
+              children: [
+                Expanded(
+                  child: Padding(
+                    padding:
+                        const EdgeInsets.only(top: 20, bottom: 22, left: 20),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Expanded(
+                            child: TextNormal(
+                          title: watchData.name,
+                          fontName: AppThemes.dmSerifDisplay,
+                          size: 22,
+                          lineHeight: 1,
+                          maxLine: 2,
+                          colors: AppColors.kPrimaryColor,
+                        )),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        TextNormal(
+                          title:
+                              "${Utility.formatNumberDoubleToInt(watchData.price)}\$",
+                          fontName: AppThemes.dmSerifDisplay,
+                          size: 20,
+                          lineHeight: 1.2,
+                          colors: AppColors.kPrimaryColor,
+                        ),
+                      ],
+                    ),
                   ),
                 ),
-              ),
-              watchData.photoUrls[0].contains("svg")
-                  ? SvgPicture.network(
-                      watchData.photoUrls[0],
-                      width: 180,
-                      height: 139,
-                      fit: BoxFit.cover,
-                    )
-                  : Image.network(
-                      watchData.photoUrls[0],
-                      width: 180,
-                      height: 139,
-                      fit: BoxFit.cover,
-                    )
-            ],
+                watchData.photoUrls[0].contains("svg")
+                    ? SvgPicture.network(
+                        watchData.photoUrls[0],
+                        width: 180,
+                        height: 139,
+                        fit: BoxFit.cover,
+                      )
+                    : Image.network(
+                        watchData.photoUrls[0],
+                        width: 180,
+                        height: 139,
+                        fit: BoxFit.cover,
+                      )
+              ],
+            ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }
