@@ -29,31 +29,47 @@ class GetClassicProductErrorState extends ProductState {
 }
 
 /// Get Top Deel Product
-class GetTopDeelProductLoadingState extends ProductState {}
+class GetTopDeelProductLoadingState extends ProductState {
+  final bool isViewAll;
+
+  const GetTopDeelProductLoadingState({required this.isViewAll});
+}
 
 class GetTopDeelProductSuccessState extends ProductState {
+  final bool isViewAll;
   final List<Watch> listWatch;
 
-  const GetTopDeelProductSuccessState({required this.listWatch});
+  const GetTopDeelProductSuccessState(
+      {required this.isViewAll, required this.listWatch});
 }
 
 class GetTopDeelProductErrorState extends ProductState {
+  final bool isViewAll;
   final String message;
 
-  const GetTopDeelProductErrorState({required this.message});
+  const GetTopDeelProductErrorState(
+      {required this.isViewAll, required this.message});
 }
 
 /// Get Outstanding Product
-class GetOutstandingProductLoadingState extends ProductState {}
+class GetOutstandingProductLoadingState extends ProductState {
+  final bool isViewAll;
+
+  const GetOutstandingProductLoadingState({required this.isViewAll});
+}
 
 class GetOutstandingProductSuccessState extends ProductState {
+  final bool isViewAll;
   final List<Watch> listWatch;
 
-  const GetOutstandingProductSuccessState({required this.listWatch});
+  const GetOutstandingProductSuccessState(
+      {required this.isViewAll, required this.listWatch});
 }
 
 class GetOutstandingProductErrorState extends ProductState {
+  final bool isViewAll;
   final String message;
 
-  const GetOutstandingProductErrorState({required this.message});
+  const GetOutstandingProductErrorState(
+      {required this.isViewAll, required this.message});
 }

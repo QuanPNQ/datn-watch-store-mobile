@@ -10,16 +10,23 @@ abstract class BrandState extends Equatable {
 
 class BrandInitialState extends BrandState {}
 
-class BrandLoadingState extends BrandState {}
+class BrandLoadingState extends BrandState {
+  final bool isViewAll;
+
+  const BrandLoadingState({required this.isViewAll});
+}
 
 class GetBrandSuccessState extends BrandState {
+  final bool isViewAll;
   final List<Brand> listBrand;
 
-  const GetBrandSuccessState({required this.listBrand});
+  const GetBrandSuccessState(
+      {required this.isViewAll, required this.listBrand});
 }
 
 class BrandErrorState extends BrandState {
+  final bool isViewAll;
   final String message;
 
-  const BrandErrorState({required this.message});
+  const BrandErrorState({required this.isViewAll, required this.message});
 }

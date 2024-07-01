@@ -38,29 +38,33 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
 
     on<GetTopDeelProductEvent>((event, emit) async {
       try {
-        emit(GetTopDeelProductLoadingState());
+        emit(GetTopDeelProductLoadingState(isViewAll: event.isViewAll));
         var response = await productRepository.getListProduct(
             type: event.type, page: event.page, limit: event.limit);
+        emit(ProductInitialState());
         final body = jsonDecode(response.body);
         if (response.statusCode == HttpStatus.created) {
           final data = body['data'];
           List<Watch> listWatch =
               List<Watch>.from(data.map((item) => Watch.fromJson(item)))
                   .toList();
-          emit(GetTopDeelProductSuccessState(listWatch: listWatch));
+          emit(GetTopDeelProductSuccessState(
+              listWatch: listWatch, isViewAll: event.isViewAll));
         } else {
-          emit(GetTopDeelProductErrorState(message: body['message']));
+          emit(GetTopDeelProductErrorState(
+              message: body['message'], isViewAll: event.isViewAll));
         }
       } catch (err) {
         debugPrint(
             "[ProductBloc] GetTopDeelProductEvent error => ${err.toString()}");
-        emit(GetTopDeelProductErrorState(message: err.toString()));
+        emit(GetTopDeelProductErrorState(
+            message: err.toString(), isViewAll: event.isViewAll));
       }
     });
 
     on<GetOutstandingProductEvent>((event, emit) async {
       try {
-        emit(GetOutstandingProductLoadingState());
+        emit(GetOutstandingProductLoadingState(isViewAll: event.isViewAll));
         var response = await productRepository.getListProduct(
             page: event.page, limit: event.limit);
         final body = jsonDecode(response.body);
@@ -69,14 +73,17 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
           List<Watch> listWatch =
               List<Watch>.from(data.map((item) => Watch.fromJson(item)))
                   .toList();
-          emit(GetOutstandingProductSuccessState(listWatch: listWatch));
+          emit(GetOutstandingProductSuccessState(
+              listWatch: listWatch, isViewAll: event.isViewAll));
         } else {
-          emit(GetOutstandingProductErrorState(message: body['message']));
+          emit(GetOutstandingProductErrorState(
+              message: body['message'], isViewAll: event.isViewAll));
         }
       } catch (err) {
         debugPrint(
             "[ProductBloc] GetOutstandingProductEvent error => ${err.toString()}");
-        emit(GetOutstandingProductErrorState(message: err.toString()));
+        emit(GetOutstandingProductErrorState(
+            message: err.toString(), isViewAll: event.isViewAll));
       }
     });
   }

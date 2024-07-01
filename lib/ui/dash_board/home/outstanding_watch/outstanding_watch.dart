@@ -27,10 +27,14 @@ class _OutstandingWatchState extends State<OutstandingWatch> {
     return BlocListener<ProductBloc, ProductState>(
       listener: (context, state) async {
         if (state is GetOutstandingProductLoadingState) {
+          if (state.isViewAll) return;
+
           setState(() {
             isLoaded = false;
           });
         } else if (state is GetOutstandingProductSuccessState) {
+          if (state.isViewAll) return;
+
           setState(() {
             isLoaded = true;
             listWatch = state.listWatch;
@@ -52,11 +56,17 @@ class _OutstandingWatchState extends State<OutstandingWatch> {
                   lineHeight: 1.2,
                   colors: AppColors.black1,
                 ),
-                TextNormal(
-                  title: StringName.all,
-                  size: 14,
-                  lineHeight: 1.5,
-                  colors: AppColors.blue300,
+                GestureDetector(
+                  onTap: () {
+                    Navigator.pushNamed(
+                        context, Constants.allOutstandingScreen);
+                  },
+                  child: TextNormal(
+                    title: StringName.all,
+                    size: 14,
+                    lineHeight: 1.5,
+                    colors: AppColors.blue300,
+                  ),
                 ),
               ],
             ),

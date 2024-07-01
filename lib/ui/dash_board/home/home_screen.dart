@@ -11,7 +11,7 @@ import 'package:flutter_mob/ui/components/scroll_behavior/scroll_behavior.dart';
 import 'package:flutter_mob/ui/components/text/text_normal.dart';
 import 'package:flutter_mob/ui/dash_board/home/classify_watch/classify_watch.dart';
 import 'package:flutter_mob/ui/dash_board/home/outstanding_watch/outstanding_watch.dart';
-import 'package:flutter_mob/ui/dash_board/home/search_branch/search_brand.dart';
+import 'package:flutter_mob/ui/dash_board/home/search_brand/search_brand.dart';
 import 'package:flutter_mob/ui/dash_board/home/top_deels/top_deels.dart';
 
 class HomeScreen extends StatefulWidget {

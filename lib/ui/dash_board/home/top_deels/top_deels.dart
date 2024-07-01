@@ -33,10 +33,14 @@ class _TopDeelsState extends State<TopDeels> {
     return BlocListener<ProductBloc, ProductState>(
       listener: (context, state) async {
         if (state is GetTopDeelProductLoadingState) {
+          if (state.isViewAll) return;
+
           setState(() {
             isLoaded = false;
           });
         } else if (state is GetTopDeelProductSuccessState) {
+          if (state.isViewAll) return;
+
           setState(() {
             isLoaded = true;
             listWatch = state.listWatch;
@@ -58,11 +62,16 @@ class _TopDeelsState extends State<TopDeels> {
                   lineHeight: 1.2,
                   colors: AppColors.black1,
                 ),
-                TextNormal(
-                  title: StringName.all,
-                  size: 14,
-                  lineHeight: 1.5,
-                  colors: AppColors.blue300,
+                GestureDetector(
+                  onTap: () {
+                    Navigator.pushNamed(context, Constants.allTopDeelsScreen);
+                  },
+                  child: TextNormal(
+                    title: StringName.all,
+                    size: 14,
+                    lineHeight: 1.5,
+                    colors: AppColors.blue300,
+                  ),
                 ),
               ],
             ),

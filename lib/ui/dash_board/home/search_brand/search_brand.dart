@@ -28,10 +28,14 @@ class _SearchBrandState extends State<SearchBrand> {
     return BlocListener<BrandBloc, BrandState>(
       listener: (context, state) async {
         if (state is BrandLoadingState) {
+          if (state.isViewAll) return;
+
           setState(() {
             isLoaded = false;
           });
         } else if (state is GetBrandSuccessState) {
+          if (state.isViewAll) return;
+
           setState(() {
             isLoaded = true;
             listBrand = state.listBrand;
@@ -53,11 +57,16 @@ class _SearchBrandState extends State<SearchBrand> {
                   lineHeight: 1.2,
                   colors: AppColors.black1,
                 ),
-                TextNormal(
-                  title: StringName.all,
-                  size: 14,
-                  lineHeight: 1.5,
-                  colors: AppColors.blue300,
+                GestureDetector(
+                  onTap: () {
+                    Navigator.pushNamed(context, Constants.allBrandScreen);
+                  },
+                  child: TextNormal(
+                    title: StringName.all,
+                    size: 14,
+                    lineHeight: 1.5,
+                    colors: AppColors.blue300,
+                  ),
                 ),
               ],
             ),

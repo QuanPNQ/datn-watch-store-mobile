@@ -13,7 +13,7 @@ class BrandBloc extends Bloc<BrandEvent, BrandState> {
   BrandBloc({required this.brandRepository}) : super(BrandInitialState()) {
     on<GetListBrandEvent>((event, emit) async {
       try {
-        emit(BrandLoadingState());
+        emit(BrandLoadingState(isViewAll: event.isViewAll));
         var response = await brandRepository.getListBrand(
             page: event.page, limit: event.limit);
         final body = jsonDecode(response.body);
@@ -22,14 +22,17 @@ class BrandBloc extends Bloc<BrandEvent, BrandState> {
           List<Brand> listBrand =
               List<Brand>.from(brands.map((item) => Brand.fromJson(item)))
                   .toList();
-          emit(GetBrandSuccessState(listBrand: listBrand));
+          emit(GetBrandSuccessState(
+              listBrand: listBrand, isViewAll: event.isViewAll));
         } else {
-          emit(BrandErrorState(message: body['message']));
+          emit(BrandErrorState(
+              message: body['message'], isViewAll: event.isViewAll));
         }
       } catch (err) {
         debugPrint(
             "[BrandBloc] GetListBrandEventEvent error => ${err.toString()}");
-        emit(BrandErrorState(message: err.toString()));
+        emit(BrandErrorState(
+            message: err.toString(), isViewAll: event.isViewAll));
       }
     });
   }

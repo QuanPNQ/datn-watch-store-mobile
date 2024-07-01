@@ -8,8 +8,9 @@ abstract class BrandEvent extends Equatable {
 }
 
 class GetListBrandEvent extends BrandEvent {
+  final bool isViewAll;
   final int? page;
   final int? limit;
 
-  const GetListBrandEvent({this.page, this.limit});
+  const GetListBrandEvent({this.isViewAll = false, this.page, this.limit});
 }
