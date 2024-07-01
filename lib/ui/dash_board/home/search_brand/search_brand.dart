@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_mob/blocs/brand/brand_bloc.dart';
+import 'package:flutter_mob/blocs/brand/brand_event.dart';
 import 'package:flutter_mob/blocs/brand/brand_state.dart';
 import 'package:flutter_mob/configs/colors.dart';
 import 'package:flutter_mob/configs/constants.dart';
@@ -18,10 +19,18 @@ class SearchBrand extends StatefulWidget {
   State<SearchBrand> createState() => _SearchBrandState();
 }
 
-class _SearchBrandState extends State<SearchBrand> {
+class _SearchBrandState extends State<SearchBrand>
+    with AutomaticKeepAliveClientMixin {
   List<Brand> listBrand = [];
   List<Brand> listMockBrand = Constants.listMockBrands;
   bool isLoaded = false;
+
+  @override
+  void initState() {
+    BlocProvider.of<BrandBloc>(context)
+        .add(GetListBrandEvent(limit: 5, page: 1));
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -102,4 +111,7 @@ class _SearchBrandState extends State<SearchBrand> {
   }
 
   handleClickBrand(Brand brand) {}
+
+  @override
+  bool get wantKeepAlive => true;
 }

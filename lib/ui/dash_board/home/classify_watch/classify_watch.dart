@@ -17,7 +17,8 @@ class ClassifyWatch extends StatefulWidget {
   State<ClassifyWatch> createState() => _ClassifyWatchState();
 }
 
-class _ClassifyWatchState extends State<ClassifyWatch> {
+class _ClassifyWatchState extends State<ClassifyWatch>
+    with AutomaticKeepAliveClientMixin {
   final List<String> listTabTitle = Constants.listTabClassifyWatch;
   final List<Watch> listMockWatch = Constants.listMockDataWatch;
   final List<TopProductType> listTopProductType = [
@@ -32,6 +33,11 @@ class _ClassifyWatchState extends State<ClassifyWatch> {
 
   @override
   void initState() {
+    BlocProvider.of<ProductBloc>(context).add(GetClassicProductEvent(
+      limit: 5,
+      page: 1,
+      type: TopProductType.SALE,
+    ));
     super.initState();
   }
 
@@ -102,4 +108,7 @@ class _ClassifyWatchState extends State<ClassifyWatch> {
   onCLickDetailWatch(Watch watch) {
     Navigator.pushNamed(context, Constants.watchDetailScreen);
   }
+
+  @override
+  bool get wantKeepAlive => true;
 }

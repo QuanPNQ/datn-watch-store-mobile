@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_mob/blocs/product/product_bloc.dart';
+import 'package:flutter_mob/blocs/product/product_event.dart';
 import 'package:flutter_mob/blocs/product/product_state.dart';
 import 'package:flutter_mob/configs/colors.dart';
 import 'package:flutter_mob/configs/constants.dart';
@@ -17,7 +18,8 @@ class TopDeels extends StatefulWidget {
   State<TopDeels> createState() => _TopDeelsState();
 }
 
-class _TopDeelsState extends State<TopDeels> {
+class _TopDeelsState extends State<TopDeels>
+    with AutomaticKeepAliveClientMixin {
   PageController pageController = PageController();
   List<Watch> listWatch = [];
   final List<Watch> listMockWatch = Constants.listMockDataWatch;
@@ -25,6 +27,8 @@ class _TopDeelsState extends State<TopDeels> {
 
   @override
   void initState() {
+    BlocProvider.of<ProductBloc>(context)
+        .add(GetTopDeelProductEvent(limit: 5, page: 1));
     super.initState();
   }
 
@@ -103,4 +107,7 @@ class _TopDeelsState extends State<TopDeels> {
   handleClickTopDeel(Watch watch) {
     Navigator.pushNamed(context, Constants.watchDetailScreen);
   }
+
+  @override
+  bool get wantKeepAlive => true;
 }

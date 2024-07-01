@@ -1,9 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_mob/blocs/brand/brand_bloc.dart';
-import 'package:flutter_mob/blocs/brand/brand_event.dart';
-import 'package:flutter_mob/blocs/product/product_bloc.dart';
-import 'package:flutter_mob/blocs/product/product_event.dart';
 import 'package:flutter_mob/configs/colors.dart';
 import 'package:flutter_mob/configs/constants.dart';
 import 'package:flutter_mob/configs/themes.dart';
@@ -24,17 +19,6 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   @override
   void initState() {
-    BlocProvider.of<ProductBloc>(context).add(GetClassicProductEvent(
-      limit: 5,
-      page: 1,
-      type: TopProductType.SALE,
-    ));
-    BlocProvider.of<ProductBloc>(context)
-        .add(GetTopDeelProductEvent(limit: 5, page: 1));
-    BlocProvider.of<ProductBloc>(context)
-        .add(GetOutstandingProductEvent(limit: 10, page: 1));
-    BlocProvider.of<BrandBloc>(context)
-        .add(GetListBrandEvent(limit: 5, page: 1));
     super.initState();
   }
 

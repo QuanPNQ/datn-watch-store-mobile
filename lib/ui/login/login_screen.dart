@@ -77,7 +77,8 @@ class _LoginScreenState extends State<LoginScreen> {
                       child: SingleChildScrollView(
                         child: SizedBox(
                           height: MediaQuery.of(context).size.height -
-                              MediaQuery.of(context).viewPadding.top,
+                              MediaQuery.of(context).viewPadding.top -
+                              MediaQuery.of(context).padding.top,
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             mainAxisAlignment: MainAxisAlignment.start,

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_mob/blocs/product/product_bloc.dart';
+import 'package:flutter_mob/blocs/product/product_event.dart';
 import 'package:flutter_mob/blocs/product/product_state.dart';
 import 'package:flutter_mob/configs/colors.dart';
 import 'package:flutter_mob/configs/constants.dart';
@@ -17,10 +18,18 @@ class OutstandingWatch extends StatefulWidget {
   State<OutstandingWatch> createState() => _OutstandingWatchState();
 }
 
-class _OutstandingWatchState extends State<OutstandingWatch> {
+class _OutstandingWatchState extends State<OutstandingWatch>
+    with AutomaticKeepAliveClientMixin {
   List<Watch> listWatch = [];
   final List<Watch> listMockWatch = Constants.listMockDataWatch;
   bool isLoaded = false;
+
+  @override
+  void initState() {
+    BlocProvider.of<ProductBloc>(context)
+        .add(GetOutstandingProductEvent(limit: 10, page: 1));
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -105,4 +114,7 @@ class _OutstandingWatchState extends State<OutstandingWatch> {
   onCLickDetailWatch(Watch watch) {
     Navigator.pushNamed(context, Constants.watchDetailScreen);
   }
+
+  @override
+  bool get wantKeepAlive => true;
 }
