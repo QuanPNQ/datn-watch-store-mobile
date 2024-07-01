@@ -1,5 +1,5 @@
 import 'dart:convert';
-import 'package:flutter_mob/models/account/user.dart';
+import 'package:flutter_mob/models/account/account.dart';
 import 'package:flutter_mob/service/auth_service.dart';
 import 'package:flutter_mob/storage/sharedpreferences/shared_preferences_manager.dart';
 

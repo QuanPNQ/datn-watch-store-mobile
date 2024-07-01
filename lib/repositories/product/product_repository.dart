@@ -7,4 +7,8 @@ class ProductRepository {
     return await ProductService()
         .getListProduct(page: page, limit: limit, type: type, brandId: brandId);
   }
+
+  Future<dynamic> getDetailProduct(String watchId) async {
+    return await ProductService().getDetailProduct(watchId);
+  }
 }

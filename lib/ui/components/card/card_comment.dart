@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mob/configs/colors.dart';
 import 'package:flutter_mob/configs/themes.dart';
-import 'package:flutter_mob/models/comment/comment.dart';
+import 'package:flutter_mob/models/models.dart';
 import 'package:flutter_mob/ui/components/text/text_normal.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class CardComment extends StatelessWidget {
-  final Comment comment;
+  final Review review;
 
-  const CardComment({super.key, required this.comment});
+  const CardComment({super.key, required this.review});
 
   @override
   Widget build(BuildContext context) {
@@ -22,13 +22,13 @@ class CardComment extends StatelessWidget {
             child: SizedBox(
                 width: 37,
                 height: 37,
-                child: comment.user.avatarUrl!.contains("svg")
+                child: review.account.avatarUrl!.contains("svg")
                     ? SvgPicture.network(
-                        comment.user.avatarUrl!,
+                        review.account.avatarUrl!,
                         fit: BoxFit.cover,
                       )
                     : Image.network(
-                        comment.user.avatarUrl!,
+                        review.account.avatarUrl!,
                         fit: BoxFit.cover,
                       )),
           ),
@@ -43,7 +43,7 @@ class CardComment extends StatelessWidget {
                   height: 4,
                 ),
                 TextNormal(
-                  title: comment.user.name,
+                  title: review.account.name!,
                   colors: AppColors.bPrimaryColor,
                   fontName: AppThemes.specialElite,
                 ),
@@ -51,7 +51,7 @@ class CardComment extends StatelessWidget {
                   height: 4,
                 ),
                 TextNormal(
-                  title: comment.content,
+                  title: review.comment,
                   colors: AppColors.bPrimaryColor,
                   fontName: AppThemes.specialElite,
                   size: 10,

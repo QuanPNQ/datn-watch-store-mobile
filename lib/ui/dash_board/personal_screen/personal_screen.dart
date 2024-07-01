@@ -5,7 +5,7 @@ import 'package:flutter_mob/blocs/authentication/auth_event.dart';
 import 'package:flutter_mob/configs/colors.dart';
 import 'package:flutter_mob/configs/constants.dart';
 import 'package:flutter_mob/configs/images.dart';
-import 'package:flutter_mob/models/account/user.dart';
+import 'package:flutter_mob/models/account/account.dart';
 import 'package:flutter_mob/models/tab/tab_personal.dart';
 import 'package:flutter_mob/ui/components/text/text_normal.dart';
 

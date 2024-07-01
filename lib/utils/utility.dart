@@ -1,3 +1,5 @@
+import 'package:flutter_mob/configs/constants.dart';
+
 class Utility {
   static double? toDouble(dynamic obj) {
     if (obj is int) {
@@ -57,6 +59,34 @@ class Utility {
       return number.toInt().toString();
     } else {
       return number.toString();
+    }
+  }
+
+  static String getMachineCategory(String type) {
+    switch (type) {
+      case StringName.AUTOMATIC_MECHANICAL_TYPE:
+        return "Cơ tự động";
+      case StringName.BATTERY_TYPE:
+        return "Pin";
+      case StringName.LIGHT_ENERGY_TYPE:
+        return "Năng lượng mặt trời";
+      default:
+        return "";
+    }
+  }
+
+  static String getWireCategory(String type) {
+    switch (type) {
+      case StringName.METAL_TYPE:
+        return "Kim loại";
+      case StringName.SKIN_TYPE:
+        return "Da";
+      case StringName.PLASTIC_TYPE:
+        return "Nhựa";
+      case StringName.FABRIC_TYPE:
+        return "Vải";
+      default:
+        return "";
     }
   }
 }

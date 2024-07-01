@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'dart:developer';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter_mob/models/account/user.dart';
+import 'package:flutter_mob/models/account/account.dart';
 import 'package:flutter_mob/service/base_service.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter_mob/configs/constants.dart';

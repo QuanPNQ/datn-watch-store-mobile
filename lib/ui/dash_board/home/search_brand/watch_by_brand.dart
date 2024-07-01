@@ -109,6 +109,7 @@ class _WatchByBrandScreenState extends State<WatchByBrandScreen> {
   }
 
   onCLickDetailWatch(Watch watch) {
-    Navigator.pushNamed(context, Constants.watchDetailScreen);
+    BlocProvider.of<ProductBloc>(context)
+        .add(GetDetailProductEvent(watchId: watch.id));
   }
 }

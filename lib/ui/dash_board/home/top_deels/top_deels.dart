@@ -105,7 +105,8 @@ class _TopDeelsState extends State<TopDeels>
   }
 
   handleClickTopDeel(Watch watch) {
-    Navigator.pushNamed(context, Constants.watchDetailScreen);
+    BlocProvider.of<ProductBloc>(context)
+        .add(GetDetailProductEvent(watchId: watch.id));
   }
 
   @override

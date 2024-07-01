@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_mob/blocs/login/login_event.dart';
 import 'package:flutter_mob/blocs/login/login_state.dart';
-import 'package:flutter_mob/models/account/user.dart';
+import 'package:flutter_mob/models/account/account.dart';
 import 'package:flutter_mob/repositories/authentication/auth_repository.dart';
 
 class LoginBloc extends Bloc<LoginEvent, LoginState> {

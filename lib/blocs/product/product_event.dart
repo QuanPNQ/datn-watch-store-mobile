@@ -45,3 +45,11 @@ class GetProductByBrandEvent extends ProductEvent {
 
   const GetProductByBrandEvent({required this.brandId, this.page, this.limit});
 }
+
+class GetDetailProductEvent extends ProductEvent {
+  final String watchId;
+
+  const GetDetailProductEvent({
+    required this.watchId,
+  });
+}

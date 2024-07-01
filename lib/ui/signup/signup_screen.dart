@@ -7,7 +7,7 @@ import 'package:flutter_mob/blocs/signup/signup_state.dart';
 import 'package:flutter_mob/configs/constants.dart';
 import 'package:flutter_mob/configs/images.dart';
 import 'package:flutter_mob/configs/themes.dart';
-import 'package:flutter_mob/models/account/user.dart';
+import 'package:flutter_mob/models/account/account.dart';
 import 'package:flutter_mob/ui/components/button/button_normal.dart';
 import 'package:flutter_mob/ui/components/input/input_field.dart';
 import 'package:flutter_mob/configs/colors.dart';

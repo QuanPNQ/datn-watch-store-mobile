@@ -88,3 +88,18 @@ class GetProductByBrandErrorState extends ProductState {
 
   const GetProductByBrandErrorState({required this.message});
 }
+
+/// Get Detail Product
+class GetDetailProductLoadingState extends ProductState {}
+
+class GetDetailProductSuccessState extends ProductState {
+  final Watch watch;
+
+  const GetDetailProductSuccessState({required this.watch});
+}
+
+class GetDetailProductErrorState extends ProductState {
+  final String message;
+
+  const GetDetailProductErrorState({required this.message});
+}

@@ -110,5 +110,26 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
         ));
       }
     });
+
+    on<GetDetailProductEvent>((event, emit) async {
+      try {
+        emit(GetDetailProductLoadingState());
+        var response = await productRepository.getDetailProduct(event.watchId);
+        final body = jsonDecode(response.body);
+        if (response.statusCode == HttpStatus.created) {
+          final data = body['data'];
+          Watch watch = Watch.fromJson(data);
+          emit(GetDetailProductSuccessState(watch: watch));
+        } else {
+          emit(GetDetailProductErrorState(message: body['message']));
+        }
+      } catch (err) {
+        debugPrint(
+            "[ProductBloc] GetDetailProductEvent error => ${err.toString()}");
+        emit(GetDetailProductErrorState(
+          message: err.toString(),
+        ));
+      }
+    });
   }
 }

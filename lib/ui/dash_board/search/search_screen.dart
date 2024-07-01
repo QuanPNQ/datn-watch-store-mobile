@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_mob/blocs/product/product_bloc.dart';
+import 'package:flutter_mob/blocs/product/product_event.dart';
 import 'package:flutter_mob/configs/colors.dart';
 import 'package:flutter_mob/configs/constants.dart';
 import 'package:flutter_mob/configs/themes.dart';
@@ -136,6 +139,7 @@ class _SearchScreenState extends State<SearchScreen> {
   }
 
   onCLickDetailWatch(Watch watch) {
-    Navigator.pushNamed(context, Constants.watchDetailScreen);
+    BlocProvider.of<ProductBloc>(context)
+        .add(GetDetailProductEvent(watchId: watch.id));
   }
 }

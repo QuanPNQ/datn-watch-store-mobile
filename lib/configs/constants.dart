@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_mob/configs/images.dart';
-import 'package:flutter_mob/models/account/user.dart';
+import 'package:flutter_mob/models/account/account.dart';
 import 'package:flutter_mob/models/brand/brand.dart';
 import 'package:flutter_mob/models/cart/cart_item.dart';
 import 'package:flutter_mob/models/models.dart';
@@ -65,137 +65,137 @@ class Constants {
 
   static List<Watch> listMockDataWatch = [
     Watch(
-      id: '1',
-      brand: mockBrand,
-      name: 'Luch CH 15',
-      description:
-          'Đồng hồ Luch 15, một trong những thương hiệu nổi đình nổi đám và cũng là một trong những cái tên phổ biến, có sức ảnh hưởng trong giới sản xuất đồng hồ đeo tay. Với những sản phẩm chất lượng,Luch 15 ngày càng khẳng định được vị thế cũng như chỗ đứng của mình.',
-      size: 24,
-      createdDate: DateTime(2024, 1, 14),
-      photoUrls: [
-        "https://firebasestorage.googleapis.com/v0/b/apolis-301dc.appspot.com/o/design-dc011e6b-a663-4665-a203-82df9febaf43%201.png?alt=media&token=f590cfef-19bb-4893-b541-fcc63861eb53"
-      ],
-      price: 3000,
-      quantity: 50,
-      numberPurchase: 50,
-      totalSold: 50,
-    ),
+        id: '1',
+        brand: mockBrand,
+        name: 'Luch CH 15',
+        description:
+            'Đồng hồ Luch 15, một trong những thương hiệu nổi đình nổi đám và cũng là một trong những cái tên phổ biến, có sức ảnh hưởng trong giới sản xuất đồng hồ đeo tay. Với những sản phẩm chất lượng,Luch 15 ngày càng khẳng định được vị thế cũng như chỗ đứng của mình.',
+        size: 24,
+        createdDate: DateTime(2024, 1, 14),
+        photoUrls: [
+          "https://firebasestorage.googleapis.com/v0/b/apolis-301dc.appspot.com/o/design-dc011e6b-a663-4665-a203-82df9febaf43%201.png?alt=media&token=f590cfef-19bb-4893-b541-fcc63861eb53"
+        ],
+        price: 3000,
+        quantity: 50,
+        numberPurchase: 50,
+        totalSold: 50,
+        listReview: []),
     Watch(
-      id: '1',
-      brand: mockBrand,
-      name: 'Luch CH 15',
-      description:
-          'Đồng hồ Luch 15, một trong những thương hiệu nổi đình nổi đám và cũng là một trong những cái tên phổ biến, có sức ảnh hưởng trong giới sản xuất đồng hồ đeo tay. Với những sản phẩm chất lượng,Luch 15 ngày càng khẳng định được vị thế cũng như chỗ đứng của mình.',
-      size: 24,
-      createdDate: DateTime(2024, 1, 14),
-      photoUrls: [
-        "https://firebasestorage.googleapis.com/v0/b/apolis-301dc.appspot.com/o/design-dc011e6b-a663-4665-a203-82df9febaf43%201.png?alt=media&token=f590cfef-19bb-4893-b541-fcc63861eb53"
-      ],
-      price: 3000,
-      quantity: 50,
-      numberPurchase: 50,
-      totalSold: 50,
-    ),
+        id: '1',
+        brand: mockBrand,
+        name: 'Luch CH 15',
+        description:
+            'Đồng hồ Luch 15, một trong những thương hiệu nổi đình nổi đám và cũng là một trong những cái tên phổ biến, có sức ảnh hưởng trong giới sản xuất đồng hồ đeo tay. Với những sản phẩm chất lượng,Luch 15 ngày càng khẳng định được vị thế cũng như chỗ đứng của mình.',
+        size: 24,
+        createdDate: DateTime(2024, 1, 14),
+        photoUrls: [
+          "https://firebasestorage.googleapis.com/v0/b/apolis-301dc.appspot.com/o/design-dc011e6b-a663-4665-a203-82df9febaf43%201.png?alt=media&token=f590cfef-19bb-4893-b541-fcc63861eb53"
+        ],
+        price: 3000,
+        quantity: 50,
+        numberPurchase: 50,
+        totalSold: 50,
+        listReview: []),
     Watch(
-      id: '1',
-      brand: mockBrand,
-      name: 'Luch CH 15',
-      description:
-          'Đồng hồ Luch 15, một trong những thương hiệu nổi đình nổi đám và cũng là một trong những cái tên phổ biến, có sức ảnh hưởng trong giới sản xuất đồng hồ đeo tay. Với những sản phẩm chất lượng,Luch 15 ngày càng khẳng định được vị thế cũng như chỗ đứng của mình.',
-      size: 24,
-      createdDate: DateTime(2024, 1, 14),
-      photoUrls: [
-        "https://firebasestorage.googleapis.com/v0/b/apolis-301dc.appspot.com/o/design-dc011e6b-a663-4665-a203-82df9febaf43%201.png?alt=media&token=f590cfef-19bb-4893-b541-fcc63861eb53"
-      ],
-      price: 3000,
-      quantity: 50,
-      numberPurchase: 50,
-      totalSold: 50,
-    ),
+        id: '1',
+        brand: mockBrand,
+        name: 'Luch CH 15',
+        description:
+            'Đồng hồ Luch 15, một trong những thương hiệu nổi đình nổi đám và cũng là một trong những cái tên phổ biến, có sức ảnh hưởng trong giới sản xuất đồng hồ đeo tay. Với những sản phẩm chất lượng,Luch 15 ngày càng khẳng định được vị thế cũng như chỗ đứng của mình.',
+        size: 24,
+        createdDate: DateTime(2024, 1, 14),
+        photoUrls: [
+          "https://firebasestorage.googleapis.com/v0/b/apolis-301dc.appspot.com/o/design-dc011e6b-a663-4665-a203-82df9febaf43%201.png?alt=media&token=f590cfef-19bb-4893-b541-fcc63861eb53"
+        ],
+        price: 3000,
+        quantity: 50,
+        numberPurchase: 50,
+        totalSold: 50,
+        listReview: []),
     Watch(
-      id: '1',
-      brand: mockBrand,
-      name: 'Luch CH 15',
-      description:
-          'Đồng hồ Luch 15, một trong những thương hiệu nổi đình nổi đám và cũng là một trong những cái tên phổ biến, có sức ảnh hưởng trong giới sản xuất đồng hồ đeo tay. Với những sản phẩm chất lượng,Luch 15 ngày càng khẳng định được vị thế cũng như chỗ đứng của mình.',
-      size: 24,
-      createdDate: DateTime(2024, 1, 14),
-      photoUrls: [
-        "https://firebasestorage.googleapis.com/v0/b/apolis-301dc.appspot.com/o/design-dc011e6b-a663-4665-a203-82df9febaf43%201.png?alt=media&token=f590cfef-19bb-4893-b541-fcc63861eb53"
-      ],
-      price: 3000,
-      quantity: 50,
-      numberPurchase: 50,
-      totalSold: 50,
-    )
+        id: '1',
+        brand: mockBrand,
+        name: 'Luch CH 15',
+        description:
+            'Đồng hồ Luch 15, một trong những thương hiệu nổi đình nổi đám và cũng là một trong những cái tên phổ biến, có sức ảnh hưởng trong giới sản xuất đồng hồ đeo tay. Với những sản phẩm chất lượng,Luch 15 ngày càng khẳng định được vị thế cũng như chỗ đứng của mình.',
+        size: 24,
+        createdDate: DateTime(2024, 1, 14),
+        photoUrls: [
+          "https://firebasestorage.googleapis.com/v0/b/apolis-301dc.appspot.com/o/design-dc011e6b-a663-4665-a203-82df9febaf43%201.png?alt=media&token=f590cfef-19bb-4893-b541-fcc63861eb53"
+        ],
+        price: 3000,
+        quantity: 50,
+        numberPurchase: 50,
+        totalSold: 50,
+        listReview: [])
   ];
 
   static Watch mockDataWatch = Watch(
-    id: '1',
-    brand: mockBrand,
-    name: 'Luch CH 15',
-    description:
-        'Đồng hồ Luch 15, một trong những thương hiệu nổi đình nổi đám và cũng là một trong những cái tên phổ biến, có sức ảnh hưởng trong giới sản xuất đồng hồ đeo tay. Với những sản phẩm chất lượng,Luch 15 ngày càng khẳng định được vị thế cũng như chỗ đứng của mình.',
-    size: 24,
-    createdDate: DateTime(2024, 1, 14),
-    photoUrls: [
-      "https://firebasestorage.googleapis.com/v0/b/apolis-301dc.appspot.com/o/design-dc011e6b-a663-4665-a203-82df9febaf43%201.png?alt=media&token=f590cfef-19bb-4893-b541-fcc63861eb53"
-    ],
-    price: 3000,
-    quantity: 50,
-    numberPurchase: 50,
-    totalSold: 50,
-  );
+      id: '1',
+      brand: mockBrand,
+      name: 'Luch CH 15',
+      description:
+          'Đồng hồ Luch 15, một trong những thương hiệu nổi đình nổi đám và cũng là một trong những cái tên phổ biến, có sức ảnh hưởng trong giới sản xuất đồng hồ đeo tay. Với những sản phẩm chất lượng,Luch 15 ngày càng khẳng định được vị thế cũng như chỗ đứng của mình.',
+      size: 24,
+      createdDate: DateTime(2024, 1, 14),
+      photoUrls: [
+        "https://firebasestorage.googleapis.com/v0/b/apolis-301dc.appspot.com/o/design-dc011e6b-a663-4665-a203-82df9febaf43%201.png?alt=media&token=f590cfef-19bb-4893-b541-fcc63861eb53"
+      ],
+      price: 3000,
+      quantity: 50,
+      numberPurchase: 50,
+      totalSold: 50,
+      listReview: []);
 
   static List<Watch> listMockTopDeels = [
     Watch(
-      id: '1',
-      brand: mockBrand,
-      name: 'Unisex Casio Vintage',
-      description:
-          'Đồng hồ Luch 15, một trong những thương hiệu nổi đình nổi đám và cũng là một trong những cái tên phổ biến, có sức ảnh hưởng trong giới sản xuất đồng hồ đeo tay. Với những sản phẩm chất lượng,Luch 15 ngày càng khẳng định được vị thế cũng như chỗ đứng của mình.',
-      size: 24,
-      createdDate: DateTime(2024, 1, 14),
-      photoUrls: [
-        "https://firebasestorage.googleapis.com/v0/b/apolis-301dc.appspot.com/o/thumb_1542595515%201.png?alt=media&token=2fb13746-c7c0-472e-9a83-b313796430e7"
-      ],
-      price: 8690,
-      quantity: 50,
-      numberPurchase: 50,
-      totalSold: 50,
-    ),
+        id: '1',
+        brand: mockBrand,
+        name: 'Unisex Casio Vintage',
+        description:
+            'Đồng hồ Luch 15, một trong những thương hiệu nổi đình nổi đám và cũng là một trong những cái tên phổ biến, có sức ảnh hưởng trong giới sản xuất đồng hồ đeo tay. Với những sản phẩm chất lượng,Luch 15 ngày càng khẳng định được vị thế cũng như chỗ đứng của mình.',
+        size: 24,
+        createdDate: DateTime(2024, 1, 14),
+        photoUrls: [
+          "https://firebasestorage.googleapis.com/v0/b/apolis-301dc.appspot.com/o/thumb_1542595515%201.png?alt=media&token=2fb13746-c7c0-472e-9a83-b313796430e7"
+        ],
+        price: 8690,
+        quantity: 50,
+        numberPurchase: 50,
+        totalSold: 50,
+        listReview: []),
     Watch(
-      id: '1',
-      brand: mockBrand,
-      name: 'Unisex Casio Vintage',
-      description:
-          'Đồng hồ Luch 15, một trong những thương hiệu nổi đình nổi đám và cũng là một trong những cái tên phổ biến, có sức ảnh hưởng trong giới sản xuất đồng hồ đeo tay. Với những sản phẩm chất lượng,Luch 15 ngày càng khẳng định được vị thế cũng như chỗ đứng của mình.',
-      size: 24,
-      createdDate: DateTime(2024, 1, 14),
-      photoUrls: [
-        "https://firebasestorage.googleapis.com/v0/b/apolis-301dc.appspot.com/o/thumb_1542595515%201.png?alt=media&token=2fb13746-c7c0-472e-9a83-b313796430e7"
-      ],
-      price: 8690,
-      quantity: 50,
-      numberPurchase: 50,
-      totalSold: 50,
-    ),
+        id: '1',
+        brand: mockBrand,
+        name: 'Unisex Casio Vintage',
+        description:
+            'Đồng hồ Luch 15, một trong những thương hiệu nổi đình nổi đám và cũng là một trong những cái tên phổ biến, có sức ảnh hưởng trong giới sản xuất đồng hồ đeo tay. Với những sản phẩm chất lượng,Luch 15 ngày càng khẳng định được vị thế cũng như chỗ đứng của mình.',
+        size: 24,
+        createdDate: DateTime(2024, 1, 14),
+        photoUrls: [
+          "https://firebasestorage.googleapis.com/v0/b/apolis-301dc.appspot.com/o/thumb_1542595515%201.png?alt=media&token=2fb13746-c7c0-472e-9a83-b313796430e7"
+        ],
+        price: 8690,
+        quantity: 50,
+        numberPurchase: 50,
+        totalSold: 50,
+        listReview: []),
     Watch(
-      id: '1',
-      brand: mockBrand,
-      name: 'Unisex Casio Vintage',
-      description:
-          'Đồng hồ Luch 15, một trong những thương hiệu nổi đình nổi đám và cũng là một trong những cái tên phổ biến, có sức ảnh hưởng trong giới sản xuất đồng hồ đeo tay. Với những sản phẩm chất lượng,Luch 15 ngày càng khẳng định được vị thế cũng như chỗ đứng của mình.',
-      size: 24,
-      createdDate: DateTime(2024, 1, 14),
-      photoUrls: [
-        "https://firebasestorage.googleapis.com/v0/b/apolis-301dc.appspot.com/o/thumb_1542595515%201.png?alt=media&token=2fb13746-c7c0-472e-9a83-b313796430e7"
-      ],
-      price: 8690,
-      quantity: 50,
-      numberPurchase: 50,
-      totalSold: 50,
-    ),
+        id: '1',
+        brand: mockBrand,
+        name: 'Unisex Casio Vintage',
+        description:
+            'Đồng hồ Luch 15, một trong những thương hiệu nổi đình nổi đám và cũng là một trong những cái tên phổ biến, có sức ảnh hưởng trong giới sản xuất đồng hồ đeo tay. Với những sản phẩm chất lượng,Luch 15 ngày càng khẳng định được vị thế cũng như chỗ đứng của mình.',
+        size: 24,
+        createdDate: DateTime(2024, 1, 14),
+        photoUrls: [
+          "https://firebasestorage.googleapis.com/v0/b/apolis-301dc.appspot.com/o/thumb_1542595515%201.png?alt=media&token=2fb13746-c7c0-472e-9a83-b313796430e7"
+        ],
+        price: 8690,
+        quantity: 50,
+        numberPurchase: 50,
+        totalSold: 50,
+        listReview: []),
   ];
 
   static List<Brand> listMockBrands = [
@@ -219,24 +219,14 @@ class Constants {
             "https://firebasestorage.googleapis.com/v0/b/apolis-301dc.appspot.com/o/Union%20(1).svg?alt=media&token=131828f5-a386-4170-987f-c73694e810a0")
   ];
 
-  static List<Comment> listMockDataComment = [
-    Comment(
-      user: User(
-        id: "1",
-        name: "Văn Sang",
-        avatarUrl:
-            "https://images.unsplash.com/photo-1633332755192-727a05c4013d?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8YXZhdGFyfGVufDB8fDB8fHww",
-      ),
-      content: "Đồng hồ đẳng cấp xứng đáng để sở hữu",
-    ),
-    Comment(
-      user: User(
-        id: "2",
-        name: "Phương Ngọc Quân",
-        avatarUrl:
-            "https://plus.unsplash.com/premium_photo-1690579805307-7ec030c75543?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTd8fG1hbiUyMGF2YXRhcnxlbnwwfHwwfHx8MA%3D%3D",
-      ),
-      content: "Đồng hồ thực sự đẳng cấp xứng đáng để sở hữu đóng gói cẩn thận",
+  static List<Review> listMockDataComment = [
+    Review(
+      id: '1',
+      account: mockDataAccount,
+      date: DateTime.now(),
+      photoUrls: [],
+      rate: 5,
+      comment: "Đồng hồ đẳng cấp xứng đáng để sở hữu",
     ),
   ];
 
@@ -413,6 +403,16 @@ class StringName {
   static const String emailNotValid = 'Email không hợp lệ!';
   static const String signupSuccess = 'Đăng ký thành công';
   static const String loginNow = 'Bạn có muốn đăng nhập ngay?';
+
+  //type
+  static const String AUTOMATIC_MECHANICAL_TYPE = "AUTOMATIC_MECHANICAL";
+  static const String BATTERY_TYPE = "BATTERY";
+  static const String LIGHT_ENERGY_TYPE = "LIGHT_ENERGY";
+
+  static const String METAL_TYPE = "METAL";
+  static const String SKIN_TYPE = "SKIN";
+  static const String PLASTIC_TYPE = "PLASTIC";
+  static const String FABRIC_TYPE = "FABRIC";
 }
 
 /* define String Names */

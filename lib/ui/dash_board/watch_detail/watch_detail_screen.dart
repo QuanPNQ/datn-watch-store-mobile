@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mob/configs/colors.dart';
 import 'package:flutter_mob/configs/constants.dart';
 import 'package:flutter_mob/configs/themes.dart';
-import 'package:flutter_mob/models/comment/comment.dart';
 import 'package:flutter_mob/models/watch/watch.dart';
 import 'package:flutter_mob/ui/components/app_bar/app_bar_title.dart';
 import 'package:flutter_mob/ui/components/button/button_normal.dart';
@@ -13,16 +12,22 @@ import 'package:flutter_mob/utils/utility.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class WatchDetailScreen extends StatefulWidget {
-  const WatchDetailScreen({super.key});
+  final Watch watch;
+
+  const WatchDetailScreen({super.key, required this.watch});
 
   @override
   State<WatchDetailScreen> createState() => _WatchDetailScreenState();
 }
 
 class _WatchDetailScreenState extends State<WatchDetailScreen> {
-  Watch watch = Constants.mockDataWatch;
-  List<Comment> listComment = Constants.listMockDataComment;
   int quantity = 1;
+  bool isLoaded = false;
+
+  @override
+  void initState() {
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +36,7 @@ class _WatchDetailScreenState extends State<WatchDetailScreen> {
       body: SafeArea(
         child: Column(
           children: [
-            AppBarTitle(appTitle: watch.name),
+            AppBarTitle(appTitle: widget.watch.name),
             Expanded(
               child: ScrollConfiguration(
                 behavior: CustomScrollBehavior(),
@@ -50,9 +55,9 @@ class _WatchDetailScreenState extends State<WatchDetailScreen> {
                                 color: AppColors.grey3,
                                 borderRadius: BorderRadius.circular(20),
                                 border: Border.all(color: AppColors.grey4)),
-                            child: watch.photoUrls[0].contains("svg")
-                                ? SvgPicture.network(watch.photoUrls[0])
-                                : Image.network(watch.photoUrls[0]),
+                            child: widget.watch.photoUrls[0].contains("svg")
+                                ? SvgPicture.network(widget.watch.photoUrls[0])
+                                : Image.network(widget.watch.photoUrls[0]),
                           ),
                           SizedBox(
                             height: 20,
@@ -65,7 +70,7 @@ class _WatchDetailScreenState extends State<WatchDetailScreen> {
                                 child: Padding(
                                   padding: const EdgeInsets.only(top: 7.0),
                                   child: TextNormal(
-                                    title: watch.name,
+                                    title: widget.watch.name,
                                     colors: AppColors.bPrimaryColor,
                                     fontName: AppThemes.specialElite,
                                     size: 20,
@@ -122,7 +127,7 @@ class _WatchDetailScreenState extends State<WatchDetailScreen> {
                           ),
                           TextNormal(
                             title:
-                                "${Utility.formatNumberDoubleToInt(watch.price)}\$",
+                                "${Utility.formatNumberDoubleToInt(widget.watch.price)}\$",
                             colors: AppColors.bPrimaryColor,
                             fontName: AppThemes.spicyRice,
                             size: 20,
@@ -131,10 +136,54 @@ class _WatchDetailScreenState extends State<WatchDetailScreen> {
                             height: 38,
                           ),
                           TextNormal(
-                            title: watch.description,
+                            title: "Thông số:",
                             colors: AppColors.bPrimaryColor,
                             fontName: AppThemes.spectral,
-                            size: 20,
+                            fontWeight: FontWeight.w700,
+                            size: 22,
+                          ),
+                          SizedBox(height: 8),
+                          TextNormal(
+                            title: "Thương hiệu: ${widget.watch.brand.name}",
+                            colors: AppColors.bPrimaryColor,
+                            fontName: AppThemes.spectral,
+                            size: 18,
+                          ),
+                          SizedBox(height: 4),
+                          TextNormal(
+                            title: "Kích thước: ${widget.watch.size}mm",
+                            colors: AppColors.bPrimaryColor,
+                            fontName: AppThemes.spectral,
+                            size: 18,
+                          ),
+                          SizedBox(height: 4),
+                          TextNormal(
+                            title:
+                                "Loại máy: ${Utility.getMachineCategory(widget.watch.machineCategory!)}",
+                            colors: AppColors.bPrimaryColor,
+                            fontName: AppThemes.spectral,
+                            size: 18,
+                          ),
+                          SizedBox(height: 4),
+                          TextNormal(
+                            title:
+                                "Loại dây: ${Utility.getWireCategory(widget.watch.wireCategory!)}",
+                            colors: AppColors.bPrimaryColor,
+                            fontName: AppThemes.spectral,
+                            size: 18,
+                          ),
+                          SizedBox(height: 4),
+                          TextNormal(
+                            title: "Mô tả:",
+                            colors: AppColors.bPrimaryColor,
+                            fontName: AppThemes.spectral,
+                            size: 18,
+                          ),
+                          TextNormal(
+                            title: widget.watch.description,
+                            colors: AppColors.bPrimaryColor,
+                            fontName: AppThemes.spectral,
+                            size: 18,
                           ),
                           SizedBox(
                             height: 38,
@@ -150,13 +199,13 @@ class _WatchDetailScreenState extends State<WatchDetailScreen> {
                             size: 20,
                           ),
                           SizedBox(
-                            height: listComment.isNotEmpty ? 8 : 20,
+                            height: widget.watch.listReview.isNotEmpty ? 8 : 20,
                           ),
-                          listComment.isNotEmpty
+                          widget.watch.listReview.isNotEmpty
                               ? Column(
-                                  children: listComment
+                                  children: widget.watch.listReview
                                       .map((e) => CardComment(
-                                            comment: e,
+                                            review: e,
                                           ))
                                       .toList(),
                                 )

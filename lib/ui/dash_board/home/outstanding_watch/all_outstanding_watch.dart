@@ -113,6 +113,7 @@ class _AllOutstandingWatchScreenState extends State<AllOutstandingWatchScreen> {
   }
 
   onCLickDetailWatch(Watch watch) {
-    Navigator.pushNamed(context, Constants.watchDetailScreen);
+    BlocProvider.of<ProductBloc>(context)
+        .add(GetDetailProductEvent(watchId: watch.id));
   }
 }

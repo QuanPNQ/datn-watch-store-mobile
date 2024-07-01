@@ -1,6 +1,5 @@
-export 'user/user.dart';
 export 'walk_through/walk_through.dart';
-export 'comment/comment.dart';
+export 'review/review.dart';
 export 'shipping_address/shipping_address.dart';
 export 'discount/discount.dart';
 export 'order/order.dart';

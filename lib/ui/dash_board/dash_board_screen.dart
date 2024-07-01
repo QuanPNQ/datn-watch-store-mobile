@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_mob/blocs/product/product_bloc.dart';
+import 'package:flutter_mob/blocs/product/product_state.dart';
 import 'package:flutter_mob/configs/colors.dart';
+import 'package:flutter_mob/configs/constants.dart';
 import 'package:flutter_mob/configs/images.dart';
 import 'package:flutter_mob/models/tab/tab_dashboard.dart';
 import 'package:flutter_mob/ui/dash_board/cart/cart_screen.dart';
@@ -39,59 +43,72 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      resizeToAvoidBottomInset: false,
-      backgroundColor: AppColors.gray900,
-      body: Stack(
-        alignment: Alignment.bottomCenter,
-        children: [
-          PageView(
-            physics: const NeverScrollableScrollPhysics(),
-            controller: pageController,
-            children: lisTab.map((e) => e.view).toList(),
-          ),
-          SafeArea(
-            child: Container(
-              height: 58,
-              alignment: Alignment.bottomCenter,
-              margin: EdgeInsets.only(bottom: 10, left: 20, right: 20),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(20),
-                color: AppColors.yellow1,
-              ),
-              child: Row(
-                children: lisTab.map((e) {
-                  return Expanded(
-                      child: GestureDetector(
-                    onTap: () => onClickTab(e),
-                    child: Stack(
-                      alignment: Alignment.topCenter,
-                      children: [
-                        Container(
-                          alignment: Alignment.center,
-                          color: Colors.transparent,
-                          child: SvgPicture.asset(e.icon,
-                              color: e.isSelected
-                                  ? AppColors.blue300
-                                  : AppColors.black2),
-                        ),
-                        if (e.isSelected)
-                          Container(
-                            height: 5,
-                            width: 5,
-                            margin: EdgeInsets.only(top: 43),
-                            decoration: BoxDecoration(
-                                color: AppColors.blue300,
-                                shape: BoxShape.circle),
-                          )
-                      ],
-                    ),
-                  ));
-                }).toList(),
-              ),
+    return BlocListener<ProductBloc, ProductState>(
+      listener: (context, state) async {
+        if (state is GetDetailProductLoadingState) {
+          LoadingHelper.showLoading(context);
+        } else if (state is GetDetailProductSuccessState) {
+          LoadingHelper.hideLoading(context);
+          Navigator.pushNamed(context, Constants.watchDetailScreen,
+              arguments: state.watch);
+        } else if (state is GetDetailProductErrorState) {
+          LoadingHelper.hideLoading(context);
+        }
+      },
+      child: Scaffold(
+        resizeToAvoidBottomInset: false,
+        backgroundColor: AppColors.gray900,
+        body: Stack(
+          alignment: Alignment.bottomCenter,
+          children: [
+            PageView(
+              physics: const NeverScrollableScrollPhysics(),
+              controller: pageController,
+              children: lisTab.map((e) => e.view).toList(),
             ),
-          )
-        ],
+            SafeArea(
+              child: Container(
+                height: 58,
+                alignment: Alignment.bottomCenter,
+                margin: EdgeInsets.only(bottom: 10, left: 20, right: 20),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20),
+                  color: AppColors.yellow1,
+                ),
+                child: Row(
+                  children: lisTab.map((e) {
+                    return Expanded(
+                        child: GestureDetector(
+                      onTap: () => onClickTab(e),
+                      child: Stack(
+                        alignment: Alignment.topCenter,
+                        children: [
+                          Container(
+                            alignment: Alignment.center,
+                            color: Colors.transparent,
+                            child: SvgPicture.asset(e.icon,
+                                color: e.isSelected
+                                    ? AppColors.blue300
+                                    : AppColors.black2),
+                          ),
+                          if (e.isSelected)
+                            Container(
+                              height: 5,
+                              width: 5,
+                              margin: EdgeInsets.only(top: 43),
+                              decoration: BoxDecoration(
+                                  color: AppColors.blue300,
+                                  shape: BoxShape.circle),
+                            )
+                        ],
+                      ),
+                    ));
+                  }).toList(),
+                ),
+              ),
+            )
+          ],
+        ),
       ),
     );
   }

@@ -24,4 +24,15 @@ class ProductService extends BaseService {
     debugPrint("[ProductService] getListProduct response: ${response.body}");
     return response;
   }
+
+  Future<dynamic> getDetailProduct(String watchId) async {
+    String uri = "${Constants.baseUrl}product/$watchId";
+    debugPrint("[ProductService] getDetailProduct uri: $uri");
+
+    final response =
+        await http.get(Uri.parse(uri), headers: await requestTokenHeader());
+
+    debugPrint("[ProductService] getDetailProduct response: ${response.body}");
+    return response;
+  }
 }

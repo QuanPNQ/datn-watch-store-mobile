@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mob/configs/constants.dart';
 import 'package:flutter_mob/models/brand/brand.dart';
+import 'package:flutter_mob/models/watch/watch.dart';
 import 'package:flutter_mob/ui/dash_board/dash_board_screen.dart';
 import 'package:flutter_mob/ui/dash_board/detail_order/detail_order_screen.dart';
 import 'package:flutter_mob/ui/dash_board/home/outstanding_watch/all_outstanding_watch.dart';
@@ -34,7 +35,10 @@ Route<dynamic> onGenerateRoute(RouteSettings settings) {
     case Constants.dashBoardScreen:
       return generateRouter(widget: const DashBoardScreen());
     case Constants.watchDetailScreen:
-      return generateRouter(widget: const WatchDetailScreen());
+      return generateRouter(
+          widget: WatchDetailScreen(
+        watch: args as Watch,
+      ));
     case Constants.detailOrderScreen:
       return generateRouter(widget: const DetailOrderScreen());
     case Constants.profileScreen:

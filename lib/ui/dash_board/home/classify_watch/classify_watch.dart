@@ -106,7 +106,8 @@ class _ClassifyWatchState extends State<ClassifyWatch>
   onClickAddWatch() {}
 
   onCLickDetailWatch(Watch watch) {
-    Navigator.pushNamed(context, Constants.watchDetailScreen);
+    BlocProvider.of<ProductBloc>(context)
+        .add(GetDetailProductEvent(watchId: watch.id));
   }
 
   @override
