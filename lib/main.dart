@@ -8,9 +8,13 @@ import 'package:flutter_mob/app.dart';
 import 'package:flutter_mob/blocs/authentication/auth_bloc.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_mob/blocs/authentication/auth_event.dart';
+import 'package:flutter_mob/blocs/brand/brand_bloc.dart';
 import 'package:flutter_mob/blocs/login/login_bloc.dart';
+import 'package:flutter_mob/blocs/product/product_bloc.dart';
 import 'package:flutter_mob/blocs/signup/signup_bloc.dart';
 import 'package:flutter_mob/repositories/authentication/auth_repository.dart';
+import 'package:flutter_mob/repositories/brand/brand_repository.dart';
+import 'package:flutter_mob/repositories/product/product_repository.dart';
 import 'package:flutter_mob/utils/time_ago_helper.dart';
 import 'storage/sharedpreferences/shared_preferences_manager.dart';
 import 'package:timeago/timeago.dart' as timeago;
@@ -113,6 +117,11 @@ Future<void> main() async {
           create: (context) => LoginBloc(authRepository: AuthRepository())),
       BlocProvider(
           create: (context) => SignupBloc(authRepository: AuthRepository())),
+      BlocProvider(
+          create: (context) =>
+              ProductBloc(productRepository: ProductRepository())),
+      BlocProvider(
+          create: (context) => BrandBloc(brandRepository: BrandRepository())),
     ], child: const App()));
   }, (error, stackTrace) {});
 }

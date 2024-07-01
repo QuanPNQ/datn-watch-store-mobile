@@ -62,7 +62,7 @@ class Constants {
   static List<Watch> listMockDataWatch = [
     Watch(
       id: '1',
-      brandId: '1',
+      brand: mockBrand,
       name: 'Luch CH 15',
       description:
           'Đồng hồ Luch 15, một trong những thương hiệu nổi đình nổi đám và cũng là một trong những cái tên phổ biến, có sức ảnh hưởng trong giới sản xuất đồng hồ đeo tay. Với những sản phẩm chất lượng,Luch 15 ngày càng khẳng định được vị thế cũng như chỗ đứng của mình.',
@@ -73,10 +73,12 @@ class Constants {
       ],
       price: 3000,
       quantity: 50,
+      numberPurchase: 50,
+      totalSold: 50,
     ),
     Watch(
       id: '1',
-      brandId: '1',
+      brand: mockBrand,
       name: 'Luch CH 15',
       description:
           'Đồng hồ Luch 15, một trong những thương hiệu nổi đình nổi đám và cũng là một trong những cái tên phổ biến, có sức ảnh hưởng trong giới sản xuất đồng hồ đeo tay. Với những sản phẩm chất lượng,Luch 15 ngày càng khẳng định được vị thế cũng như chỗ đứng của mình.',
@@ -87,10 +89,12 @@ class Constants {
       ],
       price: 3000,
       quantity: 50,
+      numberPurchase: 50,
+      totalSold: 50,
     ),
     Watch(
       id: '1',
-      brandId: '1',
+      brand: mockBrand,
       name: 'Luch CH 15',
       description:
           'Đồng hồ Luch 15, một trong những thương hiệu nổi đình nổi đám và cũng là một trong những cái tên phổ biến, có sức ảnh hưởng trong giới sản xuất đồng hồ đeo tay. Với những sản phẩm chất lượng,Luch 15 ngày càng khẳng định được vị thế cũng như chỗ đứng của mình.',
@@ -101,10 +105,12 @@ class Constants {
       ],
       price: 3000,
       quantity: 50,
+      numberPurchase: 50,
+      totalSold: 50,
     ),
     Watch(
       id: '1',
-      brandId: '1',
+      brand: mockBrand,
       name: 'Luch CH 15',
       description:
           'Đồng hồ Luch 15, một trong những thương hiệu nổi đình nổi đám và cũng là một trong những cái tên phổ biến, có sức ảnh hưởng trong giới sản xuất đồng hồ đeo tay. Với những sản phẩm chất lượng,Luch 15 ngày càng khẳng định được vị thế cũng như chỗ đứng của mình.',
@@ -115,12 +121,14 @@ class Constants {
       ],
       price: 3000,
       quantity: 50,
+      numberPurchase: 50,
+      totalSold: 50,
     )
   ];
 
   static Watch mockDataWatch = Watch(
     id: '1',
-    brandId: '1',
+    brand: mockBrand,
     name: 'Luch CH 15',
     description:
         'Đồng hồ Luch 15, một trong những thương hiệu nổi đình nổi đám và cũng là một trong những cái tên phổ biến, có sức ảnh hưởng trong giới sản xuất đồng hồ đeo tay. Với những sản phẩm chất lượng,Luch 15 ngày càng khẳng định được vị thế cũng như chỗ đứng của mình.',
@@ -131,12 +139,14 @@ class Constants {
     ],
     price: 3000,
     quantity: 50,
+    numberPurchase: 50,
+    totalSold: 50,
   );
 
   static List<Watch> listMockTopDeels = [
     Watch(
       id: '1',
-      brandId: '1',
+      brand: mockBrand,
       name: 'Unisex Casio Vintage',
       description:
           'Đồng hồ Luch 15, một trong những thương hiệu nổi đình nổi đám và cũng là một trong những cái tên phổ biến, có sức ảnh hưởng trong giới sản xuất đồng hồ đeo tay. Với những sản phẩm chất lượng,Luch 15 ngày càng khẳng định được vị thế cũng như chỗ đứng của mình.',
@@ -147,10 +157,12 @@ class Constants {
       ],
       price: 8690,
       quantity: 50,
+      numberPurchase: 50,
+      totalSold: 50,
     ),
     Watch(
       id: '1',
-      brandId: '1',
+      brand: mockBrand,
       name: 'Unisex Casio Vintage',
       description:
           'Đồng hồ Luch 15, một trong những thương hiệu nổi đình nổi đám và cũng là một trong những cái tên phổ biến, có sức ảnh hưởng trong giới sản xuất đồng hồ đeo tay. Với những sản phẩm chất lượng,Luch 15 ngày càng khẳng định được vị thế cũng như chỗ đứng của mình.',
@@ -161,10 +173,12 @@ class Constants {
       ],
       price: 8690,
       quantity: 50,
+      numberPurchase: 50,
+      totalSold: 50,
     ),
     Watch(
       id: '1',
-      brandId: '1',
+      brand: mockBrand,
       name: 'Unisex Casio Vintage',
       description:
           'Đồng hồ Luch 15, một trong những thương hiệu nổi đình nổi đám và cũng là một trong những cái tên phổ biến, có sức ảnh hưởng trong giới sản xuất đồng hồ đeo tay. Với những sản phẩm chất lượng,Luch 15 ngày càng khẳng định được vị thế cũng như chỗ đứng của mình.',
@@ -175,6 +189,8 @@ class Constants {
       ],
       price: 8690,
       quantity: 50,
+      numberPurchase: 50,
+      totalSold: 50,
     ),
   ];
 
@@ -238,6 +254,9 @@ class Constants {
       listWatch: listMockOrderItems,
       status: OrderStatusType.PENDING,
       orderDate: DateTime.now());
+
+  static Brand mockBrand = Brand(
+      id: "1", name: "Orient", logo: "", description: "Thương hiệu nhật bản");
 
   static ShippingAddress mockDataShippingAddress = ShippingAddress(
       id: '1',
@@ -409,3 +428,5 @@ enum PaymentMethodType { CASH, VN_PAY }
 enum OrderStatusType { PENDING, PROCESSING, DELIVERED, CANCELLED }
 
 enum NotificationType { PROMOTION, EVENT, UPDATE }
+
+enum TopProductType { SALE, POPULAR, NEW, COLLECTION, PRICE }

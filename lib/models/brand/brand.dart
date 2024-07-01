@@ -10,4 +10,10 @@ class Brand {
     required this.description,
     required this.logo,
   });
+
+  factory Brand.fromJson(Map<String, dynamic> json) => Brand(
+      id: json['_id'],
+      name: json['_id'],
+      description: json['description'],
+      logo: json['logo']);
 }

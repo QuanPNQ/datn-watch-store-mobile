@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_mob/blocs/product/product_bloc.dart';
+import 'package:flutter_mob/blocs/product/product_state.dart';
 import 'package:flutter_mob/configs/colors.dart';
 import 'package:flutter_mob/configs/constants.dart';
 import 'package:flutter_mob/configs/themes.dart';
 import 'package:flutter_mob/models/watch/watch.dart';
+import 'package:flutter_mob/ui/components/card/card_fake_top_deel.dart';
 import 'package:flutter_mob/ui/components/card/card_top_deel.dart';
 import 'package:flutter_mob/ui/components/text/text_normal.dart';
 
@@ -15,50 +19,73 @@ class TopDeels extends StatefulWidget {
 
 class _TopDeelsState extends State<TopDeels> {
   PageController pageController = PageController();
-  List<Watch> listWatch = Constants.listMockTopDeels;
+  List<Watch> listWatch = [];
+  final List<Watch> listMockWatch = Constants.listMockDataWatch;
+  bool isLoaded = false;
+
+  @override
+  void initState() {
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              TextNormal(
-                title: StringName.topDeels,
-                fontName: AppThemes.dmSerifDisplay,
-                size: 22,
-                lineHeight: 1.2,
-                colors: AppColors.black1,
-              ),
-              TextNormal(
-                title: StringName.all,
-                size: 14,
-                lineHeight: 1.5,
-                colors: AppColors.blue300,
-              ),
-            ],
+    return BlocListener<ProductBloc, ProductState>(
+      listener: (context, state) async {
+        if (state is GetTopDeelProductLoadingState) {
+          setState(() {
+            isLoaded = false;
+          });
+        } else if (state is GetTopDeelProductSuccessState) {
+          setState(() {
+            isLoaded = true;
+            listWatch = state.listWatch;
+          });
+        } else if (state is GetTopDeelProductErrorState) {}
+      },
+      child: Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                TextNormal(
+                  title: StringName.topDeels,
+                  fontName: AppThemes.dmSerifDisplay,
+                  size: 22,
+                  lineHeight: 1.2,
+                  colors: AppColors.black1,
+                ),
+                TextNormal(
+                  title: StringName.all,
+                  size: 14,
+                  lineHeight: 1.5,
+                  colors: AppColors.blue300,
+                ),
+              ],
+            ),
           ),
-        ),
-        SizedBox(
-          height: 20,
-        ),
-        SizedBox(
-          height: 139,
-          child: PageView(
-            controller: pageController,
-            children: listWatch
-                .map((e) => CardTopDeel(
-                      watchData: e,
-                      onClick: handleClickTopDeel(e),
-                    ))
-                .toList(),
+          SizedBox(
+            height: 20,
           ),
-        )
-      ],
+          SizedBox(
+            height: 139,
+            child: PageView(
+              controller: pageController,
+              children: isLoaded
+                  ? listWatch
+                      .map((e) => CardTopDeel(
+                            watchData: e,
+                            onClick: handleClickTopDeel(e),
+                          ))
+                      .toList()
+                  : listMockWatch.map((e) => CardFakeTopDeel()).toList(),
+            ),
+          )
+        ],
+      ),
     );
   }
 
