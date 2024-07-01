@@ -26,6 +26,7 @@ class Constants {
   static const String allTopDeelsScreen = '/all-top-deels-screen';
   static const String allBrandScreen = '/all-brand-screen';
   static const String allOutstandingScreen = '/all-outstanding-screen';
+  static const String watchByBrandScreen = '/watch-by-brand-screen';
 
   static const String baseUrl =
       'https://watch-store-f8131ab05f69.herokuapp.com/api/';

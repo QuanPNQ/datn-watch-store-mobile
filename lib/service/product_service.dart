@@ -5,10 +5,16 @@ import 'package:flutter_mob/configs/constants.dart';
 
 class ProductService extends BaseService {
   Future<dynamic> getListProduct(
-      {int? page = 1, int? limit = 5, TopProductType? type}) async {
+      {int? page = 1,
+      int? limit = 5,
+      TopProductType? type,
+      String? brandId}) async {
     String uri = "${Constants.baseUrl}product?page=$page&limit=$limit";
     if (type != null) {
       uri = uri + "&type=${type.name}";
+    }
+    if (brandId != null) {
+      uri = uri + "&brandId=$brandId";
     }
     debugPrint("[ProductService] getListProduct uri: $uri");
 

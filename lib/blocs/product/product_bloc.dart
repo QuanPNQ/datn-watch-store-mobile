@@ -86,5 +86,29 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
             message: err.toString(), isViewAll: event.isViewAll));
       }
     });
+
+    on<GetProductByBrandEvent>((event, emit) async {
+      try {
+        emit(GetProductByBrandLoadingState());
+        var response = await productRepository.getListProduct(
+            page: event.page, limit: event.limit, brandId: event.brandId);
+        final body = jsonDecode(response.body);
+        if (response.statusCode == HttpStatus.created) {
+          final data = body['data'];
+          List<Watch> listWatch =
+              List<Watch>.from(data.map((item) => Watch.fromJson(item)))
+                  .toList();
+          emit(GetProductByBrandSuccessState(listWatch: listWatch));
+        } else {
+          emit(GetProductByBrandErrorState(message: body['message']));
+        }
+      } catch (err) {
+        debugPrint(
+            "[ProductBloc] GetProductByBrandEvent error => ${err.toString()}");
+        emit(GetProductByBrandErrorState(
+          message: err.toString(),
+        ));
+      }
+    });
   }
 }

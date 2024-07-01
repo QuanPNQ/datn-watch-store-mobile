@@ -37,3 +37,11 @@ class GetOutstandingProductEvent extends ProductEvent {
   const GetOutstandingProductEvent(
       {this.isViewAll = false, this.page, this.limit});
 }
+
+class GetProductByBrandEvent extends ProductEvent {
+  final int? page;
+  final int? limit;
+  final String brandId;
+
+  const GetProductByBrandEvent({required this.brandId, this.page, this.limit});
+}

@@ -73,3 +73,18 @@ class GetOutstandingProductErrorState extends ProductState {
   const GetOutstandingProductErrorState(
       {required this.isViewAll, required this.message});
 }
+
+/// Get Product By Brand
+class GetProductByBrandLoadingState extends ProductState {}
+
+class GetProductByBrandSuccessState extends ProductState {
+  final List<Watch> listWatch;
+
+  const GetProductByBrandSuccessState({required this.listWatch});
+}
+
+class GetProductByBrandErrorState extends ProductState {
+  final String message;
+
+  const GetProductByBrandErrorState({required this.message});
+}

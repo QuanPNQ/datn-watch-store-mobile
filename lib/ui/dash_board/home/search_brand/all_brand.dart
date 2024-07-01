@@ -84,7 +84,9 @@ class _AllBrandScreenState extends State<AllBrandScreen> {
                                         width: widthCard,
                                         height: widthCard * 76 / 113,
                                         brand: e,
-                                        onClick: handleClickBrand(e),
+                                        onClick: () {
+                                          handleClickBrand(e);
+                                        },
                                       ))
                                   .toList()
                               : listMockBrand
@@ -106,5 +108,8 @@ class _AllBrandScreenState extends State<AllBrandScreen> {
     );
   }
 
-  handleClickBrand(Brand brand) {}
+  handleClickBrand(Brand brand) {
+    Navigator.pushNamed(context, Constants.watchByBrandScreen,
+        arguments: brand);
+  }
 }

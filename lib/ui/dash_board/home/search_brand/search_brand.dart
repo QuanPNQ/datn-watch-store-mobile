@@ -98,7 +98,9 @@ class _SearchBrandState extends State<SearchBrand>
                   return isLoaded
                       ? CardBrand(
                           brand: listBrand[index],
-                          onClick: handleClickBrand(listBrand[index]),
+                          onClick: () {
+                            handleClickBrand(listBrand[index]);
+                          },
                         )
                       : CardFakeBrand();
                 },
@@ -110,7 +112,10 @@ class _SearchBrandState extends State<SearchBrand>
     );
   }
 
-  handleClickBrand(Brand brand) {}
+  handleClickBrand(Brand brand) {
+    Navigator.pushNamed(context, Constants.watchByBrandScreen,
+        arguments: brand);
+  }
 
   @override
   bool get wantKeepAlive => true;

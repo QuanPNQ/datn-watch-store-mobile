@@ -13,7 +13,7 @@ class Brand {
 
   factory Brand.fromJson(Map<String, dynamic> json) => Brand(
       id: json['_id'],
-      name: json['_id'],
+      name: json['name'],
       description: json['description'],
       logo: json['logo']);
 }
