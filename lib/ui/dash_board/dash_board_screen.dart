@@ -69,7 +69,12 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                 arguments: state.watch);
           } else if (state is GetDetailProductErrorState) {
             LoadingHelper.hideLoading(context);
+          } else if (state is UpdateProductToCartLoadingState) {
+            if (state.isShowToast) {
+              LoadingHelper.showLoading(context);
+            }
           } else if (state is UpdateProductToCartSuccessState) {
+            LoadingHelper.hideLoading(context);
             setState(() {
               quantityCart = state.listCart.length;
             });
@@ -83,6 +88,16 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                   textColor: Colors.white,
                   fontSize: 16.0);
             }
+          } else if (state is UpdateProductToCartErrorState) {
+            LoadingHelper.hideLoading(context);
+            Fluttertoast.showToast(
+                msg: state.message,
+                toastLength: Toast.LENGTH_SHORT,
+                gravity: ToastGravity.TOP,
+                timeInSecForIosWeb: 1,
+                backgroundColor: Colors.red,
+                textColor: Colors.white,
+                fontSize: 16.0);
           }
         },
         child: Scaffold(

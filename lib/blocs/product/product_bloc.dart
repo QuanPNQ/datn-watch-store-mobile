@@ -137,7 +137,7 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
 
     on<UpdateProductToCartEvent>((event, emit) async {
       try {
-        emit(UpdateProductToCartLoadingState());
+        emit(UpdateProductToCartLoadingState(isShowToast: event.isShowToast));
         var response = await productRepository.updateProductToCart(
             watchId: event.watchId, quantity: event.quantity, type: event.type);
         emit(ProductInitialState());

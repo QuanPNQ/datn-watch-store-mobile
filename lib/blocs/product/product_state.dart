@@ -106,7 +106,11 @@ class GetDetailProductErrorState extends ProductState {
 }
 
 /// Update Product To Cart
-class UpdateProductToCartLoadingState extends ProductState {}
+class UpdateProductToCartLoadingState extends ProductState {
+  final bool isShowToast;
+
+  const UpdateProductToCartLoadingState({required this.isShowToast});
+}
 
 class UpdateProductToCartSuccessState extends ProductState {
   final int quantity;
