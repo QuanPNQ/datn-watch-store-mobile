@@ -3,7 +3,7 @@ import 'package:flutter_mob/models/models.dart';
 
 class Watch {
   final String id;
-  final Brand brand;
+  final Brand? brand;
   final String name;
   final String description;
   final int quantity;
@@ -36,7 +36,7 @@ class Watch {
 
   factory Watch.fromJson(Map<String, dynamic> json) => Watch(
       id: json['_id'],
-      brand: Brand.fromJson(json['brand']),
+      brand: json['brand'] != null ? Brand.fromJson(json['brand']) : null,
       name: json['name'],
       description: json['description'],
       price: double.parse(json['price'].toString()),
@@ -46,8 +46,12 @@ class Watch {
       size: double.parse(json['size'].toString()),
       machineCategory: json['machineCategory'],
       wireCategory: json['wireCategory'],
-      numberPurchase: int.parse(json['numberPurchase'].toString()),
-      totalSold: int.parse(json['totalSold'].toString()),
+      numberPurchase: json['numberPurchase'] != null
+          ? int.parse(json['numberPurchase'].toString())
+          : 0,
+      totalSold: json['totalSold'] != null
+          ? int.parse(json['totalSold'].toString())
+          : 0,
       listReview: json['reviews'] != null
           ? List.from(json['reviews'].map((e) => Review.fromJson(e)))
           : []);

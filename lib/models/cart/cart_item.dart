@@ -10,4 +10,9 @@ class CartItem {
     required this.watch,
     required this.quantity,
   });
+
+  factory CartItem.fromJson(Map<String, dynamic> json) => CartItem(
+      id: json['_id'],
+      watch: Watch.fromJson(json['product']),
+      quantity: json['quantity']);
 }

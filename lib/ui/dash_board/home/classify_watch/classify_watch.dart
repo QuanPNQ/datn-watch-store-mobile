@@ -80,7 +80,7 @@ class _ClassifyWatchState extends State<ClassifyWatch>
                   return isLoaded
                       ? CardWatch(
                           watchData: listWatch[index],
-                          onAdd: onClickAddWatch,
+                          onAdd: () => onClickAddWatch(listWatch[index]),
                           onClick: onCLickDetailWatch,
                         )
                       : CardFakeWatch();
@@ -103,7 +103,10 @@ class _ClassifyWatchState extends State<ClassifyWatch>
     }
   }
 
-  onClickAddWatch() {}
+  onClickAddWatch(Watch watch) {
+    BlocProvider.of<ProductBloc>(context).add(UpdateProductToCartEvent(
+        watchId: watch.id, quantity: 1, type: UpdateCartTypeEnum.PLUS));
+  }
 
   onCLickDetailWatch(Watch watch) {
     BlocProvider.of<ProductBloc>(context)

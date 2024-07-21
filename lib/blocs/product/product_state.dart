@@ -1,5 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter_mob/configs/constants.dart';
+import 'package:flutter_mob/models/cart/cart_item.dart';
 import 'package:flutter_mob/models/watch/watch.dart';
 
 abstract class ProductState extends Equatable {
@@ -102,4 +103,26 @@ class GetDetailProductErrorState extends ProductState {
   final String message;
 
   const GetDetailProductErrorState({required this.message});
+}
+
+/// Update Product To Cart
+class UpdateProductToCartLoadingState extends ProductState {}
+
+class UpdateProductToCartSuccessState extends ProductState {
+  final int quantity;
+  final UpdateCartTypeEnum type;
+  final List<CartItem> listCart;
+  final bool isShowToast;
+
+  const UpdateProductToCartSuccessState(
+      {required this.quantity,
+      required this.type,
+      required this.listCart,
+      required this.isShowToast});
+}
+
+class UpdateProductToCartErrorState extends ProductState {
+  final String message;
+
+  const UpdateProductToCartErrorState({required this.message});
 }

@@ -11,4 +11,12 @@ class ProductRepository {
   Future<dynamic> getDetailProduct(String watchId) async {
     return await ProductService().getDetailProduct(watchId);
   }
+
+  Future<dynamic> updateProductToCart(
+      {required String watchId,
+      required int quantity,
+      required UpdateCartTypeEnum type}) async {
+    return await ProductService()
+        .updateProductToCart(watchId: watchId, quantity: quantity, type: type);
+  }
 }

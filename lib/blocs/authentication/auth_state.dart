@@ -14,6 +14,8 @@ class AuthLoadingState extends AuthState {}
 
 class AuthNotAuthenticatedState extends AuthState {}
 
+class AuthUnauthorizedState extends AuthState {}
+
 class AuthAuthenticatedState extends AuthState {
   final Account account;
 

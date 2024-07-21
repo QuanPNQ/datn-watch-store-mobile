@@ -1,4 +1,7 @@
+import 'dart:convert';
+import 'dart:io';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter_mob/exception/unauthorized_exception.dart';
 import 'package:flutter_mob/service/base_service.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter_mob/configs/constants.dart';
@@ -21,7 +24,10 @@ class ProductService extends BaseService {
     final response =
         await http.get(Uri.parse(uri), headers: await requestTokenHeader());
 
-    debugPrint("[ProductService] getListProduct response: ${response.body}");
+    debugPrint("[ProductService] getListProduct res  ${response.body}");
+    if (response.statusCode == HttpStatus.unauthorized) {
+      throw UnauthorizedException();
+    }
     return response;
   }
 
@@ -33,6 +39,30 @@ class ProductService extends BaseService {
         await http.get(Uri.parse(uri), headers: await requestTokenHeader());
 
     debugPrint("[ProductService] getDetailProduct response: ${response.body}");
+    if (response.statusCode == HttpStatus.unauthorized) {
+      throw UnauthorizedException();
+    }
+    return response;
+  }
+
+  Future<dynamic> updateProductToCart(
+      {required String watchId,
+      required int quantity,
+      required UpdateCartTypeEnum type}) async {
+    String uri = "${Constants.baseUrl}product/$watchId/add-to-cart";
+    var body = {"quantity": quantity, "type": type.name};
+
+    debugPrint("[ProductService] updateProductToCart uri: $uri");
+    debugPrint("[ProductService] updateProductToCart body: $body");
+
+    final response = await http.post(Uri.parse(uri),
+        headers: await requestTokenHeader(), body: jsonEncode(body));
+
+    debugPrint(
+        "[ProductService] updateProductToCart response: ${response.body}");
+    if (response.statusCode == HttpStatus.unauthorized) {
+      throw UnauthorizedException();
+    }
     return response;
   }
 }

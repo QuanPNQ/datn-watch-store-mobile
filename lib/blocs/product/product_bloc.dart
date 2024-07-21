@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_mob/blocs/product/product_event.dart';
 import 'package:flutter_mob/blocs/product/product_state.dart';
+import 'package:flutter_mob/models/cart/cart_item.dart';
 import 'package:flutter_mob/models/watch/watch.dart';
 import 'package:flutter_mob/repositories/product/product_repository.dart';
 
@@ -17,6 +18,8 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
         emit(GetClassicProductLoadingState());
         var response = await productRepository.getListProduct(
             type: event.type, page: event.page, limit: event.limit);
+        debugPrint(
+            "[ProductBloc] GetClassicProductEvent response => ${response.statusCode}");
         emit(ProductInitialState());
         final body = jsonDecode(response.body);
         if (response.statusCode == HttpStatus.created) {
@@ -127,6 +130,33 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
         debugPrint(
             "[ProductBloc] GetDetailProductEvent error => ${err.toString()}");
         emit(GetDetailProductErrorState(
+          message: err.toString(),
+        ));
+      }
+    });
+
+    on<UpdateProductToCartEvent>((event, emit) async {
+      try {
+        emit(UpdateProductToCartLoadingState());
+        var response = await productRepository.updateProductToCart(
+            watchId: event.watchId, quantity: event.quantity, type: event.type);
+        emit(ProductInitialState());
+        final body = jsonDecode(response.body);
+        if (response.statusCode == HttpStatus.created) {
+          List<CartItem> listCart =
+              List.from(body['data']['carts'].map((e) => CartItem.fromJson(e)));
+          emit(UpdateProductToCartSuccessState(
+              quantity: event.quantity,
+              type: event.type,
+              listCart: listCart,
+              isShowToast: event.isShowToast));
+        } else {
+          emit(UpdateProductToCartErrorState(message: body['message']));
+        }
+      } catch (err) {
+        debugPrint(
+            "[ProductBloc] UpdateProductToCartEvent error => ${err.toString()}");
+        emit(UpdateProductToCartErrorState(
           message: err.toString(),
         ));
       }

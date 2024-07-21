@@ -5,6 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_mob/router/app_router.dart';
 import 'package:flutter_mob/ui/splash/splash_screen.dart';
 import 'package:loader_overlay/loader_overlay.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class App extends StatefulWidget {
   const App({
@@ -43,6 +44,7 @@ class _AppState extends State<App> with WidgetsBindingObserver {
             ),
             home: const SplashScreen(),
             onGenerateRoute: onGenerateRoute,
+            builder: FToastBuilder(),
           ),
         ),
         designSize: const Size(375, 812),

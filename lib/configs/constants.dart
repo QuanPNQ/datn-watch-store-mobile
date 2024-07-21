@@ -434,3 +434,5 @@ enum OrderStatusType { PENDING, PROCESSING, DELIVERED, CANCELLED }
 enum NotificationType { PROMOTION, EVENT, UPDATE }
 
 enum TopProductType { SALE, POPULAR, NEW, COLLECTION, PRICE }
+
+enum UpdateCartTypeEnum { PLUS, MINUS }

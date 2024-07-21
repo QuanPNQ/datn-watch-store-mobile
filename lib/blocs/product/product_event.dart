@@ -53,3 +53,16 @@ class GetDetailProductEvent extends ProductEvent {
     required this.watchId,
   });
 }
+
+class UpdateProductToCartEvent extends ProductEvent {
+  final String watchId;
+  final int quantity;
+  final UpdateCartTypeEnum type;
+  final bool isShowToast;
+
+  const UpdateProductToCartEvent(
+      {required this.watchId,
+      required this.quantity,
+      required this.type,
+      this.isShowToast = true});
+}

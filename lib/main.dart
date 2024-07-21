@@ -9,11 +9,13 @@ import 'package:flutter_mob/blocs/authentication/auth_bloc.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_mob/blocs/authentication/auth_event.dart';
 import 'package:flutter_mob/blocs/brand/brand_bloc.dart';
+import 'package:flutter_mob/blocs/cart/cart_bloc.dart';
 import 'package:flutter_mob/blocs/login/login_bloc.dart';
 import 'package:flutter_mob/blocs/product/product_bloc.dart';
 import 'package:flutter_mob/blocs/signup/signup_bloc.dart';
 import 'package:flutter_mob/repositories/authentication/auth_repository.dart';
 import 'package:flutter_mob/repositories/brand/brand_repository.dart';
+import 'package:flutter_mob/repositories/cart/cart_repository.dart';
 import 'package:flutter_mob/repositories/product/product_repository.dart';
 import 'package:flutter_mob/utils/time_ago_helper.dart';
 import 'storage/sharedpreferences/shared_preferences_manager.dart';
@@ -122,6 +124,8 @@ Future<void> main() async {
               ProductBloc(productRepository: ProductRepository())),
       BlocProvider(
           create: (context) => BrandBloc(brandRepository: BrandRepository())),
+      BlocProvider(
+          create: (context) => CartBloc(cartRepository: CartRepository())),
     ], child: const App()));
   }, (error, stackTrace) {});
 }
