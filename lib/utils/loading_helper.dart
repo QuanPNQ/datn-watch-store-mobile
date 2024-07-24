@@ -4,6 +4,7 @@ import 'package:loader_overlay/src/overlay_controller_widget_extension.dart';
 
 class LoadingHelper {
   static showLoading(BuildContext context) {
+    FocusManager.instance.primaryFocus?.unfocus();
     context.loaderOverlay.show(widget: const Center(child: LoadingProgress()));
   }
 

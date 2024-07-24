@@ -1,18 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mob/configs/constants.dart';
 import 'package:flutter_mob/models/brand/brand.dart';
+import 'package:flutter_mob/models/models.dart';
 import 'package:flutter_mob/models/watch/watch.dart';
 import 'package:flutter_mob/ui/dash_board/dash_board_screen.dart';
 import 'package:flutter_mob/ui/dash_board/detail_order/detail_order_screen.dart';
+import 'package:flutter_mob/ui/dash_board/discount/apply_discount_screen.dart';
 import 'package:flutter_mob/ui/dash_board/home/outstanding_watch/all_outstanding_watch.dart';
 import 'package:flutter_mob/ui/dash_board/home/search_brand/all_brand.dart';
 import 'package:flutter_mob/ui/dash_board/home/search_brand/watch_by_brand.dart';
 import 'package:flutter_mob/ui/dash_board/home/top_deels/all_top_deels.dart';
+import 'package:flutter_mob/ui/dash_board/payment_method/payment_method_screen.dart';
 import 'package:flutter_mob/ui/dash_board/personal_screen/change_password_screen/change_password_screen.dart';
 import 'package:flutter_mob/ui/dash_board/personal_screen/notify/notify_screen.dart';
 import 'package:flutter_mob/ui/dash_board/personal_screen/order_screen/order_screen.dart';
 import 'package:flutter_mob/ui/dash_board/personal_screen/profile_screen/profile_screen.dart';
+import 'package:flutter_mob/ui/dash_board/shipping_address/new_shipping_address_screen.dart';
+import 'package:flutter_mob/ui/dash_board/shipping_address/shipping_address_screen.dart';
 import 'package:flutter_mob/ui/dash_board/watch_detail/watch_detail_screen.dart';
+import 'package:flutter_mob/ui/dash_board/webview/webview_screen.dart';
 import 'package:flutter_mob/ui/forgot_password/forgot_password_screen.dart';
 import 'package:flutter_mob/ui/login/login_screen.dart';
 import 'package:flutter_mob/ui/onboarding/onboarding_screen.dart';
@@ -40,7 +46,10 @@ Route<dynamic> onGenerateRoute(RouteSettings settings) {
         watch: args as Watch,
       ));
     case Constants.detailOrderScreen:
-      return generateRouter(widget: const DetailOrderScreen());
+      return generateRouter(
+          widget: DetailOrderScreen(
+        data: args,
+      ));
     case Constants.profileScreen:
       return generateRouter(widget: const ProfileScreen());
     case Constants.changePasswordScreen:
@@ -57,6 +66,28 @@ Route<dynamic> onGenerateRoute(RouteSettings settings) {
       return generateRouter(widget: const AllOutstandingWatchScreen());
     case Constants.watchByBrandScreen:
       return generateRouter(widget: WatchByBrandScreen(brand: args as Brand));
+    case Constants.shippingAddressScreen:
+      return generateRouter(widget: ShippingAddressScreen());
+    case Constants.newShippingAddressScreen:
+      return generateRouter(
+          widget: NewShippingAddressScreen(
+        shippingAddress: args as ShippingAddress?,
+      ));
+    case Constants.applyDiscountScreen:
+      return generateRouter(
+          widget: ApplyDiscountScreen(
+        discount: args as Discount?,
+      ));
+    case Constants.paymentMethodScreen:
+      return generateRouter(
+          widget: PaymentMethodScreen(
+        paymentMethod: args as String?,
+      ));
+    case Constants.webviewScreen:
+      return generateRouter(
+          widget: WebviewScreen(
+        uri: args as String,
+      ));
     default:
       throw ('This route name does not exit');
   }

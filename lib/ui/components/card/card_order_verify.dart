@@ -18,7 +18,7 @@ class CardOrderVerify extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     double discountPercent = 0.03;
-    double subtotal = order.listWatch.fold(
+    double subtotal = order.listOrderItem.fold(
       0.0,
       (previousValue, item) =>
           previousValue + (item.watch.price * item.quantity),
@@ -67,7 +67,7 @@ class CardOrderVerify extends StatelessWidget {
             SizedBox(
               height: 8,
             ),
-            ...order.listWatch.map((e) {
+            ...order.listOrderItem.map((e) {
               return Container(
                 height: 64,
                 padding: EdgeInsets.only(left: 12),
@@ -140,7 +140,7 @@ class CardOrderVerify extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   TextNormal(
-                    title: "${order.listWatch.length} sản phẩm",
+                    title: "${order.listOrderItem.length} sản phẩm",
                     colors: AppColors.bPrimaryColor,
                     fontName: AppThemes.specialElite,
                     size: 14,

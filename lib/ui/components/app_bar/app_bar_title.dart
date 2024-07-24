@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mob/configs/colors.dart';
 import 'package:flutter_mob/configs/themes.dart';
+import 'package:flutter_mob/models/models.dart';
 import 'package:flutter_mob/ui/components/text/text_normal.dart';
 
 class AppBarTitle extends StatelessWidget {
@@ -8,13 +9,15 @@ class AppBarTitle extends StatelessWidget {
   final String fontName;
   final double? fontSize;
   final bool isShowBackButton;
+  final Function()? onPop;
 
   const AppBarTitle(
       {Key? key,
       required this.appTitle,
       this.fontName = AppThemes.specialElite,
       this.fontSize,
-      this.isShowBackButton = true})
+      this.isShowBackButton = true,
+      this.onPop})
       : super(key: key);
 
   @override
@@ -32,7 +35,7 @@ class AppBarTitle extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             GestureDetector(
-                onTap: () => Navigator.pop(context),
+                onTap: onPop ?? () => Navigator.pop(context),
                 child: SizedBox(
                     width: 32,
                     height: 32,

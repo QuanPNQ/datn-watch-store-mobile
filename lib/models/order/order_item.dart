@@ -10,4 +10,10 @@ class OrderItem {
     required this.watch,
     required this.quantity,
   });
+
+  factory OrderItem.fromJson(Map<String, dynamic> json) => OrderItem(
+        id: json['_id'],
+        watch: Watch.fromJson(json['product']),
+        quantity: json['quantity'],
+      );
 }

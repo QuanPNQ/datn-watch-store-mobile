@@ -1,0 +1,22 @@
+import 'dart:io';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter_mob/exception/unauthorized_exception.dart';
+import 'package:flutter_mob/service/base_service.dart';
+import 'package:http/http.dart' as http;
+import 'package:flutter_mob/configs/constants.dart';
+
+class DiscountService extends BaseService {
+  Future<dynamic> getListDiscount() async {
+    String uri = "${Constants.baseUrl}discount";
+    debugPrint("[DiscountService] getListDiscount uri: $uri");
+
+    final response =
+        await http.get(Uri.parse(uri), headers: await requestTokenHeader());
+
+    debugPrint("[DiscountService] getListDiscount res  ${response.body}");
+    if (response.statusCode == HttpStatus.unauthorized) {
+      throw UnauthorizedException();
+    }
+    return response;
+  }
+}

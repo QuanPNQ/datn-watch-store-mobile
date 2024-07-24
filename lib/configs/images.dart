@@ -21,6 +21,12 @@ class AppImages {
   static const String imgBackgroundLogin =
       'assets/images/img_background_login.png';
   static const String imgSubtractWatch = 'assets/images/img_subtract_watch.svg';
-  static const String imgAvatarUserDefault = 'assets/images/img_avatar_user_default.jpg';
+  static const String imgAvatarUserDefault =
+      'assets/images/img_avatar_user_default.jpg';
+
 //background
+
+//lotie
+  static const String paymentFail = 'assets/loties/animation_fail.json';
+  static const String paymentSuccess = 'assets/loties/animation_success.json';
 }

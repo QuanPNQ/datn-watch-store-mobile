@@ -27,6 +27,11 @@ class Constants {
   static const String allBrandScreen = '/all-brand-screen';
   static const String allOutstandingScreen = '/all-outstanding-screen';
   static const String watchByBrandScreen = '/watch-by-brand-screen';
+  static const String shippingAddressScreen = '/shipping-address-screen';
+  static const String newShippingAddressScreen = '/new-shipping-address-screen';
+  static const String applyDiscountScreen = '/apply-discount-screen';
+  static const String paymentMethodScreen = '/payment-method-screen';
+  static const String webviewScreen = '/webview-screen';
 
   static const String baseUrl =
       'https://watch-store-f8131ab05f69.herokuapp.com/api/';
@@ -245,9 +250,10 @@ class Constants {
   static Order mockDataOrder = Order(
       id: "1",
       codeOrder: "WS001",
-      listWatch: listMockOrderItems,
+      listOrderItem: listMockOrderItems,
       status: OrderStatusType.PENDING,
-      orderDate: DateTime.now());
+      orderDate: DateTime.now(),
+      estDeliveryDate: DateTime.now());
 
   static Brand mockBrand = Brand(
       id: "1", name: "Orient", logo: "", description: "Thương hiệu nhật bản");
@@ -297,7 +303,7 @@ class Constants {
     ),
   ];
 
-  static String getStatusOrder(OrderStatusType status) {
+  static String getStatusOrder(String status) {
     switch (status) {
       case OrderStatusType.PENDING:
         return "Chờ xác nhận";
@@ -307,6 +313,8 @@ class Constants {
         return "Đã giao";
       case OrderStatusType.CANCELLED:
         return "Đã huỷ";
+      default:
+        return "Trạng thái không xác định";
     }
   }
 
@@ -347,7 +355,7 @@ class StringName {
   static const String notHaveAccount = 'Bạn chưa có tài khoản?';
   static const String signUp = 'Đăng ký';
   static const String email = 'Email';
-  static const String phone = 'Phone';
+  static const String phone = 'Số điện thoại';
   static const String hadAccount = 'Bạn đã có tài khoản?';
   static const String fillYourEmail = 'Nhập email của bạn';
   static const String fillYourPhone = 'Nhập số điện thoại của bạn';
@@ -371,15 +379,26 @@ class StringName {
   static const String free = 'Free';
   static const String total = 'Thành tiền';
   static const String payment = 'Thanh toán';
+  static const String newAddress = 'Thêm Địa Chỉ Mới';
+  static const String agree = 'Đồng ý';
   static const String notAddProducts = 'Chưa thêm sản phẩm';
   static const String orderInformation = 'Thông tin đơn hàng';
+  static const String listShippingAddress = 'Chọn địa chỉ nhận hàng';
+  static const String selectVoucher = 'Chọn Voucher';
+  static const String selectPaymentMethod = 'Chọn Phương Thức Thanh Toán';
+  static const String newShippingAddress = 'Địa chỉ mới';
+  static const String updateShippingAddress = 'Cập nhật địa chỉ';
   static const String deliveryAddress = 'Địa chỉ nhận hàng';
   static const String paymentMethod = 'Phương thức thanh toán';
   static const String paymentOnDelivery = 'Thanh toán khi nhận hàng';
+  static const String paymentViaVNPay = 'Thanh toán qua VNPay';
   static const String codeOrders = 'Mã đơn hàng';
   static const String orderDate = 'Thời gian đặt hàng';
   static const String estimatedDeliveryTime = 'Thời gian giao hàng dự kiến';
+  static const String address = 'Địa chỉ';
   static const String confirmOrder = 'Xác nhận đơn hàng';
+  static const String complete = 'Hoàn thành';
+  static const String deleteAddress = 'Xoá địa chỉ';
   static const String accountInfo = 'Thông tin tài khoản';
   static const String notification = 'Thông báo';
   static const String order = 'Đơn hàng';
@@ -403,6 +422,8 @@ class StringName {
   static const String emailNotValid = 'Email không hợp lệ!';
   static const String signupSuccess = 'Đăng ký thành công';
   static const String loginNow = 'Bạn có muốn đăng nhập ngay?';
+  static const String name = 'Họ tên';
+  static const String note = 'Ghi chú';
 
   //type
   static const String AUTOMATIC_MECHANICAL_TYPE = "AUTOMATIC_MECHANICAL";
@@ -419,6 +440,7 @@ class StringName {
 class DateFormat {
   static const String dateHour = 'dd-MM-yyyy HH:mm';
   static const String date = 'dd-MM-yyyy';
+  static const String expirationDiscount = 'dd.MM.yyyy';
 }
 
 class Regex {
@@ -427,12 +449,17 @@ class Regex {
 
 enum DiscountType { PERCENT, PERMANENT }
 
-enum PaymentMethodType { CASH, VN_PAY }
-
-enum OrderStatusType { PENDING, PROCESSING, DELIVERED, CANCELLED }
+enum PaymentMethodType { CASH, VNPAY }
 
 enum NotificationType { PROMOTION, EVENT, UPDATE }
 
 enum TopProductType { SALE, POPULAR, NEW, COLLECTION, PRICE }
 
 enum UpdateCartTypeEnum { PLUS, MINUS }
+
+class OrderStatusType {
+  static const String PENDING = "PENDING";
+  static const String PROCESSING = "PROCESSING";
+  static const String DELIVERED = "DELIVERED";
+  static const String CANCELLED = "CANCELLED";
+}
