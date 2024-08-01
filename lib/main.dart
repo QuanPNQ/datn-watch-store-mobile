@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutter_mob/app.dart';
+import 'package:flutter_mob/blocs/account/account_bloc.dart';
 import 'package:flutter_mob/blocs/authentication/auth_bloc.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_mob/blocs/authentication/auth_event.dart';
@@ -16,6 +17,7 @@ import 'package:flutter_mob/blocs/order/order_bloc.dart';
 import 'package:flutter_mob/blocs/product/product_bloc.dart';
 import 'package:flutter_mob/blocs/shipping_address/shipping_address_bloc.dart';
 import 'package:flutter_mob/blocs/signup/signup_bloc.dart';
+import 'package:flutter_mob/repositories/account/account_repository.dart';
 import 'package:flutter_mob/repositories/authentication/auth_repository.dart';
 import 'package:flutter_mob/repositories/brand/brand_repository.dart';
 import 'package:flutter_mob/repositories/cart/cart_repository.dart';
@@ -140,6 +142,9 @@ Future<void> main() async {
       BlocProvider(
           create: (context) =>
               DiscountBloc(discountRepository: DiscountRepository())),
+      BlocProvider(
+          create: (context) =>
+              AccountBloc(accountRepository:  AccountRepository())),
     ], child: const App()));
   }, (error, stackTrace) {});
 }

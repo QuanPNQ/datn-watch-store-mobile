@@ -76,6 +76,7 @@ dev_dependencies:
   fluttertoast: ^8.2.5
   webview_flutter: ^4.4.2
   lottie: ^2.1.0
+  image_picker: ^1.0.4
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

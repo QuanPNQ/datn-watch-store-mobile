@@ -420,6 +420,7 @@ class StringName {
   static const String signupError = 'Lỗi đăng ký';
   static const String notAllowEmpty = 'Không được để trống!';
   static const String emailNotValid = 'Email không hợp lệ!';
+  static const String passwordNotMatch = 'Mật khẩu không trùng khớp!';
   static const String signupSuccess = 'Đăng ký thành công';
   static const String loginNow = 'Bạn có muốn đăng nhập ngay?';
   static const String name = 'Họ tên';
