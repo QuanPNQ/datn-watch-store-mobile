@@ -8,6 +8,8 @@ import 'package:flutter_mob/blocs/notify/notify_event.dart';
 import 'package:flutter_mob/blocs/notify/notify_state.dart';
 import 'package:flutter_mob/blocs/product/product_bloc.dart';
 import 'package:flutter_mob/blocs/product/product_state.dart';
+import 'package:flutter_mob/blocs/search_histories/search_histories_bloc.dart';
+import 'package:flutter_mob/blocs/search_histories/search_histories_event.dart';
 import 'package:flutter_mob/configs/colors.dart';
 import 'package:flutter_mob/configs/constants.dart';
 import 'package:flutter_mob/configs/images.dart';
@@ -47,6 +49,8 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
     LoadingHelper.hideLoading(context);
     BlocProvider.of<CartBloc>(context).add(GetListCartEvent());
     BlocProvider.of<NotifyBloc>(context).add(GetListNotifyEvent());
+    BlocProvider.of<SearchHistoriesBloc>(context)
+        .add(GetListSearchHistoriesEvent());
     super.initState();
   }
 

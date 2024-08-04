@@ -130,3 +130,18 @@ class UpdateProductToCartErrorState extends ProductState {
 
   const UpdateProductToCartErrorState({required this.message});
 }
+
+/// Get List Product
+class GetListProductLoadingState extends ProductState {}
+
+class GetListProductSuccessState extends ProductState {
+  final List<Watch> listWatch;
+
+  const GetListProductSuccessState({required this.listWatch});
+}
+
+class GetListProductErrorState extends ProductState {
+  final String message;
+
+  const GetListProductErrorState({required this.message});
+}

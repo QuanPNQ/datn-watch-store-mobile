@@ -3,9 +3,17 @@ import 'package:flutter_mob/service/product_service.dart';
 
 class ProductRepository {
   Future<dynamic> getListProduct(
-      {int? page, int? limit, TopProductType? type, String? brandId}) async {
-    return await ProductService()
-        .getListProduct(page: page, limit: limit, type: type, brandId: brandId);
+      {int? page,
+      int? limit,
+      TopProductType? type,
+      String? brandId,
+      String? textSearch}) async {
+    return await ProductService().getListProduct(
+        page: page,
+        limit: limit,
+        type: type,
+        brandId: brandId,
+        textSearch: textSearch);
   }
 
   Future<dynamic> getDetailProduct(String watchId) async {

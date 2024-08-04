@@ -11,13 +11,17 @@ class ProductService extends BaseService {
       {int? page = 1,
       int? limit = 5,
       TopProductType? type,
-      String? brandId}) async {
+      String? brandId,
+      String? textSearch}) async {
     String uri = "${Constants.baseUrl}product?page=$page&limit=$limit";
     if (type != null) {
       uri = uri + "&type=${type.name}";
     }
     if (brandId != null) {
       uri = uri + "&brandId=$brandId";
+    }
+    if (textSearch != null) {
+      uri = uri + "&textSearch=$textSearch";
     }
     debugPrint("[ProductService] getListProduct uri: $uri");
 

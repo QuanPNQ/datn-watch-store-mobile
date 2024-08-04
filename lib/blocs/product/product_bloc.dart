@@ -13,6 +13,28 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
 
   ProductBloc({required this.productRepository})
       : super(ProductInitialState()) {
+    on<GetListProductEvent>((event, emit) async {
+      try {
+        emit(GetListProductLoadingState());
+        var response = await productRepository.getListProduct(
+            page: event.page, limit: event.limit, textSearch: event.textSearch);
+        final body = jsonDecode(response.body);
+        if (response.statusCode == HttpStatus.created) {
+          final data = body['data'];
+          List<Watch> listWatch =
+              List<Watch>.from(data.map((item) => Watch.fromJson(item)))
+                  .toList();
+          emit(GetListProductSuccessState(listWatch: listWatch));
+        } else {
+          emit(GetListProductErrorState(message: body['message']));
+        }
+      } catch (err) {
+        debugPrint(
+            "[ProductBloc] GetListProductEvent error => ${err.toString()}");
+        emit(GetListProductErrorState(message: err.toString()));
+      }
+    });
+
     on<GetClassicProductEvent>((event, emit) async {
       try {
         emit(GetClassicProductLoadingState());

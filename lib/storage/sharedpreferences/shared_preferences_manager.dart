@@ -10,6 +10,7 @@ class SharedPrefManager {
   static const String isCompleteWalkThrough = 'isCompleteWalkThrough';
   static const String userInfoKey = 'userInfoKey';
   static const String notifyKey = 'notifyKey';
+  static const String searchHistoriesKey = 'searchHistoriesKey';
 
   Future<void> init() async {
     _sharedPreferences = await SharedPreferences.getInstance();

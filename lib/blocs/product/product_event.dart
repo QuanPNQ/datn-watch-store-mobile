@@ -66,3 +66,11 @@ class UpdateProductToCartEvent extends ProductEvent {
       required this.type,
       this.isShowToast = true});
 }
+
+class GetListProductEvent extends ProductEvent {
+  final int? page;
+  final int? limit;
+  final String? textSearch;
+
+  const GetListProductEvent({this.page, this.limit, this.textSearch});
+}

@@ -16,6 +16,7 @@ import 'package:flutter_mob/blocs/login/login_bloc.dart';
 import 'package:flutter_mob/blocs/notify/notify_bloc.dart';
 import 'package:flutter_mob/blocs/order/order_bloc.dart';
 import 'package:flutter_mob/blocs/product/product_bloc.dart';
+import 'package:flutter_mob/blocs/search_histories/search_histories_bloc.dart';
 import 'package:flutter_mob/blocs/shipping_address/shipping_address_bloc.dart';
 import 'package:flutter_mob/blocs/signup/signup_bloc.dart';
 import 'package:flutter_mob/repositories/account/account_repository.dart';
@@ -26,6 +27,7 @@ import 'package:flutter_mob/repositories/discount/discount_repository.dart';
 import 'package:flutter_mob/repositories/notify/notify_repository.dart';
 import 'package:flutter_mob/repositories/order/order_repository.dart';
 import 'package:flutter_mob/repositories/product/product_repository.dart';
+import 'package:flutter_mob/repositories/search_histories/search_histories_repository.dart';
 import 'package:flutter_mob/repositories/shippingAddress/shipping_address_repository.dart';
 import 'package:flutter_mob/utils/time_ago_helper.dart';
 import 'storage/sharedpreferences/shared_preferences_manager.dart';
@@ -150,6 +152,9 @@ Future<void> main() async {
       BlocProvider(
           create: (context) =>
               NotifyBloc(notifyRepository: NotifyRepository())),
+      BlocProvider(
+          create: (context) => SearchHistoriesBloc(
+              searchHistoriesRepository: SearchHistoriesRepository())),
     ], child: const App()));
   }, (error, stackTrace) {});
 }
