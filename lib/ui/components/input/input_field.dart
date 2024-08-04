@@ -75,7 +75,7 @@ class _InputFieldState extends State<InputField> {
           textAlignVertical: TextAlignVertical.center,
           readOnly: widget.isReadOnly,
           inputFormatters: widget.inputFormatters,
-          maxLines: widget.maxLines,
+          maxLines: widget.isObscureText ? 1 : widget.maxLines,
           onChanged: widget.onChange ??
               (value) {
                 setState(() {});
