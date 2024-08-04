@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mob/configs/colors.dart';
 import 'package:flutter_mob/configs/themes.dart';
-import 'package:flutter_mob/models/models.dart';
 import 'package:flutter_mob/ui/components/text/text_normal.dart';
 
 class AppBarTitle extends StatelessWidget {
@@ -25,11 +24,15 @@ class AppBarTitle extends StatelessWidget {
     return Stack(
       alignment: Alignment.center,
       children: [
-        TextNormal(
-          title: appTitle,
-          colors: AppColors.bPrimaryColor,
-          fontName: fontName,
-          size: fontSize,
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 42),
+          child: TextNormal(
+            title: appTitle,
+            colors: AppColors.bPrimaryColor,
+            fontName: fontName,
+            size: fontSize,
+            maxLine: 1,
+          ),
         ),
         Row(
           mainAxisAlignment: MainAxisAlignment.start,

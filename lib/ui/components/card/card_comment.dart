@@ -3,6 +3,7 @@ import 'package:flutter_mob/configs/colors.dart';
 import 'package:flutter_mob/configs/themes.dart';
 import 'package:flutter_mob/models/models.dart';
 import 'package:flutter_mob/ui/components/text/text_normal.dart';
+import 'package:flutter_rating/flutter_rating.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class CardComment extends StatelessWidget {
@@ -49,6 +50,13 @@ class CardComment extends StatelessWidget {
                 ),
                 SizedBox(
                   height: 4,
+                ),
+                StarRating(
+                  rating: review.rate,
+                  mainAxisAlignment: MainAxisAlignment.start,
+                ),
+                SizedBox(
+                  height: 8,
                 ),
                 TextNormal(
                   title: review.comment,

@@ -16,6 +16,7 @@ import 'package:flutter_mob/ui/dash_board/personal_screen/notify/detail_notify_s
 import 'package:flutter_mob/ui/dash_board/personal_screen/notify/notify_screen.dart';
 import 'package:flutter_mob/ui/dash_board/personal_screen/order_screen/order_screen.dart';
 import 'package:flutter_mob/ui/dash_board/personal_screen/profile_screen/profile_screen.dart';
+import 'package:flutter_mob/ui/dash_board/personal_screen/transaction_screen/transaction_screen.dart';
 import 'package:flutter_mob/ui/dash_board/shipping_address/new_shipping_address_screen.dart';
 import 'package:flutter_mob/ui/dash_board/shipping_address/shipping_address_screen.dart';
 import 'package:flutter_mob/ui/dash_board/watch_detail/watch_detail_screen.dart';
@@ -63,6 +64,8 @@ Route<dynamic> onGenerateRoute(RouteSettings settings) {
           widget: DetailNotifyScreen(notification: args as model.Notification));
     case Constants.orderScreen:
       return generateRouter(widget: const OrderScreen());
+    case Constants.transactionScreen:
+      return generateRouter(widget: const TransactionScreen());
     case Constants.allTopDeelsScreen:
       return generateRouter(widget: const AllTopDeelsScreen());
     case Constants.allBrandScreen:

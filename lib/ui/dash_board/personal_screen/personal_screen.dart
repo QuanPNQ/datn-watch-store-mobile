@@ -41,6 +41,10 @@ class _PersonalScreenState extends State<PersonalScreen> {
         title: StringName.order,
         route: Constants.orderScreen),
     TabPersonal(
+        icon: Icon(Icons.history_edu, size: 36),
+        title: StringName.transactionHistories,
+        route: Constants.transactionScreen),
+    TabPersonal(
         icon: Icon(Icons.question_mark, size: 36),
         title: StringName.supportCenter,
         route: "route"),
@@ -136,7 +140,7 @@ class _PersonalScreenState extends State<PersonalScreen> {
                 int indexTab = listTab.indexOf(e);
                 return GestureDetector(
                   onTap: () async {
-                    if (indexTab == 3) {
+                    if (indexTab == 4) {
                       if (!await launchUrl(
                           Uri.parse(Constants.urlSupportCenter))) {
                         throw Exception(

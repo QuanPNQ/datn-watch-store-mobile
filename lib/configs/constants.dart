@@ -25,6 +25,7 @@ class Constants {
   static const String notifyScreen = '/notify-screen';
   static const String detailNotifyScreen = '/detail-notify-screen';
   static const String orderScreen = '/order-screen';
+  static const String transactionScreen = '/transaction-screen';
   static const String allTopDeelsScreen = '/all-top-deels-screen';
   static const String allBrandScreen = '/all-brand-screen';
   static const String allOutstandingScreen = '/all-outstanding-screen';
@@ -379,6 +380,7 @@ class StringName {
   static const String comment = 'Bình luận:';
   static const String noComment = 'Chưa có bình luận';
   static const String noOrder = 'Chưa có đơn hàng';
+  static const String noTransaction = 'Chưa có giao dịch';
   static const String noNotify = 'Chưa có thông báo';
   static const String hasError = 'Đã có lỗi xảy ra';
   static const String reason = 'Lí do:';
@@ -415,6 +417,7 @@ class StringName {
   static const String notification = 'Thông báo';
   static const String detailNotification = 'Chi tiết thông báo';
   static const String order = 'Đơn hàng';
+  static const String transactionHistories = 'Lịch sử giao dịch';
   static const String supportCenter = 'Trung tâm trợ giúp';
   static const String personalInformation = 'Thông tin cá nhân';
   static const String changePassword = 'Đổi mật khẩu';
