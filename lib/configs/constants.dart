@@ -37,6 +37,8 @@ class Constants {
 
   static const String baseUrl =
       'https://watch-store-f8131ab05f69.herokuapp.com/api/';
+  static const String urlSupportCenter =
+      'https://watch-store-f8131ab05f69.herokuapp.com/support-center';
 
   static const List<WalkThrough> listWalkThroughDefault = [
     WalkThrough(

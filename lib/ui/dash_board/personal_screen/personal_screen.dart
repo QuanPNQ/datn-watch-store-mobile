@@ -15,6 +15,7 @@ import 'package:flutter_mob/models/tab/tab_personal.dart';
 import 'package:flutter_mob/repositories/authentication/auth_repository.dart';
 import 'package:flutter_mob/storage/sharedpreferences/shared_preferences_manager.dart';
 import 'package:flutter_mob/ui/components/text/text_normal.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class PersonalScreen extends StatefulWidget {
   const PersonalScreen({super.key});
@@ -134,7 +135,15 @@ class _PersonalScreenState extends State<PersonalScreen> {
               ...listTab.map((e) {
                 int indexTab = listTab.indexOf(e);
                 return GestureDetector(
-                  onTap: () {
+                  onTap: () async {
+                    if (indexTab == 3) {
+                      if (!await launchUrl(
+                          Uri.parse(Constants.urlSupportCenter))) {
+                        throw Exception(
+                            'Could not launch ${Constants.urlSupportCenter}');
+                      }
+                      return;
+                    }
                     Navigator.pushNamed(context, e.route);
                   },
                   child: Container(
