@@ -12,6 +12,7 @@ import 'package:flutter_mob/ui/dash_board/home/search_brand/watch_by_brand.dart'
 import 'package:flutter_mob/ui/dash_board/home/top_deels/all_top_deels.dart';
 import 'package:flutter_mob/ui/dash_board/payment_method/payment_method_screen.dart';
 import 'package:flutter_mob/ui/dash_board/personal_screen/change_password_screen/change_password_screen.dart';
+import 'package:flutter_mob/ui/dash_board/personal_screen/notify/detail_notify_screen.dart';
 import 'package:flutter_mob/ui/dash_board/personal_screen/notify/notify_screen.dart';
 import 'package:flutter_mob/ui/dash_board/personal_screen/order_screen/order_screen.dart';
 import 'package:flutter_mob/ui/dash_board/personal_screen/profile_screen/profile_screen.dart';
@@ -24,6 +25,7 @@ import 'package:flutter_mob/ui/login/login_screen.dart';
 import 'package:flutter_mob/ui/onboarding/onboarding_screen.dart';
 import 'package:flutter_mob/ui/signup/signup_screen.dart';
 import 'package:flutter_mob/ui/splash/splash_screen.dart';
+import 'package:flutter_mob/models/notify/notification.dart' as model;
 
 Route<dynamic> onGenerateRoute(RouteSettings settings) {
   final args = settings.arguments;
@@ -56,6 +58,9 @@ Route<dynamic> onGenerateRoute(RouteSettings settings) {
       return generateRouter(widget: const ChangePasswordScreen());
     case Constants.notifyScreen:
       return generateRouter(widget: const NotifyScreen());
+    case Constants.detailNotifyScreen:
+      return generateRouter(
+          widget: DetailNotifyScreen(notification: args as model.Notification));
     case Constants.orderScreen:
       return generateRouter(widget: const OrderScreen());
     case Constants.allTopDeelsScreen:

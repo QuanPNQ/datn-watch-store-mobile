@@ -13,6 +13,7 @@ import 'package:flutter_mob/blocs/brand/brand_bloc.dart';
 import 'package:flutter_mob/blocs/cart/cart_bloc.dart';
 import 'package:flutter_mob/blocs/discount/discount_bloc.dart';
 import 'package:flutter_mob/blocs/login/login_bloc.dart';
+import 'package:flutter_mob/blocs/notify/notify_bloc.dart';
 import 'package:flutter_mob/blocs/order/order_bloc.dart';
 import 'package:flutter_mob/blocs/product/product_bloc.dart';
 import 'package:flutter_mob/blocs/shipping_address/shipping_address_bloc.dart';
@@ -22,6 +23,7 @@ import 'package:flutter_mob/repositories/authentication/auth_repository.dart';
 import 'package:flutter_mob/repositories/brand/brand_repository.dart';
 import 'package:flutter_mob/repositories/cart/cart_repository.dart';
 import 'package:flutter_mob/repositories/discount/discount_repository.dart';
+import 'package:flutter_mob/repositories/notify/notify_repository.dart';
 import 'package:flutter_mob/repositories/order/order_repository.dart';
 import 'package:flutter_mob/repositories/product/product_repository.dart';
 import 'package:flutter_mob/repositories/shippingAddress/shipping_address_repository.dart';
@@ -144,7 +146,10 @@ Future<void> main() async {
               DiscountBloc(discountRepository: DiscountRepository())),
       BlocProvider(
           create: (context) =>
-              AccountBloc(accountRepository:  AccountRepository())),
+              AccountBloc(accountRepository: AccountRepository())),
+      BlocProvider(
+          create: (context) =>
+              NotifyBloc(notifyRepository: NotifyRepository())),
     ], child: const App()));
   }, (error, stackTrace) {});
 }
