@@ -4,13 +4,13 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_mob/ui/components/dialog/dialog_notify.dart';
 
 class DialogHelper {
-  static Future<void> showDialogNotify(
+  static Future<dynamic> showDialogNotify(
       {required BuildContext context,
       required String title,
       required String content,
       String? okButton,
       Function()? continueFunction}) async {
-    await showDialog(
+    return await showDialog(
       barrierDismissible: true,
       barrierColor: Colors.black26,
       context: context,
@@ -28,6 +28,20 @@ class DialogHelper {
               ),
             ));
       },
-    );
+    ).then((value) => value);
+  }
+
+  static Future<dynamic> showDialogWidget({
+    required BuildContext context,
+    required Widget widget,
+  }) async {
+    return await showDialog(
+      barrierDismissible: true,
+      barrierColor: Colors.black26,
+      context: context,
+      builder: (context) {
+        return widget;
+      },
+    ).then((value) => value);
   }
 }

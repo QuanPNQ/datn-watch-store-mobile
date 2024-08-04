@@ -36,4 +36,19 @@ class OrderRepository {
       orderId: orderId,
     );
   }
+
+  Future<dynamic> getListOrder({
+    String? status,
+  }) async {
+    return await OrderService().getListOrder(
+      status: status,
+    );
+  }
+
+  Future<dynamic> cancelOrder({
+    required String orderId,
+    required String reason,
+  }) async {
+    return await OrderService().cancelOrder(orderId: orderId, reason: reason);
+  }
 }

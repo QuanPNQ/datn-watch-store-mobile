@@ -8,15 +8,23 @@ class Order {
   ShippingAddress? shippingAddress;
   Discount? discount;
   final String status;
+  final double totalAmount;
+  final double? discountAmount;
   String? paymentMethod;
   final DateTime orderDate;
   final DateTime estDeliveryDate;
+  final DateTime? cancelDate;
+  final String? cancelReason;
 
   Order({
     required this.id,
     required this.codeOrder,
     required this.listOrderItem,
+    required this.totalAmount,
+    this.discountAmount,
     this.shippingAddress,
+    this.cancelDate,
+    this.cancelReason,
     this.discount,
     required this.status,
     required this.orderDate,
@@ -28,9 +36,17 @@ class Order {
         id: json['_id'],
         codeOrder: json['code'],
         orderDate: DateTime.parse(json['orderDate'].toString()).toLocal(),
+        cancelDate: json['cancelDate'] != null
+            ? DateTime.parse(json['cancelDate'].toString()).toLocal()
+            : null,
+        cancelReason: json['cancelReason'],
         estDeliveryDate:
             DateTime.parse(json['estDeliveryDate'].toString()).toLocal(),
         status: json['status'],
+        totalAmount: double.parse(json['totalAmount'].toString()),
+        discountAmount: json['discountAmount'] != null
+            ? double.parse(json['discountAmount'].toString())
+            : null,
         shippingAddress: json['shippingAddress'] != null
             ? ShippingAddress.fromJson(json['shippingAddress'])
             : null,

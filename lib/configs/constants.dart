@@ -4,6 +4,7 @@ import 'package:flutter_mob/models/account/account.dart';
 import 'package:flutter_mob/models/brand/brand.dart';
 import 'package:flutter_mob/models/cart/cart_item.dart';
 import 'package:flutter_mob/models/models.dart';
+import 'package:flutter_mob/models/option.dart';
 import 'package:flutter_mob/models/watch/watch.dart';
 import 'package:flutter_mob/storage/sharedpreferences/shared_preferences_manager.dart';
 import 'package:flutter_mob/models/notify/notification.dart' as model;
@@ -54,18 +55,18 @@ class Constants {
         imagePath: AppImages.imgWalkThrough3)
   ];
 
-  static const List<String> listTabClassifyWatch = [
-    "Bán chạy",
-    "Phổ biến",
-    "Mới",
-    "Bộ sưu tập"
+  static List<Option> listTabClassifyWatch = [
+    Option(key: TopProductType.SALE.name, label: "Bán chạy"),
+    Option(key: TopProductType.POPULAR.name, label: "Phổ biến"),
+    Option(key: TopProductType.NEW.name, label: "Mới"),
+    Option(key: TopProductType.COLLECTION.name, label: "Bộ sưu tập"),
   ];
 
-  static const List<String> listTabOrders = [
-    "Chờ xác nhận",
-    "Chờ giao hàng",
-    "Đã giao",
-    "Đã huỷ",
+  static List<Option> listTabOrders = [
+    Option(key: OrderStatusType.PENDING, label: "Chờ xác nhận"),
+    Option(key: OrderStatusType.SHIPPING, label: "Chờ giao hàng"),
+    Option(key: OrderStatusType.DELIVERED, label: "Đã giao"),
+    Option(key: OrderStatusType.CANCELLED, label: "Đã huỷ"),
   ];
 
   static List<Watch> listMockDataWatch = [
@@ -250,6 +251,7 @@ class Constants {
   static Order mockDataOrder = Order(
       id: "1",
       codeOrder: "WS001",
+      totalAmount: 1000,
       listOrderItem: listMockOrderItems,
       status: OrderStatusType.PENDING,
       orderDate: DateTime.now(),
@@ -307,7 +309,7 @@ class Constants {
     switch (status) {
       case OrderStatusType.PENDING:
         return "Chờ xác nhận";
-      case OrderStatusType.PROCESSING:
+      case OrderStatusType.SHIPPING:
         return "Chờ giao hàng";
       case OrderStatusType.DELIVERED:
         return "Đã giao";
@@ -372,12 +374,15 @@ class StringName {
   static const String addToCart = 'Thêm vào giỏ hàng';
   static const String comment = 'Bình luận:';
   static const String noComment = 'Chưa có bình luận';
+  static const String noOrder = 'Chưa có đơn hàng';
+  static const String reason = 'Lí do:';
   static const String cart = 'Giỏ hàng';
   static const String subtotal = 'Tổng tiền';
   static const String transport = 'Vận chuyển';
   static const String voucher = 'Mã khuyến mãi';
   static const String free = 'Free';
   static const String total = 'Thành tiền';
+  static const String discount = 'Giảm giá';
   static const String payment = 'Thanh toán';
   static const String newAddress = 'Thêm Địa Chỉ Mới';
   static const String agree = 'Đồng ý';
@@ -406,10 +411,13 @@ class StringName {
   static const String personalInformation = 'Thông tin cá nhân';
   static const String changePassword = 'Đổi mật khẩu';
   static const String update = 'Cập nhật';
+  static const String updateOrder = 'Cập nhật đơn hàng';
   static const String inputOldPassword = 'Nhập mật khẩu cũ';
   static const String inputNewPassword = 'Nhập mật khẩu mới';
   static const String inputConfirmNewPassword = 'Xác nhận lại mật khẩu';
   static const String change = 'Thay đổi';
+  static const String cancelOrder = 'Huỷ';
+  static const String send = 'Gửi';
   static const String listOrder = 'Đơn hàng';
   static const String viewDetail = 'Xem chi tiết';
   static const String totalPayment = 'Tổng Thanh Toán:';
@@ -459,8 +467,9 @@ enum TopProductType { SALE, POPULAR, NEW, COLLECTION, PRICE }
 enum UpdateCartTypeEnum { PLUS, MINUS }
 
 class OrderStatusType {
-  static const String PENDING = "PENDING";
   static const String PROCESSING = "PROCESSING";
+  static const String PENDING = "PENDING";
+  static const String SHIPPING = "SHIPPING";
   static const String DELIVERED = "DELIVERED";
   static const String CANCELLED = "CANCELLED";
 }

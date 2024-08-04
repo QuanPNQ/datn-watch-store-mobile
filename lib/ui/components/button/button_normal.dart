@@ -15,7 +15,7 @@ class ButtonNormal extends StatelessWidget {
       this.onPressed,
       this.defaultColor = AppColors.dPrimaryColor,
       this.backgroundColor = AppColors.yellow1,
-      this.borderColor = AppColors.yellow1,
+      this.borderColor = Colors.transparent,
       this.padding = const EdgeInsets.all(0),
       this.borderWidth = 1.0,
       this.radius = 20,

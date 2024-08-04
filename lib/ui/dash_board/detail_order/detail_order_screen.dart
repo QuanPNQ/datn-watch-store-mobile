@@ -18,10 +18,12 @@ import 'package:flutter_mob/models/shipping_address/shipping_address.dart';
 import 'package:flutter_mob/ui/components/app_bar/app_bar_title.dart';
 import 'package:flutter_mob/ui/components/button/button_normal.dart';
 import 'package:flutter_mob/ui/components/card/card_order.dart';
+import 'package:flutter_mob/ui/components/dialog/dialog_cancel_order.dart';
 import 'package:flutter_mob/ui/components/scroll_behavior/scroll_behavior.dart';
 import 'package:flutter_mob/ui/components/text/text_normal.dart';
 import 'package:flutter_mob/utils/Loading_helper.dart';
 import 'package:flutter_mob/utils/date_time_helper.dart';
+import 'package:flutter_mob/utils/dialog_helper.dart';
 import 'package:flutter_mob/utils/utility.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:lottie/lottie.dart';
@@ -39,31 +41,33 @@ class _DetailOrderScreenState extends State<DetailOrderScreen> {
   late Order order;
   bool isPaymentSuccess = false;
 
-  double get subtotal => order.listOrderItem.fold(
-        0.0,
-        (previousValue, item) =>
-            previousValue + (item.watch.price * item.quantity),
-      );
+  double get total => order.totalAmount - calculateDiscount();
 
-  double get discountAmount => order.discount != null
-      ? order.discount!.discountType == DiscountType.PERCENT.name
-          ? (order.discount!.discountValue / 100 * subtotal).toInt().toDouble()
-          : order.discount!.discountValue
-      : 0;
+  double calculateDiscount() {
+    if (order.status == OrderStatusType.PROCESSING && order.discount != null) {
+      return order.discount!.discountType == DiscountType.PERCENT.name
+          ? (order.discount!.discountValue / 100 * (order.totalAmount))
+              .toInt()
+              .toDouble()
+          : order.discount!.discountValue;
+    }
 
-  double get total => subtotal - discountAmount;
+    return order.discountAmount ?? 0;
+  }
 
   @override
   void initState() {
     order = widget.data["order"];
     order.paymentMethod = PaymentMethodType.CASH.name;
-    List<ShippingAddress> listShippingAddress = widget.data["addresses"];
-    var indexShippingAddress =
-        listShippingAddress.indexWhere((element) => element.isDefault);
-    if (indexShippingAddress >= 0) {
-      order.shippingAddress = listShippingAddress[indexShippingAddress];
-    } else if (listShippingAddress.length > 0) {
-      order.shippingAddress = listShippingAddress.first;
+    if (order.shippingAddress == null && widget.data["addresses"] != null) {
+      List<ShippingAddress> listShippingAddress = widget.data["addresses"];
+      var indexShippingAddress =
+          listShippingAddress.indexWhere((element) => element.isDefault);
+      if (indexShippingAddress >= 0) {
+        order.shippingAddress = listShippingAddress[indexShippingAddress];
+      } else if (listShippingAddress.length > 0) {
+        order.shippingAddress = listShippingAddress.first;
+      }
     }
     super.initState();
   }
@@ -133,6 +137,8 @@ class _DetailOrderScreenState extends State<DetailOrderScreen> {
               backgroundColor: Colors.red,
               textColor: Colors.white,
               fontSize: 16.0);
+        } else if (state is CancelOrderSuccessState) {
+          Navigator.pop(context);
         }
       },
       child: BlocListener<ShippingAddressBloc, ShippingAddressState>(
@@ -301,15 +307,17 @@ class _DetailOrderScreenState extends State<DetailOrderScreen> {
                                             SizedBox(
                                               width: 10,
                                             ),
-                                            Padding(
-                                              padding: const EdgeInsets.only(
-                                                  top: 18),
-                                              child: Icon(
-                                                Icons
-                                                    .arrow_forward_ios_outlined,
-                                                size: 20,
+                                            if (order.status ==
+                                                OrderStatusType.PROCESSING)
+                                              Padding(
+                                                padding: const EdgeInsets.only(
+                                                    top: 18),
+                                                child: Icon(
+                                                  Icons
+                                                      .arrow_forward_ios_outlined,
+                                                  size: 20,
+                                                ),
                                               ),
-                                            ),
                                           ],
                                         ),
                                       ),
@@ -338,53 +346,98 @@ class _DetailOrderScreenState extends State<DetailOrderScreen> {
                                         ),
                                         TextNormal(
                                           title:
-                                              "${Utility.formatNumberDoubleToInt(subtotal)}\$",
+                                              "${Utility.formatNumberDoubleToInt(order.totalAmount)}\$",
                                           colors: AppColors.bPrimaryColor,
                                           fontName: AppThemes.jaldi,
                                         ),
                                       ],
                                     ),
-                                    SizedBox(
-                                      height: 15,
-                                    ),
-                                    Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        TextNormal(
-                                          title: StringName.voucher,
-                                          colors: AppColors.bPrimaryColor,
-                                          fontName: AppThemes.jaldi,
-                                        ),
-                                        Row(
-                                          children: [
-                                            if (order.discount != null)
-                                              Padding(
-                                                padding: const EdgeInsets.only(
-                                                    top: 4),
-                                                child: TextNormal(
-                                                  title:
-                                                      "${Utility.formatNumberDoubleToInt(discountAmount)}\$",
-                                                  colors:
-                                                      AppColors.bPrimaryColor,
-                                                  fontName: AppThemes.jaldi,
-                                                ),
+                                    if (order.status ==
+                                        OrderStatusType.PROCESSING)
+                                      Column(
+                                        children: [
+                                          SizedBox(
+                                            height: 15,
+                                          ),
+                                          Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceBetween,
+                                            children: [
+                                              TextNormal(
+                                                title: StringName.voucher,
+                                                colors: AppColors.bPrimaryColor,
+                                                fontName: AppThemes.jaldi,
                                               ),
-                                            SizedBox(
-                                              width: 4,
-                                            ),
-                                            GestureDetector(
-                                              onTap: handleApplyDiscount,
-                                              child: Icon(
-                                                Icons
-                                                    .arrow_forward_ios_outlined,
-                                                size: 16,
+                                              Row(
+                                                children: [
+                                                  if (order.discount != null)
+                                                    Padding(
+                                                      padding:
+                                                          const EdgeInsets.only(
+                                                              top: 4),
+                                                      child: TextNormal(
+                                                        title:
+                                                            "${Utility.formatNumberDoubleToInt(calculateDiscount())}\$",
+                                                        colors: AppColors
+                                                            .bPrimaryColor,
+                                                        fontName:
+                                                            AppThemes.jaldi,
+                                                      ),
+                                                    ),
+                                                  SizedBox(
+                                                    width: 4,
+                                                  ),
+                                                  GestureDetector(
+                                                    onTap: handleApplyDiscount,
+                                                    child: Icon(
+                                                      Icons
+                                                          .arrow_forward_ios_outlined,
+                                                      size: 16,
+                                                    ),
+                                                  ),
+                                                ],
                                               ),
-                                            ),
-                                          ],
-                                        ),
-                                      ],
-                                    ),
+                                            ],
+                                          ),
+                                        ],
+                                      ),
+                                    if (order.status !=
+                                            OrderStatusType.PROCESSING &&
+                                        order.discountAmount != null)
+                                      Column(
+                                        children: [
+                                          SizedBox(
+                                            height: 15,
+                                          ),
+                                          Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceBetween,
+                                            children: [
+                                              TextNormal(
+                                                title: StringName.discount,
+                                                colors: AppColors.bPrimaryColor,
+                                                fontName: AppThemes.jaldi,
+                                              ),
+                                              Row(
+                                                children: [
+                                                  Padding(
+                                                    padding:
+                                                        const EdgeInsets.only(
+                                                            top: 4),
+                                                    child: TextNormal(
+                                                      title:
+                                                          "${Utility.formatNumberDoubleToInt(calculateDiscount())}\$",
+                                                      colors: AppColors
+                                                          .bPrimaryColor,
+                                                      fontName: AppThemes.jaldi,
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                            ],
+                                          ),
+                                        ],
+                                      ),
                                     SizedBox(
                                       height: 15,
                                     ),
@@ -487,14 +540,17 @@ class _DetailOrderScreenState extends State<DetailOrderScreen> {
                                                 fontName: AppThemes.jaldi,
                                               ),
                                             ),
-                                            GestureDetector(
-                                              onTap: handleChangePaymentMethod,
-                                              child: Icon(
-                                                Icons
-                                                    .arrow_forward_ios_outlined,
-                                                size: 16,
+                                            if (order.status ==
+                                                OrderStatusType.PROCESSING)
+                                              GestureDetector(
+                                                onTap:
+                                                    handleChangePaymentMethod,
+                                                child: Icon(
+                                                  Icons
+                                                      .arrow_forward_ios_outlined,
+                                                  size: 16,
+                                                ),
                                               ),
-                                            ),
                                           ],
                                         ),
                                       ],
@@ -577,10 +633,20 @@ class _DetailOrderScreenState extends State<DetailOrderScreen> {
                                     SizedBox(
                                       height: 37,
                                     ),
-                                    ButtonNormal(
-                                      text: StringName.confirmOrder,
-                                      onPressed: handleConfirmOrder,
-                                    ),
+                                    if (order.status ==
+                                        OrderStatusType.PROCESSING)
+                                      ButtonNormal(
+                                        text: StringName.confirmOrder,
+                                        onPressed: handleConfirmOrder,
+                                      ),
+                                    if (order.status == OrderStatusType.PENDING)
+                                      ButtonNormal(
+                                        text: StringName.cancelOrder,
+                                        backgroundColor: AppColors.heroRed,
+                                        textColor: AppColors.kPrimaryColor,
+                                        onPressed: () => handleCancelOrder(
+                                            context, order.id),
+                                      ),
                                   ],
                                 ),
                               ),
@@ -714,6 +780,15 @@ class _DetailOrderScreenState extends State<DetailOrderScreen> {
         BlocProvider.of<ShippingAddressBloc>(context)
             .add(GetListAddressEvent(indexPage: 3));
       }
+    }
+  }
+
+  handleCancelOrder(BuildContext context, String orderId) async {
+    var result = await DialogHelper.showDialogWidget(
+        context: context, widget: DialogCancelOrder());
+    if (result != null) {
+      BlocProvider.of<OrderBloc>(context)
+          .add(CancelOrderEvent(orderId: orderId, reason: result));
     }
   }
 }

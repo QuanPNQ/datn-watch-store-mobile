@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mob/configs/colors.dart';
+import 'package:flutter_mob/models/option.dart';
 import 'package:flutter_mob/ui/components/text/text_normal.dart';
 
 class HeaderNavigationBar extends StatefulWidget {
-  final List<String> listTabTitle;
+  final List<Option> listTab;
   final Function(int) onTabSelected;
 
   const HeaderNavigationBar(
-      {super.key, required this.listTabTitle, required this.onTabSelected});
+      {super.key, required this.listTab, required this.onTabSelected});
 
   @override
   State<HeaderNavigationBar> createState() => _HeaderNavigationBarState();
@@ -26,8 +27,8 @@ class _HeaderNavigationBarState extends State<HeaderNavigationBar> {
         children: [
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: widget.listTabTitle.map((e) {
-              int index = widget.listTabTitle.indexOf(e);
+            children: widget.listTab.map((e) {
+              int index = widget.listTab.indexOf(e);
               bool isSelected = index == indexSelected;
               return GestureDetector(
                 onTap: () => onClickTab(index),
@@ -42,7 +43,7 @@ class _HeaderNavigationBarState extends State<HeaderNavigationBar> {
                           color: AppColors.yellow1)
                       : null,
                   child: TextNormal(
-                    title: e,
+                    title: e.label,
                     colors: isSelected
                         ? AppColors.black1
                         : AppColors.grey2.withOpacity(0.6),

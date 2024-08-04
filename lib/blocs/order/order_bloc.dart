@@ -92,5 +92,44 @@ class OrderBloc extends Bloc<OrderEvent, OrderState> {
         ));
       }
     });
+
+    on<GetListOrderEvent>((event, emit) async {
+      try {
+        emit(OrderLoadingState());
+        var response = await orderRepository.getListOrder(status: event.status);
+        final body = jsonDecode(response.body);
+        if (response.statusCode == HttpStatus.created) {
+          List<Order> listOrder =
+              List.from(body['data']['orders'].map((e) => Order.fromJson(e)));
+          emit(GetListOrderSuccessState(listOrder));
+        } else {
+          emit(GetListOrderErrorState(message: body['message']));
+        }
+      } catch (err) {
+        debugPrint("[OrderBloc] GetListOrderEvent error => ${err.toString()}");
+        emit(GetListOrderErrorState(
+          message: err.toString(),
+        ));
+      }
+    });
+
+    on<CancelOrderEvent>((event, emit) async {
+      try {
+        emit(OrderLoadingState());
+        var response = await orderRepository.cancelOrder(
+            orderId: event.orderId, reason: event.reason);
+        final body = jsonDecode(response.body);
+        if (response.statusCode == HttpStatus.created) {
+          emit(CancelOrderSuccessState());
+        } else {
+          emit(CancelOrderErrorState(message: body['message']));
+        }
+      } catch (err) {
+        debugPrint("[OrderBloc] CancelOrderEvent error => ${err.toString()}");
+        emit(CancelOrderErrorState(
+          message: err.toString(),
+        ));
+      }
+    });
   }
 }

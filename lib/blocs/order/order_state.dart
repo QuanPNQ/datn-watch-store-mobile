@@ -55,3 +55,23 @@ class CheckOrderErrorState extends OrderState {
 
   const CheckOrderErrorState({required this.message});
 }
+
+class GetListOrderSuccessState extends OrderState {
+  final List<Order> orders;
+
+  const GetListOrderSuccessState(this.orders);
+}
+
+class GetListOrderErrorState extends OrderState {
+  final String message;
+
+  const GetListOrderErrorState({required this.message});
+}
+
+class CancelOrderSuccessState extends OrderState {}
+
+class CancelOrderErrorState extends OrderState {
+  final String message;
+
+  const CancelOrderErrorState({required this.message});
+}

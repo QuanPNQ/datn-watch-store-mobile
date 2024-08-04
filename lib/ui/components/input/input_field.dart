@@ -9,7 +9,9 @@ class InputField extends StatefulWidget {
   final String? labelText;
   final double? labelSize;
   final Color? labelColor;
+  final Color? fillColor;
   final String? hintText;
+  final int? maxLines;
   final TextEditingController controller;
   final FormFieldValidator<String>? validator;
   final FormFieldSetter<String>? onSaved;
@@ -17,10 +19,18 @@ class InputField extends StatefulWidget {
   final bool isObscureText;
   final TextInputType? inputType;
   final List<TextInputFormatter>? inputFormatters;
+  final InputBorder? border;
+  final Function(String value)? onChange;
+  final EdgeInsetsGeometry? contentPadding;
 
   const InputField(
       {Key? key,
       this.hintText,
+      this.fillColor,
+      this.contentPadding,
+      this.onChange,
+      this.maxLines,
+      this.border,
       this.labelText,
       this.labelSize = 20,
       this.labelColor = AppColors.bPrimaryColor,
@@ -65,9 +75,11 @@ class _InputFieldState extends State<InputField> {
           textAlignVertical: TextAlignVertical.center,
           readOnly: widget.isReadOnly,
           inputFormatters: widget.inputFormatters,
-          onChanged: (value) {
-            setState(() {});
-          },
+          maxLines: widget.maxLines,
+          onChanged: widget.onChange ??
+              (value) {
+                setState(() {});
+              },
           style: TextStyle(
               fontFamily: AppThemes.jaldi,
               color: AppColors.bPrimaryColor,
@@ -76,7 +88,8 @@ class _InputFieldState extends State<InputField> {
               height: 1,
               letterSpacing: 0.5),
           decoration: InputDecoration(
-            contentPadding: EdgeInsets.only(left: 12, right: 12),
+            contentPadding:
+                widget.contentPadding ?? EdgeInsets.only(left: 12, right: 12),
             hintTextDirection: TextDirection.ltr,
             errorStyle: TextStyle(
                 fontSize: 14,
@@ -86,17 +99,18 @@ class _InputFieldState extends State<InputField> {
                 letterSpacing: 0.5.r,
                 height: 1),
             filled: true,
-            fillColor: AppColors.grey1.withOpacity(0.74),
+            fillColor: widget.fillColor ?? AppColors.grey1.withOpacity(0.74),
             hintText: widget.hintText,
             hintStyle: TextStyle(
                 color: AppColors.bPrimaryColor.withOpacity(0.3),
                 fontSize: 14,
                 fontFamily: AppThemes.jaldi,
                 height: 1),
-            border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(10),
-              borderSide: BorderSide.none,
-            ),
+            border: widget.border ??
+                OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(10),
+                  borderSide: BorderSide.none,
+                ),
             focusedBorder: OutlineInputBorder(
                 borderSide: BorderSide.none,
                 borderRadius: BorderRadius.circular(10)),

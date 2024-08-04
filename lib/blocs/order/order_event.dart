@@ -42,3 +42,21 @@ class CheckOrderEvent extends OrderEvent {
     required this.orderId,
   });
 }
+
+class GetListOrderEvent extends OrderEvent {
+  final String? status;
+
+  GetListOrderEvent({
+    this.status,
+  });
+}
+
+class CancelOrderEvent extends OrderEvent {
+  final String orderId;
+  final String reason;
+
+  CancelOrderEvent({
+    required this.orderId,
+    required this.reason,
+  });
+}

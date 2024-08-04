@@ -4,6 +4,7 @@ import 'package:flutter_mob/blocs/product/product_bloc.dart';
 import 'package:flutter_mob/blocs/product/product_event.dart';
 import 'package:flutter_mob/blocs/product/product_state.dart';
 import 'package:flutter_mob/configs/constants.dart';
+import 'package:flutter_mob/models/option.dart';
 import 'package:flutter_mob/models/watch/watch.dart';
 import 'package:flutter_mob/ui/components/app_bar/header_navigation_bar.dart';
 import 'package:flutter_mob/ui/components/card/card_fake_watch.dart';
@@ -19,7 +20,7 @@ class ClassifyWatch extends StatefulWidget {
 
 class _ClassifyWatchState extends State<ClassifyWatch>
     with AutomaticKeepAliveClientMixin {
-  final List<String> listTabTitle = Constants.listTabClassifyWatch;
+  final List<Option> listTabTitle = Constants.listTabClassifyWatch;
   final List<Watch> listMockWatch = Constants.listMockDataWatch;
   final List<TopProductType> listTopProductType = [
     TopProductType.SALE,
@@ -61,7 +62,7 @@ class _ClassifyWatchState extends State<ClassifyWatch>
       child: Column(
         children: [
           HeaderNavigationBar(
-              listTabTitle: listTabTitle, onTabSelected: onTabSelected),
+              listTab: listTabTitle, onTabSelected: onTabSelected),
           SizedBox(
             height: 30,
           ),
