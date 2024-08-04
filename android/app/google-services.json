@@ -1,79 +1,26 @@
 {
   "project_info": {
-    "project_number": "592336391",
-    "project_id": "kalm-dev-fe920",
-    "storage_bucket": "kalm-dev-fe920.appspot.com"
+    "project_number": "744772752741",
+    "project_id": "apolis-301dc",
+    "storage_bucket": "apolis-301dc.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:592336391:android:0f54938a7a1c098088fca2",
-        "android_client_info": {
-          "package_name": "com.propius.kalm"
-        }
-      },
-      "oauth_client": [
-        {
-          "client_id": "592336391-omfr3u7mc6vg1b037rno12ja8sagjgke.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyDoV3WN4IfawWQfCIQNJsX0-IFk1yFe6vM"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "592336391-omfr3u7mc6vg1b037rno12ja8sagjgke.apps.googleusercontent.com",
-              "client_type": 3
-            },
-            {
-              "client_id": "592336391-287v5oludj9a1o3joa1k1u9hd7g49ki6.apps.googleusercontent.com",
-              "client_type": 2,
-              "ios_info": {
-                "bundle_id": "com.propius.kalm"
-              }
-            }
-          ]
-        }
-      }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:592336391:android:271c5a875bc3107788fca2",
+        "mobilesdk_app_id": "1:744772752741:android:3d75a06c167f10fadb3d8c",
         "android_client_info": {
           "package_name": "com.flutter.base"
         }
       },
-      "oauth_client": [
-        {
-          "client_id": "592336391-omfr3u7mc6vg1b037rno12ja8sagjgke.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
+      "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyDoV3WN4IfawWQfCIQNJsX0-IFk1yFe6vM"
+          "current_key": "AIzaSyDoydMaISvArhsjWu1rsGwE_2J1tzd1MQo"
         }
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "592336391-omfr3u7mc6vg1b037rno12ja8sagjgke.apps.googleusercontent.com",
-              "client_type": 3
-            },
-            {
-              "client_id": "592336391-287v5oludj9a1o3joa1k1u9hd7g49ki6.apps.googleusercontent.com",
-              "client_type": 2,
-              "ios_info": {
-                "bundle_id": "com.propius.kalm"
-              }
-            }
-          ]
+          "other_platform_oauth_client": []
         }
       }
     }

@@ -14,6 +14,7 @@ import 'package:flutter_mob/blocs/cart/cart_bloc.dart';
 import 'package:flutter_mob/blocs/discount/discount_bloc.dart';
 import 'package:flutter_mob/blocs/login/login_bloc.dart';
 import 'package:flutter_mob/blocs/notify/notify_bloc.dart';
+import 'package:flutter_mob/blocs/notify/notify_event.dart';
 import 'package:flutter_mob/blocs/order/order_bloc.dart';
 import 'package:flutter_mob/blocs/product/product_bloc.dart';
 import 'package:flutter_mob/blocs/search_histories/search_histories_bloc.dart';
@@ -55,7 +56,7 @@ const DarwinInitializationSettings _darwinInitializationSettings =
         requestBadgePermission: true,
         requestSoundPermission: true);
 
-Future<void> fCMSetup() async {
+Future<void> fCMSetup(BuildContext context) async {
   await Firebase.initializeApp();
 
   FirebaseMessaging.instance
@@ -95,6 +96,7 @@ Future<void> fCMSetup() async {
           android: androidNotificationDetails, iOS: darwinNotificationDetails);
       await flutterLocalNotificationsPlugin.show(0, event.notification?.title,
           event.notification?.body, notificationDetails);
+      BlocProvider.of<NotifyBloc>(context).add(GetListNotifyEvent());
     } catch (e) {
       debugPrint(e.toString());
     }
@@ -119,7 +121,6 @@ Future<void> main() async {
   await flutterLocalNotificationsPlugin.initialize(initializationSettings);
   await SharedPrefManager().init();
   await Firebase.initializeApp();
-  await fCMSetup();
   timeago.setLocaleMessages('vi', TimeAgoHelper());
 
   runZonedGuarded(() {
