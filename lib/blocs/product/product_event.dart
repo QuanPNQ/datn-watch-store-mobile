@@ -74,3 +74,16 @@ class GetListProductEvent extends ProductEvent {
 
   const GetListProductEvent({this.page, this.limit, this.textSearch});
 }
+
+class EvaluateProductEvent extends ProductEvent {
+  final String productId;
+  final String orderId;
+  final String comment;
+  final double rate;
+
+  const EvaluateProductEvent(
+      {required this.productId,
+      required this.orderId,
+      required this.comment,
+      required this.rate});
+}

@@ -231,6 +231,7 @@ class Constants {
   static List<Review> listMockDataComment = [
     Review(
       id: '1',
+      orderId: '1',
       account: mockDataAccount,
       date: DateTime.now(),
       photoUrls: [],
@@ -381,6 +382,7 @@ class StringName {
   static const String noNotify = 'Chưa có thông báo';
   static const String hasError = 'Đã có lỗi xảy ra';
   static const String reason = 'Lí do:';
+  static const String commentProduct = 'Nhận xét:';
   static const String cart = 'Giỏ hàng';
   static const String subtotal = 'Tổng tiền';
   static const String transport = 'Vận chuyển';
@@ -423,6 +425,8 @@ class StringName {
   static const String inputConfirmNewPassword = 'Xác nhận lại mật khẩu';
   static const String change = 'Thay đổi';
   static const String cancelOrder = 'Huỷ';
+  static const String evaluate = 'Đánh giá';
+  static const String evaluated = 'Đã đánh giá';
   static const String send = 'Gửi';
   static const String listOrder = 'Đơn hàng';
   static const String viewDetail = 'Xem chi tiết';

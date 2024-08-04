@@ -183,5 +183,28 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
         ));
       }
     });
+
+    on<EvaluateProductEvent>((event, emit) async {
+      try {
+        emit(EvaluateProductLoadingState());
+        var response = await productRepository.evaluateProduct(
+            productId: event.productId,
+            orderId: event.orderId,
+            comment: event.comment,
+            rate: event.rate);
+        final body = jsonDecode(response.body);
+        if (response.statusCode == HttpStatus.created) {
+          emit(EvaluateProductSuccessState());
+        } else {
+          emit(EvaluateProductErrorState(message: body['message']));
+        }
+      } catch (err) {
+        debugPrint(
+            "[ProductBloc] EvaluateProductEvent error => ${err.toString()}");
+        emit(EvaluateProductErrorState(
+          message: err.toString(),
+        ));
+      }
+    });
   }
 }

@@ -145,3 +145,14 @@ class GetListProductErrorState extends ProductState {
 
   const GetListProductErrorState({required this.message});
 }
+
+/// Evaluate Product
+class EvaluateProductLoadingState extends ProductState {}
+
+class EvaluateProductSuccessState extends ProductState {}
+
+class EvaluateProductErrorState extends ProductState {
+  final String message;
+
+  const EvaluateProductErrorState({required this.message});
+}

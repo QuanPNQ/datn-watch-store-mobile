@@ -27,4 +27,13 @@ class ProductRepository {
     return await ProductService()
         .updateProductToCart(watchId: watchId, quantity: quantity, type: type);
   }
+
+  Future<dynamic> evaluateProduct(
+      {required String productId,
+      required String orderId,
+      required String comment,
+      required double rate}) async {
+    return await ProductService().evaluateProduct(
+        productId: productId, orderId: orderId, comment: comment, rate: rate);
+  }
 }

@@ -69,4 +69,25 @@ class ProductService extends BaseService {
     }
     return response;
   }
+
+  Future<dynamic> evaluateProduct(
+      {required String productId,
+      required String orderId,
+      required String comment,
+      required double rate}) async {
+    String uri = "${Constants.baseUrl}product/$productId/evaluate";
+    var body = {"orderId": orderId, "comment": comment, "rate": rate};
+
+    debugPrint("[ProductService] evaluateProduct uri: $uri");
+    debugPrint("[ProductService] evaluateProduct body: $body");
+
+    final response = await http.post(Uri.parse(uri),
+        headers: await requestTokenHeader(), body: jsonEncode(body));
+
+    debugPrint("[ProductService] evaluateProduct response: ${response.body}");
+    if (response.statusCode == HttpStatus.unauthorized) {
+      throw UnauthorizedException();
+    }
+    return response;
+  }
 }

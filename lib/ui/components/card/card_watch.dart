@@ -48,10 +48,14 @@ class CardWatch extends StatelessWidget {
                 SizedBox(
                   height: 20,
                 ),
-                TextNormal(
-                  title: watchData.name,
-                  colors: AppColors.blue300,
-                  fontWeight: FontWeight.w700,
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 8),
+                  child: TextNormal(
+                    title: watchData.name,
+                    colors: AppColors.blue300,
+                    fontWeight: FontWeight.w700,
+                    maxLine: 2,
+                  ),
                 ),
                 SizedBox(
                   height: 5,

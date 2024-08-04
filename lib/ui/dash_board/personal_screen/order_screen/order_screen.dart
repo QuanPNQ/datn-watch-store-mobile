@@ -3,11 +3,15 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_mob/blocs/order/order_bloc.dart';
 import 'package:flutter_mob/blocs/order/order_event.dart';
 import 'package:flutter_mob/blocs/order/order_state.dart';
+import 'package:flutter_mob/blocs/product/product_bloc.dart';
+import 'package:flutter_mob/blocs/product/product_state.dart';
 import 'package:flutter_mob/configs/colors.dart';
 import 'package:flutter_mob/configs/constants.dart';
 import 'package:flutter_mob/configs/themes.dart';
+import 'package:flutter_mob/models/account/account.dart';
 import 'package:flutter_mob/models/models.dart';
 import 'package:flutter_mob/models/option.dart';
+import 'package:flutter_mob/repositories/authentication/auth_repository.dart';
 import 'package:flutter_mob/ui/components/app_bar/app_bar_title.dart';
 import 'package:flutter_mob/ui/components/app_bar/header_navigation_bar.dart';
 import 'package:flutter_mob/ui/components/card/card_order_verify.dart';
@@ -27,39 +31,34 @@ class _OrderScreenState extends State<OrderScreen> {
   List<Option> listTabTitle = Constants.listTabOrders;
   List<Order> listOrder = [];
   int currentIndex = 0;
+  String accountId = '';
 
   @override
   void initState() {
+    initData();
     BlocProvider.of<OrderBloc>(context)
         .add(GetListOrderEvent(status: OrderStatusType.PENDING));
     super.initState();
   }
 
+  initData() async {
+    Account? account = await AuthRepository().getUser();
+    if (account != null) {
+      accountId = account.id!;
+    }
+    setState(() {});
+  }
+
   @override
   Widget build(BuildContext context) {
-    return BlocListener<OrderBloc, OrderState>(
+    return BlocListener<ProductBloc, ProductState>(
       listener: (context, state) async {
-        if (state is OrderLoadingState) {
+        if (state is EvaluateProductLoadingState) {
           LoadingHelper.showLoading(context);
-        } else if (state is GetListOrderSuccessState) {
-          LoadingHelper.hideLoading(context);
-          setState(() {
-            listOrder = state.orders;
-          });
-        } else if (state is GetListOrderErrorState) {
-          LoadingHelper.hideLoading(context);
-          Fluttertoast.showToast(
-              msg: state.message,
-              toastLength: Toast.LENGTH_SHORT,
-              gravity: ToastGravity.TOP,
-              timeInSecForIosWeb: 1,
-              backgroundColor: Colors.red,
-              textColor: Colors.white,
-              fontSize: 16.0);
-        } else if (state is CancelOrderSuccessState) {
+        } else if (state is EvaluateProductSuccessState) {
           BlocProvider.of<OrderBloc>(context)
               .add(GetListOrderEvent(status: listTabTitle[currentIndex].key));
-        } else if (state is CancelOrderErrorState) {
+        } else if (state is EvaluateProductErrorState) {
           LoadingHelper.hideLoading(context);
           Fluttertoast.showToast(
               msg: state.message,
@@ -71,67 +70,103 @@ class _OrderScreenState extends State<OrderScreen> {
               fontSize: 16.0);
         }
       },
-      child: Scaffold(
-        backgroundColor: AppColors.kPrimaryColor,
-        body: SafeArea(
-          child: Column(
-            children: [
-              AppBarTitle(
-                  appTitle: StringName.listOrder,
-                  fontName: AppThemes.jaldi,
-                  fontSize: 20),
-              SizedBox(
-                height: 10,
-              ),
-              Expanded(
-                child: Column(
-                  children: [
-                    HeaderNavigationBar(
-                        listTab: listTabTitle, onTabSelected: onTabSelected),
-                    SizedBox(
-                      height: 5,
-                    ),
-                    Expanded(
-                      child: Container(
-                        color: AppColors.oPrimaryColor,
-                        child: ScrollConfiguration(
-                          behavior: CustomScrollBehavior(),
-                          child: ListView(
-                            children: [
-                              Column(
-                                children: [
-                                  SizedBox(
-                                    height: 5,
-                                  ),
-                                  if (listOrder.isNotEmpty)
-                                    ...listOrder
-                                        .map((e) => CardOrderVerify(
-                                              order: e,
-                                              onClick: () =>
-                                                  handleViewDetailOrder(e),
-                                            ))
-                                        .toList(),
-                                  if (listOrder.isEmpty)
-                                    Container(
-                                      margin: EdgeInsets.only(top: 100),
-                                      child: TextNormal(
-                                        title: StringName.noOrder,
-                                        colors: AppColors.bPrimaryColor,
-                                        fontName: AppThemes.spectral,
-                                        size: 18,
-                                      ),
-                                    )
-                                ],
-                              ),
-                            ],
+      child: BlocListener<OrderBloc, OrderState>(
+        listener: (context, state) async {
+          if (state is OrderLoadingState) {
+            LoadingHelper.showLoading(context);
+          } else if (state is GetListOrderSuccessState) {
+            LoadingHelper.hideLoading(context);
+            setState(() {
+              listOrder = state.orders;
+            });
+          } else if (state is GetListOrderErrorState) {
+            LoadingHelper.hideLoading(context);
+            Fluttertoast.showToast(
+                msg: state.message,
+                toastLength: Toast.LENGTH_SHORT,
+                gravity: ToastGravity.TOP,
+                timeInSecForIosWeb: 1,
+                backgroundColor: Colors.red,
+                textColor: Colors.white,
+                fontSize: 16.0);
+          } else if (state is CancelOrderSuccessState) {
+            BlocProvider.of<OrderBloc>(context)
+                .add(GetListOrderEvent(status: listTabTitle[currentIndex].key));
+          } else if (state is CancelOrderErrorState) {
+            LoadingHelper.hideLoading(context);
+            Fluttertoast.showToast(
+                msg: state.message,
+                toastLength: Toast.LENGTH_SHORT,
+                gravity: ToastGravity.TOP,
+                timeInSecForIosWeb: 1,
+                backgroundColor: Colors.red,
+                textColor: Colors.white,
+                fontSize: 16.0);
+          }
+        },
+        child: Scaffold(
+          backgroundColor: AppColors.kPrimaryColor,
+          body: SafeArea(
+            child: Column(
+              children: [
+                AppBarTitle(
+                    appTitle: StringName.listOrder,
+                    fontName: AppThemes.jaldi,
+                    fontSize: 20),
+                SizedBox(
+                  height: 10,
+                ),
+                Expanded(
+                  child: Column(
+                    children: [
+                      HeaderNavigationBar(
+                          listTab: listTabTitle, onTabSelected: onTabSelected),
+                      SizedBox(
+                        height: 5,
+                      ),
+                      Expanded(
+                        child: Container(
+                          color: AppColors.oPrimaryColor,
+                          child: ScrollConfiguration(
+                            behavior: CustomScrollBehavior(),
+                            child: ListView(
+                              children: [
+                                Column(
+                                  children: [
+                                    SizedBox(
+                                      height: 5,
+                                    ),
+                                    if (listOrder.isNotEmpty)
+                                      ...listOrder
+                                          .map((e) => CardOrderVerify(
+                                                order: e,
+                                                accountId: accountId,
+                                                onClick: () =>
+                                                    handleViewDetailOrder(e),
+                                              ))
+                                          .toList(),
+                                    if (listOrder.isEmpty)
+                                      Container(
+                                        margin: EdgeInsets.only(top: 100),
+                                        child: TextNormal(
+                                          title: StringName.noOrder,
+                                          colors: AppColors.bPrimaryColor,
+                                          fontName: AppThemes.spectral,
+                                          size: 18,
+                                        ),
+                                      )
+                                  ],
+                                ),
+                              ],
+                            ),
                           ),
                         ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),

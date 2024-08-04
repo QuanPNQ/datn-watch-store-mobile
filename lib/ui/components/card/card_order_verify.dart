@@ -2,12 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_mob/blocs/order/order_bloc.dart';
 import 'package:flutter_mob/blocs/order/order_event.dart';
+import 'package:flutter_mob/blocs/product/product_bloc.dart';
+import 'package:flutter_mob/blocs/product/product_event.dart';
 import 'package:flutter_mob/configs/colors.dart';
 import 'package:flutter_mob/configs/constants.dart';
 import 'package:flutter_mob/configs/themes.dart';
 import 'package:flutter_mob/models/models.dart';
 import 'package:flutter_mob/ui/components/button/button_normal.dart';
 import 'package:flutter_mob/ui/components/dialog/dialog_cancel_order.dart';
+import 'package:flutter_mob/ui/components/dialog/dialog_evaluate_product.dart';
 import 'package:flutter_mob/ui/components/text/text_normal.dart';
 import 'package:flutter_mob/utils/dialog_helper.dart';
 import 'package:flutter_mob/utils/utility.dart';
@@ -15,17 +18,31 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 class CardOrderVerify extends StatelessWidget {
   final Order order;
+  final String accountId;
   final Function() onClick;
 
   const CardOrderVerify({
     super.key,
     required this.order,
+    required this.accountId,
     required this.onClick,
   });
 
   @override
   Widget build(BuildContext context) {
     double total = order.totalAmount - (order.discountAmount ?? 0);
+
+    checkEvaluated(String productId) {
+      var existedOrderItem = order.listOrderItem
+          .indexWhere((element) => element.watch.id == productId);
+      if (existedOrderItem >= 0) {
+        var existedReview = order
+            .listOrderItem[existedOrderItem].watch.listReview
+            .indexWhere((element) => element.account.id == accountId);
+        if (existedReview >= 0) return true;
+      }
+      return false;
+    }
 
     return GestureDetector(
       onTap: onClick,
@@ -72,64 +89,97 @@ class CardOrderVerify extends StatelessWidget {
               ),
               ...order.listOrderItem.map((e) {
                 return Container(
-                  height: 64,
+                  height: order.status == OrderStatusType.DELIVERED ? 102 : 64,
                   padding: EdgeInsets.only(left: 12),
                   decoration: BoxDecoration(
                       border: Border(
                     bottom: BorderSide(color: AppColors.grey4),
                   )),
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+                  child: Column(
                     children: [
-                      Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 6),
-                        child: e.watch.photoUrls[0].contains("svg")
-                            ? SvgPicture.network(e.watch.photoUrls[0])
-                            : Image.network(e.watch.photoUrls[0]),
-                      ),
-                      SizedBox(
-                        width: 7,
-                      ),
                       Expanded(
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.start,
+                        child: Row(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            SizedBox(
-                              height: 10,
-                            ),
-                            TextNormal(
-                              title: e.watch.name,
-                              colors: AppColors.bPrimaryColor,
-                              fontName: AppThemes.specialElite,
-                              size: 15,
-                              maxLine: 1,
+                            Padding(
+                              padding: const EdgeInsets.symmetric(vertical: 6),
+                              child: e.watch.photoUrls[0].contains("svg")
+                                  ? SvgPicture.network(e.watch.photoUrls[0])
+                                  : Image.network(e.watch.photoUrls[0]),
                             ),
                             SizedBox(
-                              height: 4,
+                              width: 7,
                             ),
-                            TextNormal(
-                              title:
-                                  "${Utility.formatNumberDoubleToInt(e.watch.price)}\$",
-                              colors: AppColors.bPrimaryColor,
-                              fontName: AppThemes.spicyRice,
-                              size: 16,
+                            Expanded(
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  SizedBox(
+                                    height: 10,
+                                  ),
+                                  TextNormal(
+                                    title: e.watch.name,
+                                    colors: AppColors.bPrimaryColor,
+                                    fontName: AppThemes.specialElite,
+                                    size: 15,
+                                    maxLine: 1,
+                                  ),
+                                  SizedBox(
+                                    height: 4,
+                                  ),
+                                  TextNormal(
+                                    title:
+                                        "${Utility.formatNumberDoubleToInt(e.watch.price)}\$",
+                                    colors: AppColors.bPrimaryColor,
+                                    fontName: AppThemes.spicyRice,
+                                    size: 16,
+                                  ),
+                                ],
+                              ),
                             ),
+                            Padding(
+                              padding: const EdgeInsets.only(top: 24.0),
+                              child: TextNormal(
+                                title: 'x' + e.quantity.toString(),
+                                colors: AppColors.bPrimaryColor,
+                                fontName: AppThemes.spectral,
+                                fontWeight: FontWeight.w700,
+                              ),
+                            ),
+                            SizedBox(
+                              width: 10,
+                            )
                           ],
                         ),
                       ),
-                      Padding(
-                        padding: const EdgeInsets.only(top: 24.0),
-                        child: TextNormal(
-                          title: 'x' + e.quantity.toString(),
-                          colors: AppColors.bPrimaryColor,
-                          fontName: AppThemes.spectral,
-                          fontWeight: FontWeight.w700,
+                      if (order.status == OrderStatusType.DELIVERED)
+                        Column(
+                          children: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              children: [
+                                ButtonNormal(
+                                  text: checkEvaluated(e.watch.id)
+                                      ? StringName.evaluated
+                                      : StringName.evaluate,
+                                  width: 150,
+                                  height: 30,
+                                  radius: 6,
+                                  enabled: !checkEvaluated(e.watch.id),
+                                  onPressed: () => handleEvaluateOrder(
+                                      context, order.id, e.watch.id),
+                                ),
+                                SizedBox(
+                                  width: 12,
+                                )
+                              ],
+                            ),
+                            SizedBox(
+                              height: 8,
+                            )
+                          ],
                         ),
-                      ),
-                      SizedBox(
-                        width: 10,
-                      )
                     ],
                   ),
                 );
@@ -359,6 +409,19 @@ class CardOrderVerify extends StatelessWidget {
     if (result != null) {
       BlocProvider.of<OrderBloc>(context)
           .add(CancelOrderEvent(orderId: orderId, reason: result));
+    }
+  }
+
+  handleEvaluateOrder(
+      BuildContext context, String orderId, String productId) async {
+    var result = await DialogHelper.showDialogWidget(
+        context: context, widget: DialogEvaluateProduct());
+    if (result != null) {
+      BlocProvider.of<ProductBloc>(context).add(EvaluateProductEvent(
+          orderId: orderId,
+          productId: productId,
+          comment: result["comment"],
+          rate: result["rate"]));
     }
   }
 }

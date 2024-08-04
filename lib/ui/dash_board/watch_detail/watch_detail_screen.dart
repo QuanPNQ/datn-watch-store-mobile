@@ -215,7 +215,7 @@ class _WatchDetailScreenState extends State<WatchDetailScreen> {
                               height: 38,
                             ),
                             TextNormal(
-                              title: StringName.comment,
+                              title: StringName.commentProduct,
                               colors: AppColors.bPrimaryColor,
                               fontName: AppThemes.specialElite,
                               size: 20,
